@@ -6,7 +6,8 @@ var watch = require( 'gulp-watch' );
 var cssnano = require( 'gulp-cssnano' );
 var rename = require( 'gulp-rename' );
 var concat = require( 'gulp-concat' );
-var uglify = require( 'gulp-uglify' );
+var babel = require( 'gulp-babel' );
+var uglify = require( 'gulp-uglifyes' );
 var merge2 = require( 'merge2' );
 var imagemin = require( 'gulp-imagemin' );
 var ignore = require( 'gulp-ignore' );
@@ -147,7 +148,9 @@ gulp.task( 'scripts', function() {
 
         // Adding currently empty javascript file to add on for your own themes´ customizations
         // Please add any customizations to this .js file only!
-        paths.dev + '/js/custom-javascript.js'
+        paths.dev + '/js/custom-javascript.js',
+        
+        paths.dev + '/js/wrbb-js/*.js',
     ];
   gulp.src( scripts )
     .pipe( concat( 'theme.min.js' ) )
