@@ -62,12 +62,14 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 		<!-- Do the right sidebar check -->
 		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
-		
+
 
 	</div><!-- .row -->
 
 </div><!-- Container end -->
 
 </div><!-- Wrapper end -->
+
+<?php get_template_part( 'src/wrbb-templates/playerbar' ); ?>
 
 <?php get_footer(); ?>

@@ -1,0 +1,159 @@
+.playerbar {
+    color: white;
+    background-color: #696969;
+    //width: 15%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    z-index: 99;
+    font-size: 1.5em;
+}
+
+.playerbar.expand {
+    //height: 300px;
+}
+
+
+.player-play-pause {
+    display: inline-block;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.player-play-pause.show {
+    display: block;
+    clear: both;
+    font-size: 1.5em;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.player-controls {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.playerbar i {
+    color: white;
+}
+
+#playButton {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;
+    font-size: 0.75em;
+}
+
+.volume-controls {
+    display: inline-block;
+    font-size: 0.75em;
+    //margin-left: 10px;
+    margin: 0;
+}
+
+#expand-collapse {
+    font-size: 0.75em;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;
+    float: right;
+    clear: both;
+    margin-top: 5px;
+}
+
+.player-text {
+    padding-left: 10px;
+}
+
+#player-header {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#player-desc {
+    font-size: 0.5em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#volume-slider {
+    width: 80%;
+}
+
+#player-icon {
+    display: none;
+}
+
+#player-icon.show {
+    display: block;
+    object-fit: contain;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.player-text.show {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 720px) {
+  .playerbar {
+    width: 100%;
+    display: table;
+  }
+
+  .volume-controls{
+      display: none;
+  }
+
+  .player-controls {
+      float: left;
+      display: table-cell;
+      vertical-align: middle;
+  }
+
+  .player-text.show {
+      padding: 0;
+      display: block;
+      text-align: center;
+      margin: 20px auto;
+  }
+
+  .player-text {
+      display: inline-block;
+  }
+  .playerbar.expand {
+      height: 90%;
+  }
+
+  #playButton {
+      font-size: 1em;
+  }
+
+  #player-header.show {
+    font-size: 2em;
+  }
+
+  #player-desc.show {
+    font-size: 1.25em;
+  }
+
+  .player-controls.show {
+      float: none;
+      font-size: 2em;
+      margin: 10px auto;
+      display: flex;
+      clear: both;
+      justify-content: center;
+  }
+}
