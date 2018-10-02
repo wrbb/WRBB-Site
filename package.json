@@ -27,6 +27,7 @@
   },
   "homepage": "https://understrap.com",
   "dependencies": {
+    "babel-core": "^6.26.3",
     "bootstrap": "4.1.2",
     "browser-sync": "^2.23.6",
     "del": "^3.0.0",
@@ -35,6 +36,7 @@
     "gulp-autoprefixer": "^5.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^3.9.2",
+    "gulp-cli": "^2.0.1",
     "gulp-clone": "2.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
