@@ -1,0 +1,45 @@
+
+.header {
+  .menu-bar {
+      font-family: 'Playfair Display', serif;
+      font-weight: bolder;
+      overflow: hidden;
+  }
+
+  .menu-link {
+      text-align: center;
+      overflow: hidden;
+      width: 30%;
+  }
+
+  .head-img {
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+  }
+
+  #wrbb-head-logo {
+      width: 15%;
+      display: inline-block;
+  }
+
+  .left-side {
+      float: left;
+      width: 50%;
+  }
+
+  .right-side {
+      float: right;
+      width: 50%;
+  }
+  .options{
+      display: none;
+  }
+  .options:hover{
+      display: block;
+  }
+  .menu-link-name:hover + .options {
+      display: block;
+      opacity: 1;
+  }
+}
