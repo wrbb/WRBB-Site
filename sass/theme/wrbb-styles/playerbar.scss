@@ -1,6 +1,6 @@
 .playerbar {
-    color: white;
-    background-color: #696969;
+    color: $white;
+    background-color: $black;
     //width: 15%;
     position: fixed;
     bottom: 0;
@@ -37,7 +37,7 @@
 }
 
 .playerbar i {
-    color: white;
+    color: $white;
 }
 
 #playButton {
