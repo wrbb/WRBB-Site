@@ -1,10 +1,20 @@
 var audio;
-var playing = false;
-
+var playing;
+var expanded;
 
 jQuery(document).ready(function() {
-    audio = new Audio('http://129.10.161.130:8000/');
-    audio.volume = 0.5;
+    if(typeof audio === 'undefined') {
+        audio = new Audio('http://129.10.161.130:8000/');
+        audio.volume = 0.5;
+        playing = false;
+        expand = false;
+    } else {
+        console.log("ay");
+        if(playing) {
+            console.log("ay");
+            document.getElementById("playButton").innerHTML = '<i class="fa fa-pause-circle-o fa-lg" aria-hidden="true"></i>'
+        }
+    }
 })
 
 jQuery( "#playButton" ).click(function() {
@@ -14,8 +24,6 @@ jQuery( "#playButton" ).click(function() {
      playAudio();
  }
 });
-
-var expanded = false;
 
 document.querySelector('#expand-collapse').addEventListener('click', function() {
     if(expanded) {

@@ -3977,3 +3977,114 @@
 	}
 })();
 
+
+/*
+if(typeof state === 'undefined') {
+    var state = window.history.state;
+}
+//for when they click on an ajax link
+jQuery('a').on('click', function(e){
+    var $this = jQuery(this);
+    var href = $this.attr('href'); // use the href value to determine what content to ajax in
+    //$( "html" ).load(href);
+    jQuery.ajax({
+        url: href , // create the necessary path for our ajax request
+        dataType: 'html',
+        success: function(data) {
+            window.history.pushState(data,href, href);
+            jQuery('html').remove('html');
+            jQuery('html').html(data);
+        }
+    });
+    e.preventDefault(); // we don't want the anchor tag to perform its native function
+});
+
+//for when they hit the back button
+jQuery(window).on('statechange', function(){
+    state = history.state; // find out what we previously ajaxed in
+    jQuery.ajax({
+        url: state.title, //create our path
+        dataType: 'html',
+        success: function(data) {
+            jQuery('html').html(data);
+            history.pushState(null,href, href);
+        }
+    });
+});
+*/
+// placeholder
+var audio;
+var playing;
+var expanded;
+
+jQuery(document).ready(function() {
+    if(typeof audio === 'undefined') {
+        audio = new Audio('http://129.10.161.130:8000/');
+        audio.volume = 0.5;
+        playing = false;
+        expand = false;
+    } else {
+        console.log("ay");
+        if(playing) {
+            console.log("ay");
+            document.getElementById("playButton").innerHTML = '<i class="fa fa-pause-circle-o fa-lg" aria-hidden="true"></i>'
+        }
+    }
+})
+
+jQuery( "#playButton" ).click(function() {
+ if(playing) {
+     pauseAudio();
+ } else {
+     playAudio();
+ }
+});
+
+document.querySelector('#expand-collapse').addEventListener('click', function() {
+    if(expanded) {
+        document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-up fa-lg" aria-hidden="true"></i>'
+        expanded = false;
+        jQuery('.volume-controls').css('margin','0');
+    } else {
+        expanded = true;
+        document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-down fa-lg" aria-hidden="true"></i>'
+        jQuery("#player-icon").width(jQuery(".playerbar").width() * 0.8);
+        jQuery('.volume-controls').css('margin', (jQuery('.player-play-pause').outerWidth(true)/2) + 'px');
+    }
+    document.querySelector('.player-controls').classList.toggle('show');
+    document.querySelector('.player-play-pause').classList.toggle('show');
+    document.querySelector('#player-icon').classList.toggle('show');
+    document.querySelector('.playerbar').classList.toggle('expand');
+    document.querySelector('.player-text').classList.toggle('show');
+    document.querySelector('#player-header').classList.toggle('show');
+    document.querySelector('#player-desc').classList.toggle('show');
+});
+
+let pauseAudio = () => {
+    audio.volume = 0;
+    playing = false;
+    document.getElementById("playButton").innerHTML = '<i class="fa fa-play-circle-o fa-lg" aria-hidden="true"></i>'
+}
+
+let playAudio = () => {
+    audio.play();
+    playing = true;
+    setAudioLevel(document.getElementById('volume-slider').value / 100);
+    document.getElementById("playButton").innerHTML = '<i class="fa fa-pause-circle-o fa-lg" aria-hidden="true"></i>'
+}
+
+let setAudioLevel = (audioLevel) => {
+    if(audioLevel > 1 || audioLevel < 0) {
+        return;
+    }
+    audio.volume = audioLevel;
+}
+
+let slider = document.getElementById('volume-slider');
+
+slider.oninput = function() {
+    if(!playing) {
+        return;
+    }
+    setAudioLevel(this.value / 100);
+}

@@ -21,8 +21,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php wp_head(); ?>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+    <!-- History.js -->
+    <script src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+
+    <!-- Ajaxify -->
+    <script src="http://rawgithub.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
 </head>
 
+<?php get_template_part( 'src/wrbb-templates/playerbar' ); ?>
 <body <?php body_class(); ?>>
 
 <div class="hfeed site" id="page">
