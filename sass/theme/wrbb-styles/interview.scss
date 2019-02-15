@@ -1,0 +1,64 @@
+
+#header-line {
+	border-style: solid;
+	border-color: transparent transparent red;
+	border-width: thick;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}
+
+#interview-content {
+	position: relative;
+	z-index: 2;
+	bottom: 10px;
+}
+
+#single-title {
+	background-color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: relative;
+	left: -10px;
+}
+
+.entry-meta {
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+.sb-social {
+	width: 50px;
+}
+
+#interview-sidebar {
+	position: relative;
+	top: 110px;
+}
+
+#interview-sidebar a {
+	display: inline-block;
+	margin: 22px;
+}
+
+.author-box {
+	margin-top: 10px;
+	width: 300px;
+}
+
+.author-img {
+	display: inline;
+}
+
+.author-name {
+	display: inline;
+	font-size: 20px;
+	vertical-align: -10%;
+	padding-left: 5px;
+}
+
+.author-description {
+	padding-top: 15px;
+}
+
