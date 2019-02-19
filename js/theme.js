@@ -3978,6 +3978,12 @@
 })();
 
 
+jQuery('document').ready(function() {
+    console.log("hello");
+    jQuery('#contact-header').css(`padding: ${(jQuery('document').width() - 720)/2}px`);
+});
+
+
 // placeholder
 var audio;
 var playing = false;
