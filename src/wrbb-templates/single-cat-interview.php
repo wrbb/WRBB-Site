@@ -17,9 +17,6 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 		<div class="row" id="interview-content">
 
-			<!-- Do the left sidebar check -->
-			<?php //get_template_part( 'global-templates/left-sidebar-check' ); ?>
-
 			<main class="site-main col-sm-8" id="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -65,9 +62,6 @@ $container   = get_theme_mod( 'understrap_container_type' );
 				<?php endif; ?>
 			
 			</div>
-
-		<!-- Do the right sidebar check -->
-		<?php //get_template_part( 'global-templates/right-sidebar-check' ); ?>
 
 	</div><!-- .row -->
 
