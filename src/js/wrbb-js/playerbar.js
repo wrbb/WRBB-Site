@@ -65,3 +65,5 @@ slider.oninput = function() {
     }
     setAudioLevel(this.value / 100);
 }
+
+console.log("Hey");
