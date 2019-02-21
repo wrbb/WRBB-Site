@@ -22,7 +22,7 @@
 		<?php get_header(); ?>
 	</head>
 	<body>
-		<iframe style="width:90%; height:90%; margin:auto;" src="https://spinitron.com/WRBB/calendar"></iframe>
+		<iframe style="width:100%; min-height: 90vh; margin:auto;" src="https://spinitron.com/WRBB/calendar"></iframe>
 	</body>
 	<?php get_footer(); ?>
 </html>
