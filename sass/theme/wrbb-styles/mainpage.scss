@@ -3,12 +3,19 @@
 //     height: 245px;
 // }
 
-#header-line {
+.header-line {
 	border-style: solid;
 	border-color: red;
 	border-width: medium;
 	position: absolute;
 	left: 0;
     right: 0;
-    top: 215px;
+	z-index: 1;
+	top: 225px;
+}
+
+#mainpage-content {
+	position: relative;
+	z-index: 2;
+	bottom: -20px;
 }
