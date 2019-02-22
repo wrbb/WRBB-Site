@@ -1,7 +1,14 @@
-// #mp-thumbnail {
-//     width: 300px;
-//     height: 245px;
-// }
+.entry-header img {
+	width: 270px;
+	height: 200px;
+	border-style: solid;
+	border-color: gray;
+}
+
+.entry-header {
+	width: 100%;
+	height: auto;
+}
 
 .header-line {
 	border-style: solid;
@@ -11,11 +18,24 @@
 	left: 0;
     right: 0;
 	z-index: 1;
-	top: 225px;
+	margin-top: -5px;
 }
 
 #mainpage-content {
 	position: relative;
 	z-index: 2;
-	bottom: -20px;
+	top: 22px;
+}
+
+.mpa-meta {
+	margin: 5px 20px;
+}
+
+.mpa-meta #title {
+	margin-bottom: 5px;
+}
+
+.mpa-meta #date {
+	margin-bottom: 0;
+	font-size: 12px;
 }

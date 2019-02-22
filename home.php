@@ -16,9 +16,9 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 <div class="wrapper" id="index-wrapper">
 
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+	<hr class="header-line">
 
-        <hr class="header-line">
+	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
 		<div class="row" id="mainpage-content">
 
@@ -27,27 +27,23 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 			<main class="site-main" id="main">
 
-				<?php if ( have_posts() ) : ?>
+				<?php $catquery = new WP_Query( 'cat=3&posts_per_page=8' ); ?>
 
-					<?php /* Start the Loop */ ?>
+				<?php if ($catquery->have_posts()) : ?>
 
-					<?php for ( $i = 0; have_posts(); $i++ ) : ?>
+                    <div class="row">
 
-                        <div class="row">
+                        <?php while ($catquery->have_posts()) : $catquery->the_post(); ?>
 
-                            <?php for ( $j = 0; $j < 4; $j++ ) : the_post(); ?>
+                            <div class="col-sm-3">
 
-                                <div class="col-sm-3">
+					            <?php get_template_part( 'loop-templates/content-mainpage', get_post_format() ); ?>
 
-						            <?php get_template_part( 'loop-templates/content-mainpage', get_post_format() ); ?>
+                            </div>
 
-                                </div>
+						<?php endwhile; ?>
 
-                            <?php endfor; ?>
-
-                        </div>
-
-                    <?php endfor; ?>
+                    </div>
 
 				<?php else : ?>
 
@@ -60,10 +56,9 @@ $container   = get_theme_mod( 'understrap_container_type' );
 			<!-- The pagination component -->
 			<?php understrap_pagination(); ?>
 
+		</div><!-- .row -->
 
-	</div><!-- .row -->
-
-</div><!-- Container end -->
+	</div><!-- Container end -->
 
 </div><!-- Wrapper end -->
 
