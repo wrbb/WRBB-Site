@@ -28,23 +28,37 @@
 	padding-bottom: 20px;
 }
 
-.sb-social {
-	width: 50px;
-}
-
-#interview-sidebar {
+.sidebar {
 	position: relative;
-	top: 110px;
+	top: 70px;
+	//border-style: solid;
+	//max-width: 335px;
+	//text-align: center;
 }
 
-#interview-sidebar a {
+.spotify {
+	margin: auto;
+	max-width: 300px;
+	//border-style: solid;
+}
+
+.socials {
+	display: flex;
+	justify-content: space-between;
+	max-width: 250px;
+	margin: 25px auto;
+	//border-style: solid;
+}
+
+.sidebar a {
+	width: 50px;
 	display: inline-block;
-	margin: 22px;
 }
 
 .author-box {
-	margin-top: 10px;
-	width: 300px;
+	margin: 30px auto;
+	max-width: 300px;
+	//border-style: solid;
 }
 
 .author-img {
@@ -62,3 +76,8 @@
 	padding-top: 15px;
 }
 
+@media only screen and (max-width: 575px) {
+	.sidebar {
+		position: static;
+	}
+}
