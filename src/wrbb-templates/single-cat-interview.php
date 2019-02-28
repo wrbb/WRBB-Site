@@ -21,7 +21,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'loop-templates/content', 'single' ); ?>
+					<?php get_template_part( 'loop-templates/content', 'interview' ); ?>
 
 						<?php understrap_post_nav(); ?>
 
@@ -52,13 +52,14 @@ $container  = get_theme_mod( 'understrap_container_type' );
 						<img src="http://localhost/wordpress/wp-content/themes/WRBB-Site/src/img/instagram.png" alt="Instagram"></a>
 				</div>
 
-				<?php if (get_the_author_meta('description')) : ?>
-  					<div class="author-box">
-    					<div class="author-img"><?php echo get_avatar(get_the_author_meta('user_email'), '30'); ?></div>
-    					<p class="author-name"><?php esc_html(the_author_meta('display_name')); ?></p>
-    					<p class="author-description"><?php esc_textarea(the_author_meta('description')); ?></p>
-  					</div>
-				<?php endif; ?>
+				<div class="author-box">
+    					<div class="author-img"><?php echo get_avatar(get_the_author_meta('user_email'), '30') ?></div>
+    					<p class="author"><a href=<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>>
+								<?php esc_html(the_author_meta('display_name')) ?></a></p>
+						<?php if (get_the_author_meta('description')) : ?>
+    						<p class="author-description"><?php esc_textarea(the_author_meta('description')) ?></p>
+						<?php endif; ?>
+  				</div>
 			
 			</div>
 

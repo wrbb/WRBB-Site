@@ -31,15 +31,11 @@
 .sidebar {
 	position: relative;
 	top: 70px;
-	//border-style: solid;
-	//max-width: 335px;
-	//text-align: center;
 }
 
 .spotify {
 	margin: auto;
 	max-width: 300px;
-	//border-style: solid;
 }
 
 .socials {
@@ -47,10 +43,9 @@
 	justify-content: space-between;
 	max-width: 250px;
 	margin: 25px auto;
-	//border-style: solid;
 }
 
-.sidebar a {
+.socials a {
 	width: 50px;
 	display: inline-block;
 }
@@ -58,14 +53,13 @@
 .author-box {
 	margin: 30px auto;
 	max-width: 300px;
-	//border-style: solid;
 }
 
 .author-img {
 	display: inline;
 }
 
-.author-name {
+.author-box .author {
 	display: inline;
 	font-size: 20px;
 	vertical-align: -10%;
