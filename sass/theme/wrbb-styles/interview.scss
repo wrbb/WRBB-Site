@@ -9,7 +9,7 @@
 	z-index: 1;
 }
 
-#interview-content {
+.entry-header {
 	position: relative;
 	z-index: 2;
 	bottom: 10px;
@@ -26,6 +26,10 @@
 .entry-meta {
 	padding-top: 10px;
 	padding-bottom: 20px;
+}
+
+.post-navigation {
+	margin-bottom: 20px;
 }
 
 .sidebar {

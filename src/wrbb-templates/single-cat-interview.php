@@ -17,13 +17,13 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 		<div class="row" id="interview-content">
 
-			<main class="site-main col-sm-8" id="main">
+			<main class="site-main col-sm-8" id="post-main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php get_template_part( 'loop-templates/content', 'interview' ); ?>
 
-						<?php understrap_post_nav(); ?>
+					<?php understrap_post_nav(); ?>
 
 					<?php
 					// If comments are open or we have at least one comment, load up the comment template.
