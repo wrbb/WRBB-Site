@@ -16,47 +16,36 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 <div class="wrapper" id="index-wrapper">
 
-	<hr class="header-line">
-
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<div class="row" id="mainpage-content">
+		<hr class="header-line">
 
-			<!-- Do the left sidebar check and opens the primary div -->
-			<?php //get_template_part( 'global-templates/left-sidebar-check' ); ?>
+		<?php $catquery = new WP_Query( 'cat=3' ); ?>
 
-			<main class="site-main" id="main">
+		<?php if ($catquery->have_posts()) : ?>
 
-				<?php $catquery = new WP_Query( 'cat=3&posts_per_page=8' ); ?>
+			<div class="row mp-articles">
 
-				<?php if ($catquery->have_posts()) : ?>
+				<?php while ($catquery->have_posts()) : $catquery->the_post(); ?>
 
-                    <div class="row">
+					<div class="col-sm-3 mpa">
 
-                        <?php while ($catquery->have_posts()) : $catquery->the_post(); ?>
+						<?php get_template_part( 'loop-templates/content-mainpage', get_post_format() ); ?>
 
-                            <div class="col-sm-3">
+					</div>
 
-					            <?php get_template_part( 'loop-templates/content-mainpage', get_post_format() ); ?>
+				<?php endwhile; ?>
 
-                            </div>
+			</div>
 
-						<?php endwhile; ?>
+		<?php else : ?>
 
-                    </div>
+			<?php get_template_part( 'loop-templates/content-mainpage', 'none' ); ?>
 
-				<?php else : ?>
+		<?php endif; ?>
 
-					<?php get_template_part( 'loop-templates/content-mainpage', 'none' ); ?>
-
-				<?php endif; ?>
-
-			</main><!-- #main -->
-
-			<!-- The pagination component -->
-			<?php understrap_pagination(); ?>
-
-		</div><!-- .row -->
+		<!-- The pagination component -->
+		<?php understrap_pagination(); ?>
 
 	</div><!-- Container end -->
 

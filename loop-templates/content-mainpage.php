@@ -10,22 +10,19 @@
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<header class="entry-header">
-	
-		<img src="<?php echo get_the_post_thumbnail_url( $post->ID ); ?>">
+		
+		<a href="<?php echo esc_url( get_permalink() ) ?>">
+			<img src="<?php echo get_the_post_thumbnail_url( $post->ID ); ?>">
+		</a>
 
 		<div class="mpa-meta">
 
-			<?php the_title( sprintf( '<h4 id="title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
-			'</a></h4>' ); ?>
+			<?php the_title( sprintf( '<h5 id="title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
+			'</a></h5>' ); ?>
 
-			<?php if ( 'post' == get_post_type() ) : ?>
-				<p id="date"><?php echo get_the_time(get_option('date_format'), $post->ID); ?></p>
-				<p id="author"><?php
-					$author_id = get_post_field ('post_author', $post->ID);
-					$display_name = get_the_author_meta( 'display_name' , $author_id ); 
-					echo $display_name;
-				?></p>
-			<?php endif; ?>
+			<?php if ( 'post' == get_post_type() ) :
+				mp_understrap_posted_on();
+			endif; ?>
 			
 		</div><!-- .entry-meta -->
 
