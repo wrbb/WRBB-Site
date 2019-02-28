@@ -20,7 +20,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 		<hr class="header-line">
 
-		<?php $catquery = new WP_Query( 'cat=3' ); ?>
+		<?php $catquery = new WP_Query( 'category_name=main-page-article' ); ?>
 
 		<?php if ($catquery->have_posts()) : ?>
 
