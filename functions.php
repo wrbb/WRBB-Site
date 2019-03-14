@@ -69,3 +69,63 @@ require get_template_directory() . '/inc/woocommerce.php';
  * Load Editor functions.
  */
 require get_template_directory() . '/inc/editor.php';
+
+/**
+ * adapted from https://github.com/spinitron/v2-api-demo/blob/master/app/SpinitronApiClient.php
+ * 
+ * @return string JSON document
+ * @throws \Exception
+ */
+function queryApiShowById($id)
+{
+    $fullUrl = 'https://spinitron.com/api/shows/'.$id.'?access-token=ARdWnef9Fie7lKWspQzn5efv';
+    $stream = fopen($fullUrl, 'rb', false);
+    if ($stream === false) {
+        throw new Exception('Error opening stream for ' . $fullUrl);
+    }
+    $response = stream_get_contents($stream);
+    if ($response === false) {
+        throw new Exception('Error requesting ' . $fullUrl . ': ' . var_export(stream_get_meta_data($stream), true));
+    }
+    return $response;
+}
+
+/**
+ * adapted from https://github.com/spinitron/v2-api-demo/blob/master/app/SpinitronApiClient.php
+ * 
+ * @return string JSON document
+ * @throws \Exception
+ */
+function queryApiPlaylistsById($id)
+{
+    $fullUrl = 'https://spinitron.com/api/playlists?show_id='.$id.'&count=6&access-token=ARdWnef9Fie7lKWspQzn5efv';
+    $stream = fopen($fullUrl, 'rb', false);
+    if ($stream === false) {
+        throw new Exception('Error opening stream for ' . $fullUrl);
+    }
+    $response = stream_get_contents($stream);
+    if ($response === false) {
+        throw new Exception('Error requesting ' . $fullUrl . ': ' . var_export(stream_get_meta_data($stream), true));
+    }
+    return $response;
+}
+
+/**
+ * adapted from https://github.com/spinitron/v2-api-demo/blob/master/app/SpinitronApiClient.php
+ * 
+ * @return string JSON document
+ * @throws \Exception
+ */
+function queryApiPersonaById($id)
+{
+    $fullUrl = 'https://spinitron.com/api/personas/'.$id.'?access-token=ARdWnef9Fie7lKWspQzn5efv';
+    $stream = fopen($fullUrl, 'rb', false);
+    if ($stream === false) {
+        throw new Exception('Error opening stream for ' . $fullUrl);
+    }
+    $response = stream_get_contents($stream);
+    if ($response === false) {
+        throw new Exception('Error requesting ' . $fullUrl . ': ' . var_export(stream_get_meta_data($stream), true));
+    }
+    return $response;
+}
