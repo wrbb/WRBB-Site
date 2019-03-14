@@ -45,11 +45,11 @@ $container  = get_theme_mod( 'understrap_container_type' );
 				
 				<div class="socials">
 					<a href="https://twitter.com/wrbbradio" target="_blank">
-						<img src="http://localhost/wordpress/wp-content/themes/WRBB-Site/src/img/twitter.png" alt="Twitter"></a>
+						<img src="<?php bloginfo('template_url'); ?>/src/img/twitter.png" alt="Twitter"></a>
 					<a href="https://www.facebook.com/WRBBRadio/" target="_blank">
-						<img src="http://localhost/wordpress/wp-content/themes/WRBB-Site/src/img/facebook.png" alt="Facebook"></a>
+						<img src="<?php bloginfo('template_url'); ?>/src/img/facebook.png" alt="Facebook"></a>
 					<a href="https://www.instagram.com/wrbbradio/" target="_blank">
-						<img src="http://localhost/wordpress/wp-content/themes/WRBB-Site/src/img/instagram.png" alt="Instagram"></a>
+						<img src="<?php bloginfo('template_url'); ?>/src/img/instagram.png" alt="Instagram"></a>
 				</div>
 
 				<div class="author-box">
