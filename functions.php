@@ -76,6 +76,26 @@ require get_template_directory() . '/inc/editor.php';
  * @return string JSON document
  * @throws \Exception
  */
+function queryApiShows()
+{
+    $fullUrl = 'https://spinitron.com/api/shows?end=%2B167+hour&count=200&access-token=ARdWnef9Fie7lKWspQzn5efv';
+    $stream = fopen($fullUrl, 'rb', false);
+    if ($stream === false) {
+        throw new Exception('Error opening stream for ' . $fullUrl);
+    }
+    $response = stream_get_contents($stream);
+    if ($response === false) {
+        throw new Exception('Error requesting ' . $fullUrl . ': ' . var_export(stream_get_meta_data($stream), true));
+    }
+    return $response;
+}
+
+/**
+ * adapted from https://github.com/spinitron/v2-api-demo/blob/master/app/SpinitronApiClient.php
+ * 
+ * @return string JSON document
+ * @throws \Exception
+ */
 function queryApiShowById($id)
 {
     $fullUrl = 'https://spinitron.com/api/shows/'.$id.'?access-token=ARdWnef9Fie7lKWspQzn5efv';
@@ -98,7 +118,7 @@ function queryApiShowById($id)
  */
 function queryApiPlaylistsById($id)
 {
-    $fullUrl = 'https://spinitron.com/api/playlists?show_id='.$id.'&count=6&access-token=ARdWnef9Fie7lKWspQzn5efv';
+    $fullUrl = 'https://spinitron.com/api/playlists?show_id='.$id.'&count=20&access-token=ARdWnef9Fie7lKWspQzn5efv';
     $stream = fopen($fullUrl, 'rb', false);
     if ($stream === false) {
         throw new Exception('Error opening stream for ' . $fullUrl);
@@ -129,3 +149,18 @@ function queryApiPersonaById($id)
     }
     return $response;
 }
+
+function unique_multidim_array($array, $key) { 
+    $temp_array = array(); 
+    $i = 0; 
+    $key_array = array(); 
+    
+    foreach($array as $val) { 
+        if (!in_array($val[$key], $key_array)) { 
+            $key_array[$i] = $val[$key]; 
+            $temp_array[$i] = $val; 
+        } 
+        $i++; 
+    } 
+    return $temp_array; 
+} 

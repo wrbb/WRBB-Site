@@ -27,7 +27,7 @@ $playlists = json_decode(queryApiPlaylistsById($showID), true);
 		
 		<div class="row" id="dj-show-content">
 			<div class="col-sm-2">
-				<img class="show-icon" src="<?php echo $show['image'] ?>">
+				<img class="show-image" src="<?php echo $show['image'] ?>">
 			</div>
 
 			<div class="col-sm-6">

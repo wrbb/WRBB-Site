@@ -15,6 +15,23 @@
 	bottom: 10px;
 }
 
+// .dj-show-thumbnail {
+// 	margin: 10px 0;
+// }
+
+// .dj-show-thumbnail img {
+// 	width: 270px;
+// 	height: 200px;
+// 	border-style: solid;
+// 	border-color: gray;
+// }
+
+.shows img {
+	height: 100px;
+	width: auto;
+	margin: auto;
+}
+
 .single-title {
 	background-color: white;
 	padding-left: 10px;
@@ -23,7 +40,7 @@
 	left: -10px;
 }
 
-.show-icon {
+.show-image {
     border-radius: 50%;
 }
 
@@ -44,6 +61,6 @@
 	border-bottom: 5px red solid;
 }
 
-.playlists table, td {
+table, td {
 	border-top: 1px solid black;
 }
