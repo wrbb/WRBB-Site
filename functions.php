@@ -163,4 +163,61 @@ function unique_multidim_array($array, $key) {
         $i++; 
     } 
     return $temp_array; 
-} 
+}
+
+/*
+* Define a constant path to our single template folder
+*/
+define(SINGLE_PATH, TEMPLATEPATH . '/src/wrbb-templates');
+ 
+/**
+* Filter the single_template with our custom function
+*/
+add_filter('single_template', 'my_single_template');
+ 
+/**
+* Single template function which will choose our template
+*/
+function my_single_template($single) {
+  global $wp_query, $post;
+ 
+  /**
+  * Checks for single template by category
+  * Check by category slug and ID
+  */
+  foreach((array)get_the_category() as $cat) :
+ 
+    if(file_exists(SINGLE_PATH . '/single-cat-' . $cat->slug . '.php'))
+      return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
+ 
+    elseif(file_exists(SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php'))
+      return SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php';
+ 
+    endforeach;
+}
+
+/**
+ * Prints HTML with meta information for the current post-date/time and author.
+ * Overrides function in inc/template-tags.php
+ */
+function understrap_posted_on() {
+  $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+  if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+    $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+  }
+  $time_string = sprintf( $time_string,
+    esc_attr( get_the_date( 'c' ) ),
+    esc_html( get_the_date() ),
+    esc_attr( get_the_modified_date( 'c' ) ),
+    esc_html( get_the_modified_date() )
+  );
+  $posted_on = sprintf(
+    esc_html_x( '%s', 'post date', 'understrap' ),
+    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+  );
+  $byline = sprintf(
+    esc_html_x( 'by %s', 'post author', 'understrap' ),
+    '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+  );
+  echo '<span class="byline"> ' . $byline . '</span><span style="color: red"> | </span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+}
