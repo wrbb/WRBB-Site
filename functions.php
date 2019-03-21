@@ -70,10 +70,42 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/inc/editor.php';
 
+/*
+* Define a constant path to our single template folder
+*/
+define(SINGLE_PATH, TEMPLATEPATH . '/src/wrbb-templates');
+ 
 /**
- * Prints HTML with meta information for a Main Page Article's post-date/time and author.
+* Filter the single_template with our custom function
+*/
+add_filter('single_template', 'my_single_template');
+ 
+/**
+* Single template function which will choose our template
+*/
+function my_single_template($single) {
+  global $wp_query, $post;
+ 
+  /**
+  * Checks for single template by category
+  * Check by category slug and ID
+  */
+  foreach((array)get_the_category() as $cat) :
+ 
+    if(file_exists(SINGLE_PATH . '/single-cat-' . $cat->slug . '.php'))
+      return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
+ 
+    elseif(file_exists(SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php'))
+      return SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php';
+ 
+    endforeach;
+}
+
+/**
+ * Prints HTML with meta information for the current post-date/time and author.
+ * Overrides function in inc/template-tags.php
  */
-function mp_understrap_posted_on() {
+function understrap_posted_on() {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
     $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
@@ -93,4 +125,5 @@ function mp_understrap_posted_on() {
     '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
   );
   echo '<p id="mpa-date">' . $posted_on . '</p><p id="mpa-author"> ' . $byline . '</p>'; // WPCS: XSS OK.
+
 }

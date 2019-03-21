@@ -13,7 +13,7 @@
     </button>
 
     <div id="player-icon">
-            <img src="wp-content/themes/WRBB-Site/src/img/logo.png"></img>
+            <img src="wp-content/themes/WRBB-Site/src/img/logoPlayerBar.png"></img>
     </div>
 
     <div class="player-text">
