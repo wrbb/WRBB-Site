@@ -1,0 +1,60 @@
+#contact-header {
+  width:100%;
+  //text-align:center;
+  border-bottom: 5px solid #d30f0f;
+  line-height:0.1em;
+  margin:10px 0 20px;
+  padding-left: 6vw;
+}
+
+#contact-header span {
+  background:#fff;
+  padding: 10px;
+}
+
+.padding-top-bottom {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.padding-top-bottom_small {
+  padding-top: 20px;
+  padding-bottom: 20px
+}
+
+.contact-text {
+  color: rgb(64, 64,65);
+  font-size: 1.25em;
+}
+
+.contact-header {
+  text-decoration: underline #d30f0f;
+}
+
+.input-black-border {
+  border: 2px solid #191819;
+  border-radius: 0px;
+}
+
+.input-red-border {
+  border: 2px solid #d30f0f;
+  border-radius: 0px;
+}
+
+.img-size {
+  width: 100%;
+  padding: 0;
+}
+
+.red-icon {
+  color: #d30f0f;
+}
+
+.red-icon, .dropDown {
+  cursor: pointer;
+}
+
+.contact-name {
+  margin-block-end: 0;
+  margin-bottom: 0;
+}
