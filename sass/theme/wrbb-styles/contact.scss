@@ -13,11 +13,13 @@
 }
 
 .padding-top-bottom {
-  padding: 25px 0;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .padding-top-bottom_small {
-  padding: 20px 0;
+  padding-top: 20px;
+  padding-bottom: 20px
 }
 
 .contact-text {
@@ -46,4 +48,13 @@
 
 .red-icon {
   color: #d30f0f;
+}
+
+.red-icon, .dropDown {
+  cursor: pointer;
+}
+
+.contact-name {
+  margin-block-end: 0;
+  margin-bottom: 0;
 }

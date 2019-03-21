@@ -17,25 +17,25 @@ jQuery( "#playButton" ).click(function() {
 
 var expanded = false;
 
-document.querySelector('#expand-collapse').addEventListener('click', function() {
-    if(expanded) {
-        document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-up fa-lg" aria-hidden="true"></i>'
-        expanded = false;
-        jQuery('.volume-controls').css('margin','0');
-    } else {
-        expanded = true;
-        document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-down fa-lg" aria-hidden="true"></i>'
-        jQuery("#player-icon").width(jQuery(".playerbar").width() * 0.8);
-        jQuery('.volume-controls').css('margin', (jQuery('.player-play-pause').outerWidth(true)/2) + 'px');
-    }
-    document.querySelector('.player-controls').classList.toggle('show');
-    document.querySelector('.player-play-pause').classList.toggle('show');
-    document.querySelector('#player-icon').classList.toggle('show');
-    document.querySelector('.playerbar').classList.toggle('expand');
-    document.querySelector('.player-text').classList.toggle('show');
-    document.querySelector('#player-header').classList.toggle('show');
-    document.querySelector('#player-desc').classList.toggle('show');
-});
+// document.querySelector('#expand-collapse').addEventListener('click', function() {
+//     if(expanded) {
+//         document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-up fa-lg" aria-hidden="true"></i>'
+//         expanded = false;
+//         jQuery('.volume-controls').css('margin','0');
+//     } else {
+//         expanded = true;
+//         document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-down fa-lg" aria-hidden="true"></i>'
+//         jQuery("#player-icon").width(jQuery(".playerbar").width() * 0.8);
+//         jQuery('.volume-controls').css('margin', (jQuery('.player-play-pause').outerWidth(true)/2) + 'px');
+//     }
+//     document.querySelector('.player-controls').classList.toggle('show');
+//     document.querySelector('.player-play-pause').classList.toggle('show');
+//     document.querySelector('#player-icon').classList.toggle('show');
+//     document.querySelector('.playerbar').classList.toggle('expand');
+//     document.querySelector('.player-text').classList.toggle('show');
+//     document.querySelector('#player-header').classList.toggle('show');
+//     document.querySelector('#player-desc').classList.toggle('show');
+// });
 
 let pauseAudio = () => {
     audio.volume = 0;
@@ -59,11 +59,11 @@ let setAudioLevel = (audioLevel) => {
 
 let slider = document.getElementById('volume-slider');
 
-slider.oninput = function() {
-    if(!playing) {
-        return;
-    }
-    setAudioLevel(this.value / 100);
-}
+// slider.oninput = function() {
+//     if(!playing) {
+//         return;
+//     }
+//     setAudioLevel(this.value / 100);
+// }
 
 console.log("Hey");

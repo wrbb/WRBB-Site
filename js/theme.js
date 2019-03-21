@@ -3980,10 +3980,7 @@
 
 function make_popup(name, title, email, imageLink) {
     return `<div class="col-3">
-                    <div class="text-center">
-                        <img src="/wp-content/themes/WRBB-Site/src/img/${imageLink ? imageLink : "NotFound.jpg"}" class="img-size"  alt="${name}" />
-                    </div>
-                <div class="row justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-12">
                 ${name}
             </div>
@@ -3998,12 +3995,9 @@ function make_popup(name, title, email, imageLink) {
                 <a href="mailto:${email}">${email}</a>
             </div>
         </div>
-    </div>
-    <div class="col-3">
-    <div class="text-center">
-    <img src="/wp-content/themes/WRBB-Site/src/img/Andrew.jpg" class="img-size" alt="Andrew Goldberg" />
     </div>`;
 }
+
 
 redesign = [
     {
@@ -4033,8 +4027,16 @@ redesign = [
     },
 ];
 
+
 function createTeam(row_num, team) {
-    let html = `<div class="row justifty-content-center padding-top-bottom team-members">`;
+    let html = 
+        `
+                <div class="modal-header">
+                    ${team}
+                </div
+                
+            `;
+    html.concat(`<div class="modal-body">`);
     var i = 0;
     team.forEach(function (member) {
         if(i % 4 == 0) {
@@ -4042,14 +4044,14 @@ function createTeam(row_num, team) {
         }
         html = html.concat(make_popup(member.name, member.title, member.email, member.imageLink));
         i++;
-    });
-    jQuery('#contact_row_' + row_num).append(html.concat("</div>"));
+    })
+    jQuery('#contact_row_' + row_num).append(html.concat("</div></div></div></div>"));
 }
 
 
-('#mediaTeamDropDown').click(() => createTeam(1,redesign));
+jQuery('#mediaTeamDropDown').click(function() { createTeam(1,redesign) });
 
-console.log('hello!');
+
 // placeholder
 var audio;
 var playing = false;

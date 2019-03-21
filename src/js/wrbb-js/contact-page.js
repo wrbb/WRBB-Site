@@ -1,16 +1,14 @@
-function make_popup(name, title, email, imageLink) {
-    return `<div class="col-3">
-                    <div class="text-center">
-                        <img src="/wp-content/themes/WRBB-Site/src/img/${imageLink ? imageLink : "NotFound.jpg"}" class="img-size"  alt="${name}" />
-                    </div>
-                <div class="row justify-content-center">
+function make_popup(name, title, email) {
+    return `
+    <div class="col-12 col-sm-6 col-lg-3 padding-top-bottom">
+        <div class="row justify-content-center">
             <div class="col-12">
-                ${name}
+                <p class="font-weight-bold contact-name" >${name}</p>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-12">
-                ${title} 
+                ${title}
             </div>
         </div>
         <div class="row justify-content-center">
@@ -18,55 +16,46 @@ function make_popup(name, title, email, imageLink) {
                 <a href="mailto:${email}">${email}</a>
             </div>
         </div>
-    </div>
-    <div class="col-3">
-    <div class="text-center">
-    <img src="/wp-content/themes/WRBB-Site/src/img/Andrew.jpg" class="img-size" alt="Andrew Goldberg" />
     </div>`;
 }
 
-redesign = [
-    {
-        name: "Eli Olson",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-    {
-        name: "Eli Olson",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-    {
-        name: "Eli Olson",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-    {
-        name: " ",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-    {
-        name: "Austina lin",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-];
+const TEAMS = ["Redesign", "Marketing", "Media", "Technical", "Operations", "Podcast", "Events", "Programming"];
 
-function createTeam(row_num, team) {
-    let html = `<div class="row justifty-content-center padding-top-bottom team-members">`;
-    var i = 0;
+function createTeamModal(team, teamName) {
+    let html = 
+        `<div class="modal-header">
+            <h5 class="modal-title" id="contactModalLabel">${teamName}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <div class="modal-body">
+<div class="row justifty-content-center team-members">`;
+
+    let i = 0;
     team.forEach(function (member) {
-        if(i % 4 == 0) {
-            html = html.concat(`</div><div class="row justifty-content-center padding-top-bottom team-members\">`);
+        if(i % 4 == 0 && i !== 0) {
+            html = html.concat(`</div><div class="row justifty-content-center team-members">`);
         }
-        html = html.concat(make_popup(member.name, member.title, member.email, member.imageLink));
+        html = html.concat(make_popup(member.name, member.title, member.email));
         i++;
     });
-    jQuery('#contact_row_' + row_num).append(html.concat("</div>"));
+
+    if(jQuery('.modal-header').length) {
+        jQuery('.modal-header').remove();
+        jQuery('.modal-body').remove();
+    }
+    jQuery('#contact-modal-content').append(html.concat("</div></div>"));
 }
 
+function createTeamModals() {
+    TEAMS.forEach((team) => {
+        jQuery.getJSON(`/wp-content/themes/WRBB-Site/src/teams/${team.toLowerCase()}.json`, (json) => {
+            jQuery(`#${team.toLowerCase()}TeamDropDown`).click(() => createTeamModal(json, team));
+        });
+    });
+}
 
-('#mediaTeamDropDown').click(() => createTeam(1,redesign));
+jQuery('document').ready(function() {createTeamModals();});
 
-console.log('hello!');
+
