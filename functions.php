@@ -121,8 +121,9 @@ function understrap_posted_on() {
     '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
   );
   $byline = sprintf(
-    esc_html_x( 'by %s', 'post author', 'understrap' ),
+    esc_html_x( '%s', 'post author', 'understrap' ),
     '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
   );
-  echo '<span class="byline"> ' . $byline . '</span><span style="color: red"> | </span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+  echo '<p id="mpa-date">' . $posted_on . '</p><p id="mpa-author"> ' . $byline . '</p>'; // WPCS: XSS OK.
+
 }
