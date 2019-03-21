@@ -70,6 +70,5 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 </div><!-- Wrapper end -->
 
-<?php get_template_part( 'src/wrbb-templates/playerbar' ); ?>
 
 <?php get_footer(); ?>
