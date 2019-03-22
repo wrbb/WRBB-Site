@@ -60,7 +60,7 @@
     "undescores-for-npm": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4"
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.1"
   }
 }

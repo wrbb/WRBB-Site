@@ -22,3 +22,7 @@ yarn-error.log*
 .idea/
 .idea/*
 src/img/djlogos/Roses & Thornes.jpg
+
+# Compiled files
+js/*
+css/*
