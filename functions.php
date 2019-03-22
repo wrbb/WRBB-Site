@@ -70,6 +70,10 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/inc/editor.php';
 
+function apiKey() {
+  return 'ARdWnef9Fie7lKWspQzn5efv';
+}
+
 /**
  * adapted from https://github.com/spinitron/v2-api-demo/blob/master/app/SpinitronApiClient.php
  * 
@@ -78,7 +82,7 @@ require get_template_directory() . '/inc/editor.php';
  */
 function queryApiShows()
 {
-    $fullUrl = 'https://spinitron.com/api/shows?end=%2B167+hour&count=200&access-token=ARdWnef9Fie7lKWspQzn5efv';
+    $fullUrl = 'https://spinitron.com/api/shows?start=%2B167+hour&count=200&access-token=' . apiKey();
     $stream = fopen($fullUrl, 'rb', false);
     if ($stream === false) {
         throw new Exception('Error opening stream for ' . $fullUrl);
@@ -98,7 +102,7 @@ function queryApiShows()
  */
 function queryApiShowById($id)
 {
-    $fullUrl = 'https://spinitron.com/api/shows/'.$id.'?access-token=ARdWnef9Fie7lKWspQzn5efv';
+    $fullUrl = 'https://spinitron.com/api/shows/'.$id.'?access-token=' . apiKey();
     $stream = fopen($fullUrl, 'rb', false);
     if ($stream === false) {
         throw new Exception('Error opening stream for ' . $fullUrl);
@@ -118,7 +122,7 @@ function queryApiShowById($id)
  */
 function queryApiPlaylistsById($id)
 {
-    $fullUrl = 'https://spinitron.com/api/playlists?show_id='.$id.'&count=20&access-token=ARdWnef9Fie7lKWspQzn5efv';
+    $fullUrl = 'https://spinitron.com/api/playlists?show_id='.$id.'&count=20&access-token=' . apiKey();
     $stream = fopen($fullUrl, 'rb', false);
     if ($stream === false) {
         throw new Exception('Error opening stream for ' . $fullUrl);
@@ -138,7 +142,7 @@ function queryApiPlaylistsById($id)
  */
 function queryApiPersonaById($id)
 {
-    $fullUrl = 'https://spinitron.com/api/personas/'.$id.'?access-token=ARdWnef9Fie7lKWspQzn5efv';
+    $fullUrl = 'https://spinitron.com/api/personas/'.$id.'?access-token=' . apiKey();
     $stream = fopen($fullUrl, 'rb', false);
     if ($stream === false) {
         throw new Exception('Error opening stream for ' . $fullUrl);
@@ -220,4 +224,17 @@ function understrap_posted_on() {
     '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
   );
   echo '<span class="byline"> ' . $byline . '</span><span style="color: red"> | </span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+}
+
+function fuck($str1, $str2) {
+  $cmp = strcmp($str1, $str2);
+  if($cmp < 0) {
+    return "\"" . $str1 . "\" comes before \"" . $str2 . "\"";
+  }
+  elseif($cmp > 0) {
+    return "\"" . $str1 . "\" comes after \"" . $str2 . "\"";
+  }
+  else {
+    return "\"" . $str1 . "\" and \"" . $str2 . "\" are the same";
+  }
 }

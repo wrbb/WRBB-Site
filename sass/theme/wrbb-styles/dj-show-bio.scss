@@ -15,21 +15,16 @@
 	bottom: 10px;
 }
 
-// .dj-show-thumbnail {
-// 	margin: 10px 0;
-// }
-
-// .dj-show-thumbnail img {
-// 	width: 270px;
-// 	height: 200px;
-// 	border-style: solid;
-// 	border-color: gray;
-// }
-
 .shows img {
-	height: 100px;
-	width: auto;
-	margin: auto;
+	width: 270px;
+	height: 200px;
+	border-style: solid;
+	border-color: gray;
+	margin: 10px 0;
+}
+
+.shows p {
+	font-size: 12px;
 }
 
 .single-title {
@@ -63,4 +58,8 @@
 
 table, td {
 	border-top: 1px solid black;
+}
+
+.dj-logo {
+	width: 70%;
 }

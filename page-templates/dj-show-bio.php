@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
  * Template Name: DJ Show Bio Page
  *
@@ -8,7 +8,9 @@
 get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 
-$showID = 41252;
+global $wp;
+$current_url = home_url( add_query_arg( array(), $wp->request ) );
+$showID = intval(substr(strrchr($current_url, "/"), 1));
 
 $show = json_decode(queryApiShowById($showID), true);
 
@@ -24,6 +26,17 @@ $playlists = json_decode(queryApiPlaylistsById($showID), true);
 	<div class="<?php echo esc_attr( $container ); ?>" id="content">
 		<hr id="header-line">
 		<h2 class="entry-header"><span class="single-title">dj show bios.</span></h2>
+
+		<?php $path = '/src/img/djlogos/' . $show['title'] . '.jpg';
+		if (file_exists($_SERVER['DOCUMENT_ROOT'] . substr(WP_CONTENT_URL, 16) . '/themes/WRBB-Site' . $path)): ?>
+			<br>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<img class="dj-logo" src="<?php echo get_bloginfo('template_url').$path ?>">
+				</div>
+			</div>
+		<?php endif ?>
 		
 		<div class="row" id="dj-show-content">
 			<div class="col-sm-2">
@@ -33,7 +46,7 @@ $playlists = json_decode(queryApiPlaylistsById($showID), true);
 			<div class="col-sm-6">
 				<h2 class="show-title"><?php echo $show['title'] ?></h2>
 				<p>Listen live: <?php echo $time ?></p>
-				<p><?php echo $show['description'] ?></p>
+				<?php echo $show['description'] ?>
 				<div class="playlists">
 					<h3>Playlists Logged</h3>
 					<table style="width: 100%;">
@@ -47,15 +60,15 @@ $playlists = json_decode(queryApiPlaylistsById($showID), true);
 								<td><?php echo date('Y', $playlistStart) ?></td>
 								<td><?php echo date('gA', $playlistStart) ?>-
 									<?php echo date('gA', $playlistEnd) ?></td>
-								<td><a href="https://spinitron.com/WRBB/dj/<?php echo $playlist['persona_id'] ?>">
+								<td><a href="https://spinitron.com/WRBB/dj/<?php echo $playlist['persona_id'] ?>" target="_blank">
 									<?php echo $persona['name'] ?></a></td>
-								<td><a href="https://spinitron.com/WRBB/pl/<?php echo $playlist['id'] ?>">
+								<td><a href="https://spinitron.com/WRBB/pl/<?php echo $playlist['id'] ?>" target="_blank">
 									Playlist</a><span style="color: red">&rsaquo;</span></td>
 							</tr>
 						<?php endforeach; ?>
 					</table>
-				</div>
-			</div>
+				</div><!-- .playlists end -->
+			</div><!-- .col-sm-6 end -->
 		</div><!-- .row end -->
 
 	</div><!-- Container end -->
