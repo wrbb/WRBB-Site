@@ -8,7 +8,10 @@
 get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 
-$result = json_decode(queryApiShows(), true);
+include __DIR__ . '/../src/wrbb-templates/getClient.php';
+// @var SpinitronApiClient $client
+$result = $client->search('shows', ['start' => '+1 week', 'count' => '200']);
+
 $items = $result['items'];
 $i = 0;
 foreach ($items as $show) {
@@ -41,7 +44,7 @@ array_multisort(array_map(strtolower, array_column($items, 'title')), $items);
 				$time = $startTime . $endTime; ?>
 
 				<div class="col-sm-3">
-					<a href="<?php bloginfo('url'); ?>/dj-show-bio/<?php echo $show['id'] ?>"><img src="<?php echo $show['image'] ?>">
+					<a href="<?php bloginfo('url'); ?>/dj-show-bio?id=<?php echo $show['id'] ?>"><img src="<?php echo $show['image'] ?>">
 					<h5><?php echo $show['title'] ?></h5></a>
 					<p><?php echo date('l', strtotime($show['start'])) ?> <?php echo $time ?></p>
 				</div>

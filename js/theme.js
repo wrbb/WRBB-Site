@@ -3978,16 +3978,17 @@
 })();
 
 
-function make_popup(name, title, email, imageLink) {
-    return `<div class="col-3">
+function make_popup(name, title, email) {
+    return `
+    <div class="col-12 col-sm-6 col-lg-3 padding-top-bottom">
         <div class="row justify-content-center">
             <div class="col-12">
-                ${name}
+                <p class="font-weight-bold contact-name" >${name}</p>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-12">
-                ${title} 
+                ${title}
             </div>
         </div>
         <div class="row justify-content-center">
@@ -3998,60 +3999,62 @@ function make_popup(name, title, email, imageLink) {
     </div>`;
 }
 
+const TEAMS = ["Redesign", "Marketing", "Media", "Technical", "Operations", "Podcast", "Events", "Programming"];
 
-redesign = [
-    {
-        name: "Eli Olson",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-    {
-        name: "Eli Olson",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-    {
-        name: "Eli Olson",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-    {
-        name: " ",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-    {
-        name: "Austina lin",
-        email: "olson.e@husky.neu.edu",
-        title: "Redesign Developer"
-    },
-];
-
-
-function createTeam(row_num, team) {
+function createTeamModal(team, teamName) {
     let html = 
-        `
-                <div class="modal-header">
-                    ${team}
-                </div
-                
-            `;
-    html.concat(`<div class="modal-body">`);
-    var i = 0;
+        `<div class="modal-header">
+            <h5 class="modal-title" id="contactModalLabel">${teamName}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <div class="modal-body">
+<div class="row justifty-content-center team-members">`;
+
+    let i = 0;
     team.forEach(function (member) {
-        if(i % 4 == 0) {
-            html = html.concat(`</div><div class="row justifty-content-center padding-top-bottom team-members\">`);
+        if(i % 4 == 0 && i !== 0) {
+            html = html.concat(`</div><div class="row justifty-content-center team-members">`);
         }
-        html = html.concat(make_popup(member.name, member.title, member.email, member.imageLink));
+        html = html.concat(make_popup(member.name, member.title, member.email));
         i++;
-    })
-    jQuery('#contact_row_' + row_num).append(html.concat("</div></div></div></div>"));
+    });
+
+    if(jQuery('.modal-header').length) {
+        jQuery('.modal-header').remove();
+        jQuery('.modal-body').remove();
+    }
+    jQuery('#contact-modal-content').append(html.concat("</div></div>"));
 }
 
+function createTeamModals() {
+    TEAMS.forEach((team) => {
+        jQuery.getJSON(`/wp-content/themes/WRBB-Site/src/teams/${team.toLowerCase()}.json`, (json) => {
+            jQuery(`#${team.toLowerCase()}TeamDropDown`).click(() => createTeamModal(json, team));
+        });
+    });
+}
 
-jQuery('#mediaTeamDropDown').click(function() { createTeam(1,redesign) });
+jQuery('document').ready(function() {createTeamModals();});
 
 
+
+jQuery( ".playlistButton" ).click(function() {
+	var current = jQuery( this ).text();
+	jQuery( ".playlistButton" ).css('background-color', 'LightGray');
+	jQuery( this ).css('background-color', 'DarkGray');
+	for (i = 1; i <= tableCount; i++) {
+		if (i == current) {
+			jQuery( "#playlistTable" + i ).show();
+		}
+		else {
+			jQuery( "#playlistTable" + i ).hide();
+		}
+	}
+});
+
+jQuery('document').ready(() => console.log('hello'));
 // placeholder
 var audio;
 var playing = false;
@@ -4072,25 +4075,25 @@ jQuery( "#playButton" ).click(function() {
 
 var expanded = false;
 
-document.querySelector('#expand-collapse').addEventListener('click', function() {
-    if(expanded) {
-        document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-up fa-lg" aria-hidden="true"></i>'
-        expanded = false;
-        jQuery('.volume-controls').css('margin','0');
-    } else {
-        expanded = true;
-        document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-down fa-lg" aria-hidden="true"></i>'
-        jQuery("#player-icon").width(jQuery(".playerbar").width() * 0.8);
-        jQuery('.volume-controls').css('margin', (jQuery('.player-play-pause').outerWidth(true)/2) + 'px');
-    }
-    document.querySelector('.player-controls').classList.toggle('show');
-    document.querySelector('.player-play-pause').classList.toggle('show');
-    document.querySelector('#player-icon').classList.toggle('show');
-    document.querySelector('.playerbar').classList.toggle('expand');
-    document.querySelector('.player-text').classList.toggle('show');
-    document.querySelector('#player-header').classList.toggle('show');
-    document.querySelector('#player-desc').classList.toggle('show');
-});
+// document.querySelector('#expand-collapse').addEventListener('click', function() {
+//     if(expanded) {
+//         document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-up fa-lg" aria-hidden="true"></i>'
+//         expanded = false;
+//         jQuery('.volume-controls').css('margin','0');
+//     } else {
+//         expanded = true;
+//         document.getElementById("expand-collapse").innerHTML = '<i class="fa fa-caret-square-o-down fa-lg" aria-hidden="true"></i>'
+//         jQuery("#player-icon").width(jQuery(".playerbar").width() * 0.8);
+//         jQuery('.volume-controls').css('margin', (jQuery('.player-play-pause').outerWidth(true)/2) + 'px');
+//     }
+//     document.querySelector('.player-controls').classList.toggle('show');
+//     document.querySelector('.player-play-pause').classList.toggle('show');
+//     document.querySelector('#player-icon').classList.toggle('show');
+//     document.querySelector('.playerbar').classList.toggle('expand');
+//     document.querySelector('.player-text').classList.toggle('show');
+//     document.querySelector('#player-header').classList.toggle('show');
+//     document.querySelector('#player-desc').classList.toggle('show');
+// });
 
 let pauseAudio = () => {
     audio.volume = 0;
@@ -4114,11 +4117,11 @@ let setAudioLevel = (audioLevel) => {
 
 let slider = document.getElementById('volume-slider');
 
-slider.oninput = function() {
-    if(!playing) {
-        return;
-    }
-    setAudioLevel(this.value / 100);
-}
+// slider.oninput = function() {
+//     if(!playing) {
+//         return;
+//     }
+//     setAudioLevel(this.value / 100);
+// }
 
 console.log("Hey");

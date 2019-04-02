@@ -50,6 +50,7 @@
 
 .playlists {
 	margin-top: 50px;
+	align-items: center;
 }
 
 .playlists h3 {
@@ -62,4 +63,17 @@ table, td {
 
 .dj-logo {
 	width: 70%;
+}
+
+.playlist-buttons {
+	text-align: center;
+}
+
+.playlistButton {
+	margin: 5px;
+	border-style: solid;
+}
+
+.pl-month {
+	//width: 100px;
 }

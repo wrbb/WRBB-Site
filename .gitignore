@@ -18,11 +18,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+src/wrbb-templates/cache/
+src/img/djlogos
+
 # IDE
 .idea/
 .idea/*
-src/img/djlogos/Roses & Thornes.jpg
 
 # Compiled files
 js/*
 css/*
+src/wrbb-templates/api-key.txt
