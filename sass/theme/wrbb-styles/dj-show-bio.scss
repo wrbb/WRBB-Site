@@ -74,6 +74,12 @@ table, td {
 	border-style: solid;
 }
 
-.pl-month {
-	//width: 100px;
+@media only screen and (max-width: 575px) {
+	.shows, #dj-show-content {
+		text-align: center;
+	}
+	.show-image {
+		position: relative;
+		bottom: 20px;
+	}
 }
