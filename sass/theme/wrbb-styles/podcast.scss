@@ -1,0 +1,21 @@
+#article-title {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.entry-title {
+    width: 150%;
+}
+
+#single-wrapper {
+    margin-left: 50px;
+}
+
+@media only screen and (max-width: 575px) {
+	.sidebar {
+		position: static;
+    }
+    .entry-title {
+        width: auto;
+    }
+}
