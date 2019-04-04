@@ -70,90 +70,6 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/inc/editor.php';
 
-// function apiKey() {
-//   return 'ARdWnef9Fie7lKWspQzn5efv';
-// }
-
-// /**
-//  * adapted from https://github.com/spinitron/v2-api-demo/blob/master/app/SpinitronApiClient.php
-//  * 
-//  * @return string JSON document
-//  * @throws \Exception
-//  */
-// function queryApiShows()
-// {
-//     $fullUrl = 'https://spinitron.com/api/shows?start=%2B167+hour&count=200&access-token=' . apiKey();
-//     $stream = fopen($fullUrl, 'rb', false);
-//     if ($stream === false) {
-//         throw new Exception('Error opening stream for ' . $fullUrl);
-//     }
-//     $response = stream_get_contents($stream);
-//     if ($response === false) {
-//         throw new Exception('Error requesting ' . $fullUrl . ': ' . var_export(stream_get_meta_data($stream), true));
-//     }
-//     return $response;
-// }
-
-// /**
-//  * adapted from https://github.com/spinitron/v2-api-demo/blob/master/app/SpinitronApiClient.php
-//  * 
-//  * @return string JSON document
-//  * @throws \Exception
-//  */
-// function queryApiShowById($id)
-// {
-//     $fullUrl = 'https://spinitron.com/api/shows/'.$id.'?access-token=' . apiKey();
-//     $stream = fopen($fullUrl, 'rb', false);
-//     if ($stream === false) {
-//         throw new Exception('Error opening stream for ' . $fullUrl);
-//     }
-//     $response = stream_get_contents($stream);
-//     if ($response === false) {
-//         throw new Exception('Error requesting ' . $fullUrl . ': ' . var_export(stream_get_meta_data($stream), true));
-//     }
-//     return $response;
-// }
-
-// /**
-//  * adapted from https://github.com/spinitron/v2-api-demo/blob/master/app/SpinitronApiClient.php
-//  * 
-//  * @return string JSON document
-//  * @throws \Exception
-//  */
-// function queryApiPlaylistsById($id)
-// {
-//     $fullUrl = 'https://spinitron.com/api/playlists?show_id='.$id.'&count=20&access-token=' . apiKey();
-//     $stream = fopen($fullUrl, 'rb', false);
-//     if ($stream === false) {
-//         throw new Exception('Error opening stream for ' . $fullUrl);
-//     }
-//     $response = stream_get_contents($stream);
-//     if ($response === false) {
-//         throw new Exception('Error requesting ' . $fullUrl . ': ' . var_export(stream_get_meta_data($stream), true));
-//     }
-//     return $response;
-// }
-
-// /**
-//  * adapted from https://github.com/spinitron/v2-api-demo/blob/master/app/SpinitronApiClient.php
-//  * 
-//  * @return string JSON document
-//  * @throws \Exception
-//  */
-// function queryApiPersonaById($id)
-// {
-//     $fullUrl = 'https://spinitron.com/api/personas/'.$id.'?access-token=' . apiKey();
-//     $stream = fopen($fullUrl, 'rb', false);
-//     if ($stream === false) {
-//         throw new Exception('Error opening stream for ' . $fullUrl);
-//     }
-//     $response = stream_get_contents($stream);
-//     if ($response === false) {
-//         throw new Exception('Error requesting ' . $fullUrl . ': ' . var_export(stream_get_meta_data($stream), true));
-//     }
-//     return $response;
-// }
-
 function unique_multidim_array($array, $key) { 
     $temp_array = array(); 
     $i = 0; 
@@ -205,7 +121,7 @@ function my_single_template($single) {
  * Prints HTML with meta information for the current post-date/time and author.
  * Overrides function in inc/template-tags.php
  */
-function mp_understrap_posted_on() {
+function understrap_posted_on() {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
     $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
