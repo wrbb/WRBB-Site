@@ -1,21 +1,50 @@
 #article-title {
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
-.entry-title {
-    width: 150%;
+.podcast-logo {
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#single-wrapper {
-    margin-left: 50px;
+.podcast-info {
+  // margin: 20px 0;
+  //border-style: solid;
+  padding: 20px 0;
+  border-bottom: 5px solid red;
+}
+
+.podcast-date {
+  margin-top: 10px;
+}
+
+.latest-episode {
+  font-size: 12px;
+}
+
+.play-button {
+  width: 30px;
+}
+
+.listen-now {
+  font-weight: bold;
+  color: red;
+  font-size: 18px;
+  position: relative;
+  top: 3px;
 }
 
 @media only screen and (max-width: 575px) {
-	.sidebar {
-		position: static;
-    }
-    .entry-title {
-        width: auto;
-    }
+  .entry-title {
+    width: auto;
+  }
+  .podcast-info {
+    text-align: center;
+  }
+  .podcast-logo {
+    margin-bottom: 20px;
+  }
 }

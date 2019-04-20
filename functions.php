@@ -180,3 +180,108 @@ function podcast_posted_on() {
   );
   echo '<p>' . $posted_on . '</p>'; // WPCS: XSS OK.
 }
+
+/*
+* Creating a function to create our CPT
+*/
+ 
+function custom_post_type() {
+ 
+// Set UI labels for Custom Post Type
+    $labels = array(
+        'name'                => _x( 'Podcasts', 'Post Type General Name' ),
+        'singular_name'       => _x( 'Podcast', 'Post Type Singular Name' ),
+        'menu_name'           => __( 'Podcasts' ),
+        'parent_item_colon'   => __( 'Parent Podcast' ),
+        'all_items'           => __( 'All Podcasts' ),
+        'view_item'           => __( 'View Podcast' ),
+        'add_new_item'        => __( 'Add New Podcast' ),
+        'add_new'             => __( 'Add New' ),
+        'edit_item'           => __( 'Edit Podcast' ),
+        'update_item'         => __( 'Update Podcast' ),
+        'search_items'        => __( 'Search Podcast' ),
+        'not_found'           => __( 'Not Found' ),
+        'not_found_in_trash'  => __( 'Not found in Trash' ),
+    );
+     
+// Set other options for Custom Post Type
+     
+    $args = array(
+        'label'               => __( 'podcasts' ),
+        'description'         => __( 'Podcast info and embed' ),
+        'labels'              => $labels,
+        // Features this CPT supports in Post Editor
+        'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+        // You can associate this CPT with a taxonomy or custom taxonomy. 
+        'taxonomies'          => array( 'genres', 'category' ),
+        /* A hierarchical CPT is like Pages and can have
+        * Parent and child items. A non-hierarchical CPT
+        * is like Posts.
+        */ 
+        'hierarchical'        => false,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+        'menu_position'       => 5,
+        'can_export'          => true,
+        'has_archive'         => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'capability_type'     => 'page',
+
+		'taxonomies'          => array( 'category' ),
+    );
+     
+    // Registering your Custom Post Type
+    register_post_type( 'podcasts', $args );
+ 
+}
+
+add_filter('pre_get_posts', 'query_post_type');
+function query_post_type($query) {
+  if( is_category() ) {
+    $post_type = get_query_var('post_type');
+    if($post_type)
+        $post_type = $post_type;
+    else
+        $post_type = array('nav_menu_item', 'post', 'podcasts'); // don't forget nav_menu_item to allow menus to work!
+    $query->set('post_type',$post_type);
+    return $query;
+    }
+}
+ 
+/* Hook into the 'init' action so that the function
+* Containing our post type registration is not 
+* unnecessarily executed. 
+*/
+ 
+add_action( 'init', 'custom_post_type', 0 );
+
+function podcast_func( $atts ){
+	$a = shortcode_atts( array(
+    	'numberposts' => 1,
+		'category' => '',
+		'offset' => 0,
+		'post_type' => 'podcasts',
+		'post_status' => 'publish, private',
+	), $atts );
+
+	$recent_posts = wp_get_recent_posts( $a );
+	$info = $atts['information'];
+	if ($info == 'post_link') {
+		return get_permalink(reset($recent_posts)["ID"]);
+	} elseif ($info == 'post_date') {
+		return date('F-j-Y', strtotime(reset($recent_posts)[$info]));
+	} elseif ($info == 'post_content') {
+		$content_post = get_post(reset($recent_posts)["ID"]);
+		$content = $content_post->post_content;
+		$content = apply_filters('the_content', $content);
+		$content = str_replace(']]>', ']]&gt;', $content);
+		return "<p>" . wp_trim_words( $content, 35 ) . "</p>";
+	}
+	return reset($recent_posts)[$info];
+	wp_reset_query();
+}
+add_shortcode( 'podcast', 'podcast_func' );

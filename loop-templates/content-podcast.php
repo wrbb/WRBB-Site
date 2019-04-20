@@ -5,15 +5,12 @@
  * @package understrap
  */
 
-$cats = array_column(get_the_category(), 'name');
 ?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
     <header class="entry-header">
 
-        <h1 class="entry-title"><span id="article-title"><?php echo $cats[0] ?></span></h1>
-
-        <?php the_title('<h4 class="entry-title">', '</h4>'); ?>
+        <?php the_title( '<h1 class="entry-title"><span id="article-title">', '</span></h1>' ); ?>
 
         <div class="entry-meta">
 
