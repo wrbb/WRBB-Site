@@ -70,6 +70,21 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/inc/editor.php';
 
+function unique_multidim_array($array, $key) { 
+    $temp_array = array(); 
+    $i = 0; 
+    $key_array = array(); 
+    
+    foreach($array as $val) { 
+        if (!in_array($val[$key], $key_array)) { 
+            $key_array[$i] = $val[$key]; 
+            $temp_array[$i] = $val; 
+        } 
+        $i++; 
+    } 
+    return $temp_array; 
+}
+
 /*
 * Define a constant path to our single template folder
 */
@@ -102,6 +117,34 @@ function my_single_template($single) {
 }
 
 /**
+ * Used for articles
+ * Prints HTML with meta information for the current post-date/time and author.
+ * Overrides function in inc/template-tags.php
+ */
+function understrap_posted_on() {
+  $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+  if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+    $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+  }
+  $time_string = sprintf( $time_string,
+    esc_attr( get_the_date( 'c' ) ),
+    esc_html( get_the_date() ),
+    esc_attr( get_the_modified_date( 'c' ) ),
+    esc_html( get_the_modified_date() )
+  );
+  $posted_on = sprintf(
+    esc_html_x( '%s', 'post date', 'understrap' ),
+    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+  );
+  $byline = sprintf(
+    esc_html_x( 'by %s', 'post author', 'understrap' ),
+    '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+  );
+  echo '<p>' . $byline . '<span style="color: red"> | </span>' . $posted_on . '</p>'; // WPCS: XSS OK.
+}
+
+/**
+ * Used for article thumbnails on the home page
  * Prints HTML with meta information for the current post-date/time and author.
  * Overrides function in inc/template-tags.php
  */
@@ -125,5 +168,4 @@ function mp_understrap_posted_on() {
     '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
   );
   echo '<p id="mpa-date">' . $posted_on . '</p><p id="mpa-author"> ' . $byline . '</p>'; // WPCS: XSS OK.
-
 }
