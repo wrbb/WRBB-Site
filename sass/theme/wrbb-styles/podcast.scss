@@ -1,0 +1,50 @@
+#article-title {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.podcast-logo {
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.podcast-info {
+  // margin: 20px 0;
+  //border-style: solid;
+  padding: 20px 0;
+  border-bottom: 5px solid red;
+}
+
+.podcast-date {
+  margin-top: 10px;
+}
+
+.latest-episode {
+  font-size: 12px;
+}
+
+.play-button {
+  width: 30px;
+}
+
+.listen-now {
+  font-weight: bold;
+  color: red;
+  font-size: 18px;
+  position: relative;
+  top: 3px;
+}
+
+@media only screen and (max-width: 575px) {
+  .entry-title {
+    width: auto;
+  }
+  .podcast-info {
+    text-align: center;
+  }
+  .podcast-logo {
+    margin-bottom: 20px;
+  }
+}
