@@ -29,4 +29,5 @@ src/img/djlogos
 js/*
 js/theme.*
 css/*
+css/theme.*
 src/wrbb-templates/api-key.txt
