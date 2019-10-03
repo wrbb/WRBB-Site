@@ -27,5 +27,6 @@ src/img/djlogos
 
 # Compiled files
 js/*
+js/theme.*
 css/*
 src/wrbb-templates/api-key.txt
