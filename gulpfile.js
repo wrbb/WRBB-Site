@@ -112,9 +112,7 @@ gulp.task( 'cleancss', function() {
     .pipe( rimraf() );
 });
 
-gulp.task( 'styles', function( callback ) {
-    gulpSequence( 'sass', 'minifycss' )( callback );
-} );
+gulp.task( 'styles', gulp.series( 'sass', 'minifycss' ));
 
 // Run:
 // gulp browser-sync
