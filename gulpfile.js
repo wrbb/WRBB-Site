@@ -48,11 +48,11 @@ gulp.task( 'sass', function() {
 // gulp watch
 // Starts watcher. Watcher runs gulp sass task on changes
 gulp.task( 'watch', function() {
-    gulp.watch( paths.sass + '/**/*.scss', ['styles'] );
-    gulp.watch( [paths.dev + '/js/**/*.js', 'js/**/*.js', '!js/theme.js', '!js/theme.min.js'], ['scripts'] );
+    gulp.watch( paths.sass + '/**/*.scss', gulp.series('styles') );
+    gulp.watch( [paths.dev + '/js/**/*.js', 'js/**/*.js', '!js/theme.js', '!js/theme.min.js'], gulp.series('scripts'));
 
     //Inside the watch task.
-    gulp.watch( paths.imgsrc + '/**', ['imagemin-watch'] );
+    gulp.watch( paths.imgsrc + '/**', gulp.series('imagemin-watch') );
 });
 
 // Run:
@@ -130,7 +130,7 @@ gulp.task( 'watch-scss', gulp.series('browser-sync', function() {
 // Run: 
 // gulp scripts. 
 // Uglifies and concat all JS files into one
-gulp.task( 'scripts', function() {
+gulp.task( 'scripts', async function() {
     var scripts = [
 
         // Start - All BS4 stuff
