@@ -40,23 +40,23 @@ Creating a new branch
 - Run git pull and then run git checkout -b feature-{your-feature-name}
 
 Enabling the theme
-- Start WAMP or MAMP and open up your site  (your local site’s url will be something like localhost/{project-name})
-- Navigate to localhost/{project-name}/wp-admin
+- Start WAMP or MAMP and open up your site  (your local site’s url will be something like `localhost/{project-name}`)
+- Navigate to `localhost/{project-name}/wp-admin`
 - Sign in with the credentials you created when you set up WAMP or MAMP
 - In the left sidebar navigate to Appearance => Themes
 - Click “Activate” on the WRBB theme
 
 Section 3.2 - Adding JS, PHP, SASS, and CSS
-In order to add SASS/CSS for your feature, you will create a file with an appropriate name for your feature and add it to the “wp-content/themes/wrbb-site/sass/theme/wrbb-styles” directory. Ensure that this is the directory in which you add your files as there are other similarly named directories. Your SASS/CSS file should have the .scss extension. Finally edit the file “wp-content/themes/wrbb-site/sass/theme/_theme.scss” by adding the line 
+In order to add SASS/CSS for your feature, you will create a file with an appropriate name for your feature and add it to the `wp-content/themes/wrbb-site/sass/theme/wrbb-styles` directory. Ensure that this is the directory in which you add your files as there are other similarly named directories. Your SASS/CSS file should have the .scss extension. Finally edit the file `wp-content/themes/wrbb-site/sass/theme/_theme.scss` by adding the line 
 
 ```css
-@import "wrbb-styles/{my-sass-file-name-here}";` 
+@import "wrbb-styles/{my-sass-file-name-here}";
 ```
 Congratulations, your SASS/CSS file has now been added to the site. You may not see your styles take effect right away - don’t worry, this will be covered in section 3.3.
 
-In order to add javascript to the site, create your .js file with an appropriate name for your feature and add it to the “wp-content/themes/wrbb-site/js” directory. Again don’t worry if you don’t see your changes show up right away, this will be covered in 3.3.
+In order to add javascript to the site, create your .js file with an appropriate name for your feature and add it to the `wp-content/themes/wrbb-site/js` directory. Again don’t worry if you don’t see your changes show up right away, this will be covered in 3.3.
 
-To add php, create your .php file with an appropriate name for your feature and add it to “wp-content/themes/wrbb-site/wrbb-templates”.
+To add php, create your .php file with an appropriate name for your feature and add it to `wp-content/themes/wrbb-site/wrbb-templates`.
 Section 3.3 - Editing JS, PHP, SASS, and CSS
 There are multiple options for editing your code. You may edit in an IDE of your choice and then add it to the requisite directory as detailed in section 3.2 - or you may add a blank file, as per the instructions in 3.2, and edit in wordpress’s built-in editor. To find the site files, go to Appearance => Editor in the Admin panel. From there, you may open the file you’d like to edit and save any changes you make. 
 
