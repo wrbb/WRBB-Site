@@ -13,48 +13,86 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <?php get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
 
-<div class="wrapper" id="wrapper-footer">
+<html>
 
-	<div class="<?php echo esc_attr( $container ); ?>">
+	<head>
 
-		<div class="row">
+		<link rel ="stylesheet" href="css/styles.css">
+		<script src="https://kit.fontawesome.com/ef315d9147.js" crossorigin="anonymous"></script>
+		
+	</head>
 
-			<div class="col-md-12">
+	<div class="wrapper" id="wrapper-footer">
 
-				<footer class="site-footer" id="colophon">
+		<div class="<?php echo esc_attr( $container ); ?>">
 
-					<div class="site-info">
+			<div class="row">
 
-							<a href="<?php  echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>"><?php printf( 
-							/* translators:*/
-							esc_html__( 'Proudly powered by %s', 'understrap' ),'WordPress' ); ?></a>
-								<span class="sep"> | </span>
+				<div class="col-md-12">
+
+					<footer class="site-footer" id="colophon">
+
+						<div class="site-info">
+
+							<div class= "form">
+								<form action= ""> 
+									<label>Let's stay in touch!</label><br>
+									<input type= "email" name= "email" value= "Email address">
+									<input type= "submit" value="Submit"> <br>
+								</form>
+							</div>
+
+							<div class="social-media" style="text-align: center;">
+								<body>
+									<br>
+									<a href="https://www.facebook.com/WRBBRadio/"><i class="fab fa-facebook fa-lg"></i></a>
+									<a href="https://www.instagram.com/wrbbradio/"><i class="fab fa-instagram fa-lg"></i></a>
+									<a href="https://twitter.com/wrbbradio"><i class="fab fa-twitter fa-lg"></i></a>
+									<a href="https://open.spotify.com/user/pfe0l6pbdx8667wos0gwqtwx9?si=JsuhCoLER_mAmO2S_ppfMQ"><i class="fab fa-spotify fa-lg"></i></a>
+									<br>
+									<a href=""></a>
+								</body>
+							</div>
+
+							<div class = "logo-articles">
+								<body>
+									<a href="">articles</a>
+									<a href="">articles</a>
+									<a href="http://wrbbradio.org/"><img src="img/logo.png" class="logo" alt="WRBB Logo"></a>
+									<a href="">articles</a>
+									<a href="">articles</a>
+								</body>
+							</div>
 					
-							<?php printf( // WPCS: XSS ok.
-							/* translators:*/
-								esc_html__( 'Theme: %1$s by %2$s.', 'understrap' ), $the_theme->get( 'Name' ),  '<a href="'.esc_url( __('http://understrap.com', 'understrap')).'">understrap.com</a>' ); ?> 
-				
-							(<?php printf( // WPCS: XSS ok.
-							/* translators:*/
-								esc_html__( 'Version: %1$s', 'understrap' ), $the_theme->get( 'Version' ) ); ?>)
-					</div><!-- .site-info -->
+								<a href="<?php  echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>">
+								<?php printf( 
+								/* translators:*/
+								esc_html__( 'Proudly powered by %s', 'understrap' ),'WordPress' ); ?></a>
+									<span class="sep"> | </span>
+						
+								<?php printf( // WPCS: XSS ok.
+								/* translators:*/
+									esc_html__( 'Theme: %1$s by %2$s.', 'understrap' ), $the_theme->get( 'Name' ),  '<a href="'.esc_url( __('http://understrap.com', 'understrap')).'">understrap.com</a>' ); ?> 
+					
+								(<?php printf( // WPCS: XSS ok.
+								/* translators:*/
+									esc_html__( 'Version: %1$s', 'understrap' ), $the_theme->get( 'Version' ) ); ?>)
+								
 
-				</footer><!-- #colophon -->
+						</div><!-- .site-info -->
 
-			</div><!--col end -->
+					</footer><!-- #colophon -->
 
-		</div><!-- row end -->
+				</div><!--col end -->
 
-	</div><!-- container end -->
+			</div><!-- row end -->
 
-</div><!-- wrapper end -->
+		</div><!-- container end -->
 
-</div><!-- #page we need this extra closing tag here -->
+	</div><!-- wrapper end -->
 
-<?php wp_footer(); ?>
+	</div><!-- #page we need this extra closing tag here -->
 
-<?php get_template_part( 'src/wrbb-templates/playerbar' ); ?>
-</body>
+	<?php wp_footer(); ?>
 
 </html>
-
