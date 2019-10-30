@@ -20,13 +20,13 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 		<hr class="header-line">
 
-		<?php $catquery = new WP_Query( 'category_name=main-page-article' ); ?>
+		<?php $cat_query = new WP_Query( 'category_name=main-page-article' ); ?>
 
-		<?php if ($catquery->have_posts()) : ?>
+		<?php if ($cat_query->have_posts()) : ?>
 
 			<div class="row mp-articles">
 
-				<?php while ($catquery->have_posts()) : $catquery->the_post(); ?>
+				<?php while ($cat_query->have_posts()) : $cat_query->the_post(); ?>
 
 					<div class="col-sm-3 mpa">
 

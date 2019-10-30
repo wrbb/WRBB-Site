@@ -1,37 +1,26 @@
 <?php
 /**
- * Template Name: Playerbar
- * The template for the playerbar located on the bottom of the screen
+ * Playerbar
+ * The toast in the corner of the website that launches the popup window
  *
  * @package understraps
  */
- ?>
+?>
 
-<div class="playerbar">
-    <button id="expand-collapse">
-        <i class="fa fa-caret-square-o-up fa-lg" aria-hidden="true"></i>
-    </button>
+<script type="text/javascript">
+    openWindow = () => {
+        window.open('/wordpress/playerbar-popup', 'win2',
+            'status=no,toolbar=no,scrollbars=no,titlebar=no,menubar=no,width=300,height=150,' +
+            'directories=no,location=no');
+    }
+</script>
 
-    <div id="player-icon">
-            <img src="wp-content/themes/WRBB-Site/src/img/logoPlayerBar.png"></img>
-    </div>
-
+<div class="playerbar playerbar--toast">
+    <h2 id="player-header">Listen Live</h2>
     <div class="player-text">
-        <h2 id="player-header">Listen Live</h2>
-        <p id="player-desc">WRBB Radio</p>
+        <button class="play-button--toast" onclick="openWindow()">
+            <i class="fas fa-play-circle fa-lg"></i>
+        </button>
+        <span id="player-desc">WRBB Radio</span>
     </div>
-
-
-
-    <div class="player-controls">
-        <div class="player-play-pause">
-              <button id="playButton" type="submit">
-                  <i class="fa fa-play-circle-o fa-lg" aria-hidden="true"></i>
-              </button>
-          </div>
-          <div class="volume-controls">
-              <i id="volume-icon" class="fa fa-volume-up fa-lg" aria-hidden="true"></i>
-              <input id='volume-slider' type="range" min="1" max="100" value="50">
-          </div>
-      </div>
- </div>
+</div>
