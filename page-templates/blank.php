@@ -28,6 +28,6 @@
 	<?php get_template_part( 'loop-templates/content', 'blank' ); ?>
 
 <?php endwhile; // end of the loop. ?>
-<?php wp_footer(); ?>
+
 </body>
 </html>
