@@ -1,60 +1,129 @@
-
 #header-line {
 	border-style: solid;
-	border-color: red;
+	border-color:#d30f0f;
 	border-width: medium;
 	position: absolute;
 	left: 0;
 	right: 0;
-	z-index: 1;
+	z-index: 2;
 }
 
 .entry-header {
 	position: relative;
-	z-index: 2;
+	z-index: 3;
 	bottom: 10px;
+	padding-left: 100px;
 }
 
 #article-title {
 	background-color: white;
-	padding-left: 10px;
-	padding-right: 10px;
+	font-family: 'Playfair Display', serif;
+	font-weight: 1000;
 	position: relative;
 	left: -10px;
+	padding: 10px;
 }
-
+  
 .entry-meta {
 	padding-top: 10px;
+	font-family: 'Playfair Display', serif;
+	font-style: italic;
 }
 
+.entry-content{
+	font-display: "Roboto";
+	display: inline-block;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.pullquote{
+	font-family: 'Playfair Display', serif;
+	font-size: 32px;
+	font-style: italic;
+	width: 500px;
+	margin: 0.25em 0;
+	padding: 0.25em 40px;
+	line-height: 1.45;
+	position: relative;
+	color:black;
+	background: 
+		linear-gradient(#d30f0f , #d30f0f) bottom right/ 60% 5px,
+		linear-gradient(#d30f0f, #d30f0f) top left/ 60% 5px,
+		linear-gradient(#d30f0f, #d30f0f) top left/ 5px 70%,
+		linear-gradient(#d30f0f, #d30f0f) bottom right / 5px 70%;
+	background-repeat: no-repeat;
+	
+}
+
+#related-line{
+	border-style: solid;
+	border-color:#d30f0f;
+	border-width: medium;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 4;
+}
+
+.related{
+	font-family: 'Playfair Display', serif;
+	font-weight: 1000;
+	font-size: 24px;
+	padding-top: 50px;
+	padding-left: 100px;
+	margin-bottom: -10px;
+	position: relative;
+	z-index: 5;
+}
+
+
 .post-navigation {
-	margin-bottom: 20px;
+	padding-top: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	.nav-content{
+		display: inline-block;
+		padding: 5px;
+		font-family: "Playfair Display", serif;
+		font-size: 16px;
+		font-weight: 1000;
+	}
+	.author{
+		font-family: "Roboto";
+		font-weight: 100;
+	}
 }
 
 .sidebar {
 	position: relative;
 	top: 70px;
+	z-index: 3;
 }
 
 .spotify {
-	margin: auto;
-	max-width: 300px;
+	font-family: "Playfair Display", serif;
+	font-style: italic;
+	padding-bottom: 25px;
+	width: 250px !important;
 }
 
 .socials {
 	display: flex;
 	justify-content: space-between;
 	max-width: 250px;
-	margin: 25px auto;
 }
 
 .socials a {
 	width: 50px;
 	display: inline-block;
+	justify-content: center;
 }
 
 .author-box {
-	margin: 30px auto;
+	padding-top: 25px;
 	max-width: 300px;
 }
 
@@ -63,13 +132,16 @@
 }
 
 .author-box .author {
-	display: inline;
+	font-family: 'Playfair Display', serif;
 	font-size: 20px;
+	font-style: italic;
+	display: inline;
 	vertical-align: -10%;
 	padding-left: 5px;
 }
 
 .author-description {
+	font-family: "Roboto";
 	padding-top: 15px;
 }
 
