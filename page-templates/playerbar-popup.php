@@ -46,13 +46,13 @@ $pause_button = '<i class="fa fa-pause-circle fa-2x"></i>';
         let playAudio = () => {
             playing = true;
             setAudioLevel(document.getElementById('volume-slider').value / 100);
-            document.getElementById('popup-button').innerHTML = '<? echo $pause_button ?>'
+            document.getElementById('popup-button').innerHTML = '<?php echo $pause_button ?>'
         };
 
         let pauseAudio = () => {
             playing = false;
             setAudioLevel(0);
-            document.getElementById('popup-button').innerHTML = '<? echo $play_button ?>';
+            document.getElementById('popup-button').innerHTML = '<?php echo $play_button ?>';
         };
 
         let toggleAudio = () => {
@@ -96,12 +96,12 @@ $pause_button = '<i class="fa fa-pause-circle fa-2x"></i>';
     <p class="current-show">
         <strong>Current Show:</strong>
         <br>
-        <? echo $show ?>
+        <?php echo $show ?>
     </p>
     <div class="player-controls">
         <div class="player-play-pause">
             <a class="play-button--popup" id="popup-button">
-	            <? echo $play_button ?>
+	            <?php echo $play_button ?>
             </a>
         </div>
         <div class="volume-controls">
