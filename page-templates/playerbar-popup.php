@@ -9,7 +9,6 @@
 include __DIR__ . '/../src/wrbb-templates/getClient.php';
 // @var SpinitronApiClient $client
 $result = $client->search( 'shows', [ 'start' => '+0 hour', 'count' => '1' ] );
-
 $show = $result['items'][0]['title'];
 
 $play_button = '<i class="fa fa-play-circle fa-2x"></i>';
@@ -30,47 +29,66 @@ $pause_button = '<i class="fa fa-pause-circle fa-2x"></i>';
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php wp_head(); ?>
 </head>
-<body onload="startAudio()">
+<body>
 <script type="text/javascript">
     let playing = false;
-    const audio = new Audio('http://129.10.161.130:8000/');
 
-    startAudio = () => {
-      audio.play();
-      playAudio();
-    };
+    jQuery(document).ready(() => {
+        const audio = new Audio('http://129.10.161.130:8000/');
 
-    toggleAudio = () => {
-        if (playing) {
-            pauseAudio();
+        let setAudioLevel = (audioLevel) => {
+            if (audioLevel > 1 || audioLevel < 0) {
+                return;
+            }
+            audio.volume = audioLevel;
+        };
+
+        let playAudio = () => {
+            playing = true;
+            setAudioLevel(document.getElementById('volume-slider').value / 100);
+            document.getElementById('popup-button').innerHTML = '<? echo $pause_button ?>'
+        };
+
+        let pauseAudio = () => {
+            playing = false;
+            setAudioLevel(0);
+            document.getElementById('popup-button').innerHTML = '<? echo $play_button ?>';
+        };
+
+        let toggleAudio = () => {
+            if (playing) {
+                pauseAudio();
+            } else {
+                playAudio();
+            }
+        };
+
+        let promise = audio.play();
+        if (promise !== undefined) {
+            promise.then(() => {
+                playAudio();
+            }).catch(() => {
+                window.close();
+            });
         } else {
-            playAudio();
+            window.close();
         }
-    };
 
-    setAudioLevel = (audioLevel) => {
-        if (audioLevel > 1 || audioLevel < 0) {
-            return;
-        }
-        audio.volume = audioLevel;
-    };
-
-    playAudio = () => {
-        playing = true;
-        setAudioLevel(document.getElementById('volume-slider').value / 100);
-        document.getElementById("popup-button").innerHTML = '<? echo $pause_button ?>'
-    };
-
-    pauseAudio = () => {
-        playing = false;
-        setAudioLevel(0);
-        document.getElementById("popup-button").innerHTML = '<? echo $play_button ?>';
-    };
-
-    window.addEventListener('keydown', event => {
-        if (event.code === 'Space') {
+        jQuery('.play-button--popup').on('click', () => {
             toggleAudio();
-        }
+        });
+
+        jQuery(document).on('keydown', event => {
+            if (event.keyCode === 32) {
+                toggleAudio();
+            }
+        });
+
+        jQuery('#volume-slider').on('change', () => {
+            let val = jQuery('#volume-slider').val();
+            console.log(val);
+            setAudioLevel(val / 100);
+        });
     });
 </script>
 
@@ -82,7 +100,7 @@ $pause_button = '<i class="fa fa-pause-circle fa-2x"></i>';
     </p>
     <div class="player-controls">
         <div class="player-play-pause">
-            <a class="play-button--popup" id="popup-button" onclick="toggleAudio()">
+            <a class="play-button--popup" id="popup-button">
 	            <? echo $play_button ?>
             </a>
         </div>
@@ -96,7 +114,6 @@ $pause_button = '<i class="fa fa-pause-circle fa-2x"></i>';
                 max="100"
                 step="1"
                 value="50"
-                onchange="setAudioLevel(this.value / 100)"
             >
         </div>
     </div>
