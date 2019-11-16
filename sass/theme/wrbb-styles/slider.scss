@@ -2,7 +2,7 @@
 
   .carousel {
     width: auto;
-    height: 900px;
+    height: 400px;
   }
 
   .carousel-inner {
@@ -44,17 +44,15 @@
   .carousel-caption {
 
     background: rgba(25, 24, 25, 0.7);
-    border-radius: 10px;
-
+    border-radius: 3px;
     position: absolute;
     left: 625px;
-    top: 625px;
-
+    top: 225px;
     display: inline-block;
     width: 610px;
     height: 168px;
     word-wrap: break-word;
-    
+
   }
 
   .carousel-caption p {
@@ -65,7 +63,6 @@
     font-weight: 900;
     font-size: 2vw;
     line-height: 48px;
-
     overflow: hidden;
     float: center;
     text-align: center;

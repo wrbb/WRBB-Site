@@ -33,85 +33,11 @@ $container = get_theme_mod('understrap_container_type');
     <script src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
     <!-- Ajaxify -->
     <script src="http://rawgithub.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
-    <!-- fitty to dynamically resize text in the slider's captions-->
-    <script src="fitty.min.js"></script>
-    <!-- Left and right slide controls-->
-    <script>
-    jQuery(function($){
-    // Enable Carousel Controls
-    $(".carousel-control-prev").click(function(){
-        $("#carousel").carousel("prev");
-    });
-    $(".carousel-control-next").click(function(){
-        $("#carousel").carousel("next");
-    });
-    });
-    </script>
+    <script src="src\js\wrbb-js\slider.js"></script>  
+
 </head>
 
 <body <?php body_class(); ?>>
-
-<!-- Code for slider -->
-<div class="slider-wrapper">
-        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
-            <li data-target="#carousel" data-slide-to="3"></li>
-            <li data-target="#carousel" data-slide-to="4"></li>
-            </ol>
-            <!-- Inner slides w/ captions -->
-            <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album1.jpg" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p>This is the first slide. I will use this first slide to test caption text wrapping and other stuff like that. Very nice.</p>
-                <script>fitty('p')</script>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album2.jpg" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p>This is the Second slide</p>
-                <script>fitty('p')</script>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album3.jpg" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p>This is the Third slide</p>
-                <script>fitty('p')</script>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album4.jpg" alt="Forth slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p>...</p>
-                <script>fitty('p')</script>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album5.jpg" alt="Fifth slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p>...</p>
-                <script>fitty('p')</script>
-                </div>
-            </div>
-        </div>
-        <!-- Left and Right slide controls -->
-        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-            </a>
-    </div>
-</div>
-<!-- Code for slider -->
 
 <div class="hfeed site" id="page">
     <div class="header <?php echo 'null' ?>">
@@ -241,6 +167,65 @@ $container = get_theme_mod('understrap_container_type');
             </nav><!-- .site-navigation -->
 
         </div><!-- #wrapper-navbar end -->
+
+
+<!-- Code for slider -->
+<div class="slider-wrapper">
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+            <li data-target="#carousel" data-slide-to="3"></li>
+            <li data-target="#carousel" data-slide-to="4"></li>
+            </ol>
+            <!-- Inner slides w/ captions -->
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album1.jpg" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">Thissssssssssssssssssss is the first sliiiiiiiiiiiiiiiiiiiiide. I will use this first slide to test caption text wrapping and other stuff like that. Very nice.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album2.jpg" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">This is the Second slide</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album3.jpg" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">This is the Third slide</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album4.jpg" alt="Forth slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">...</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album5.jpg" alt="Fifth slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">...</p>
+                </div>
+            </div>
+        </div>
+        <!-- Left and Right slide controls -->
+        <a class="carousel-control-prev" href="#carousel" role="button" onclick="slideLeft()" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel" role="button" onclick="slideRight()" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+    </div>
+</div>
+<!-- Code for slider -->
+
     </div> <!-- header -->
 
 
