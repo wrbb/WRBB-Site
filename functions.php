@@ -299,3 +299,4 @@ function podcast_func( $atts ){
 	wp_reset_query();
 }
 add_shortcode( 'podcast', 'podcast_func' );
+
