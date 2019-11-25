@@ -1,0 +1,69 @@
+.related-articles-container {
+
+    h1 {
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 36px;
+        line-height: 48px;
+        margin-left: 257px;
+    }
+
+    #related-articles-line {
+        width: 100%;
+        height: 5px;
+        margin-top: -10px;
+        background-color: #D30F0F;
+    }
+
+    .related-articles-columns {
+
+        margin-top: -50px;
+
+        .column {
+            padding: 70px;
+            float: left;
+            width: 33.33%;
+
+            img {
+                border: 1px solid #979797;
+                box-sizing: border-box;
+            }
+
+            #title {
+                font-family: 'Playfair Display';
+                font-style: normal;
+                font-weight: 900;
+                font-size: 24px;
+                line-height: 32px;
+                color: #000000;
+            }
+
+            #mpa-date {
+                font-family: 'Playfair Display';
+                font-style: italic;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 19px;
+                color: #000000;
+                margin-top: -2px;
+            }
+
+            #mpa-author {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 23px;
+                color: #000000;
+                margin-top: 8px;
+            }
+
+          }
+
+    }
+
+}
+
+
+
