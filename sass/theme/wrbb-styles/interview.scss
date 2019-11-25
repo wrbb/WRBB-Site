@@ -15,11 +15,14 @@
 }
 
 #article-title {
+	-webkit-box-decoration-break: clone;
 	background-color: white;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 0 10px;
 	position: relative;
 	left: -10px;
+	font-family: 'Playfair Display', serif;
+	font-weight: bold;
+	line-height: normal;
 }
 
 .entry-meta {
