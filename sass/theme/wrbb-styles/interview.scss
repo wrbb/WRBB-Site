@@ -44,15 +44,15 @@
 	font-family: "Playfair Display", serif;
 	font-style: italic;
 	margin: auto;
-	max-width: 250px;
+	max-width: 300px;
 }
 
 .socials {
 	display: flex;
 	justify-content: space-between;
 	max-width: 250px;
-	margin: 25px auto;
-	padding: 25px 0;
+	margin: auto;
+	padding: 50px 0;
 }
 
 .socials a {
@@ -61,8 +61,7 @@
 }
 
 .author-box {
-	margin: 30px auto;
-	padding-top: 25px;
+	margin: auto;
 	max-width: 300px;
 }
 
@@ -80,13 +79,16 @@
 }
 
 .author-description {
-	font-family: "Roboto";
+	font-family: 'Roboto', sans-serif;
 	padding-top: 15px;
 }
 
 @media only screen and (max-width: 575px) {
 	.sidebar {
 		position: static;
-		padding: 0;
+	}
+
+	.socials {
+		padding: 25px 0;
 	}
 }
