@@ -7,7 +7,7 @@
 
 #wrapper-footer{
 
-	background-color: #000;
+	background-color:#191819;
 
 	#colophon {
 
@@ -96,6 +96,11 @@
 					font-size: 20px;
 					padding-right: $size__spacing-unit;
 				}
+			}
+
+			.logo{
+				width: 150px;
+				height: 75px;
 			}
 
 			a {

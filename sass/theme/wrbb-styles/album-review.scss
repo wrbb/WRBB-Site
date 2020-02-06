@@ -1,0 +1,18 @@
+.entry-content{
+	font-family: 'Roboto', sans-serif;
+}
+
+.pullquote{
+	font-family: 'Playfair Display', serif;
+	font-size: 32px;
+	font-style: italic;
+	margin: 40px 0;
+	padding: 40px;
+	line-height: 1.45;
+	background:
+		linear-gradient(#d30f0f , #d30f0f) bottom right/ 60% 5px,
+		linear-gradient(#d30f0f, #d30f0f) top left/ 60% 5px,
+		linear-gradient(#d30f0f, #d30f0f) top left/ 5px 70%,
+		linear-gradient(#d30f0f, #d30f0f) bottom right / 5px 70%;
+	background-repeat: no-repeat;
+}
