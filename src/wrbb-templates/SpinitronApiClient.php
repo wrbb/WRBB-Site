@@ -13,7 +13,7 @@ class SpinitronApiClient
         'spins' => 30,
     ];
 
-    private $apiKey = 'ARdWnef9Fie7lKWspQzn5efv';
+    private $apiKey;
     private $fileCachePath;
 
     public function __construct($apiKey, $fileCachePath)
