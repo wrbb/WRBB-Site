@@ -1,6 +1,6 @@
 <?php
 /**
- * Single post partial template for show reviews.
+ * Single post partial template for album reviews.
  *
  * @package understrap
  */
@@ -23,13 +23,6 @@
 	<div class="entry-content">
 
 		<?php the_content(); ?>
-
-		<?php
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
-			'after'  => '</div>',
-		) );
-		?>
 
 	</div><!-- .entry-content -->
 

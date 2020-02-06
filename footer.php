@@ -58,7 +58,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<body>
 									<a href="">articles</a>
 									<a href="">articles</a>
-									<a href="http://wrbbradio.org/"><img src="img/logo.png" class="logo" alt="WRBB Logo"></a>
+									<a href="http://wrbbradio.org/"><img src="<?php bloginfo('template_url'); ?>/img/logo.png" class="logo" alt="WRBB Logo"></a>
 									<a href="">articles</a>
 									<a href="">articles</a>
 								</body>
