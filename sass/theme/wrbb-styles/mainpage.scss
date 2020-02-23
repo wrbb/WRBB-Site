@@ -31,15 +31,15 @@
 .mpa-meta #title {
 	font-family: 'Playfair Display', serif;
 	font-weight: 900;
-	margin-bottom: 5px;
+	margin-bottom: 0;
 }
 
 #mpa-date {
 	font-family: 'Playfair Display', serif;
 	font-style: italic;
 	font-weight: 300;
-	margin-bottom: 0;
 	font-size: 12px;
+	margin-bottom: 5px;
 }
 
 @media only screen and (max-width: 575px) {
