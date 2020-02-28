@@ -7,6 +7,20 @@
 
 ?>
 
+<?php
+global $post;
+$post_slug = $post->post_name;
+$category_name = "";
+?>
+
+<?php if ($post_slug == "interview-page") : ?>
+    <?php $category_name = "interview-article" ?>
+<?php elseif ($post_slug == "album-review-page") : ?>
+    <?php $category_name = "album-review-article" ?>
+<?php elseif ($post_slug == "show-review-page") : ?>
+    <?php $category_name = "show-review-article" ?>
+<?php endif; ?>
+
 <!-- Import Roboto font -->
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
@@ -30,7 +44,7 @@
         <?php $page_tags = get_the_tags( $page_id ); ?>
 
         <!-- Queries wordpress backend for all posts of category "main-page-article" -->
-        <?php $catquery = new WP_Query( array ('orderby' => 'rand', 'category_name=main-page-article' ) ); ?>
+        <?php $catquery = new WP_Query( array ('orderby' => 'rand', 'category_name' => $category_name ) ); ?>
 
         <!-- Queries wordpress backend for posts that have tags similar to tags of current page -->
         <?php $tag_query = new WP_Query( array( 'orderby' => 'rand', 'tag_slug__in' => $page_tags ) ); ?>
