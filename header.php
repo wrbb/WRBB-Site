@@ -168,63 +168,23 @@ $container = get_theme_mod('understrap_container_type');
 
         </div><!-- #wrapper-navbar end -->
 
+        <!--Find slug of current page-->
+        <?php
+            global $post;
+            $post_slug = $post->post_name;
+        ?>
 
-<!-- Code for slider -->
-<div class="slider-wrapper">
-        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
-            <li data-target="#carousel" data-slide-to="3"></li>
-            <li data-target="#carousel" data-slide-to="4"></li>
-            </ol>
-            <!-- Inner slides w/ captions -->
-            <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album1.jpg" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p onload="fitCaptionText()">Thissssssssssssssssssss is the first sliiiiiiiiiiiiiiiiiiiiide. I will use this first slide to test caption text wrapping and other stuff like that. Very nice.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album2.jpg" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p onload="fitCaptionText()">This is the Second slide</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album3.jpg" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p onload="fitCaptionText()">This is the Third slide</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album4.jpg" alt="Forth slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p onload="fitCaptionText()">...</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album5.jpg" alt="Fifth slide">
-                <div class="carousel-caption d-none d-md-block">
-                <p onload="fitCaptionText()">...</p>
-                </div>
-            </div>
+        <!--Display slider with images taken from posts in that category if any of these pages indicated by slug-->
+        <?php if (is_front_page() || $post_slug == "main-page-menu-selection" || $post_slug == "main-page"
+        || $post_slug == "article-main-page" || $post_slug == "music-main-page" || $post_slug == "feature-page"
+        || $post_slug == "review-main-page") : ?>
+            <?php get_template_part( 'slider', 'slider' ); ?>
+        <!--Static image otherwise-->
+        <?php else: ?>
+        <div class="header-image-fullscreen">
+            <?php the_post_thumbnail( 'full' ); ?>
         </div>
-        <!-- Left and Right slide controls -->
-        <a class="carousel-control-prev" href="#carousel" role="button" onclick="slideLeft()" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel" role="button" onclick="slideRight()" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-            </a>
-    </div>
-</div>
-<!-- Code for slider -->
+        <?php endif; ?>
 
     </div> <!-- header -->
 
