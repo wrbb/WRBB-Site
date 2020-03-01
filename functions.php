@@ -299,3 +299,6 @@ function podcast_func( $atts ){
 	wp_reset_query();
 }
 add_shortcode( 'podcast', 'podcast_func' );
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+@ini_set( 'max_execution_time', '300' );

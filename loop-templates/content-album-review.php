@@ -32,4 +32,4 @@
 
 	</div><!-- .entry-content -->
 
-</article><!-- #post-## --> 
+</article><!-- #post-## -->

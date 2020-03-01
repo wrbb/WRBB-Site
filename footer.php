@@ -64,7 +64,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								</body>
 							</div>
 					
-								<a href="<?php  echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>">
+								<a href="<?php echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>">
 								<?php printf( 
 								/* translators:*/
 								esc_html__( 'Proudly powered by %s', 'understrap' ),'WordPress' ); ?></a>

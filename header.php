@@ -11,6 +11,7 @@ $container = get_theme_mod('understrap_container_type');
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
+
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +20,7 @@ $container = get_theme_mod('understrap_container_type');
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>">
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -27,16 +28,17 @@ $container = get_theme_mod('understrap_container_type');
     <!-- Inport font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- AJAX-ify all links -->
-
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
     <!-- History.js -->
     <script src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
     <!-- Ajaxify -->
     <script src="http://rawgithub.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
+    <script src="src\js\wrbb-js\slider.js"></script>  
 
 </head>
 
 <body <?php body_class(); ?>>
+
 <div class="hfeed site" id="page">
     <div class="header <?php echo 'null' ?>">
         <div class="row">
@@ -165,4 +167,65 @@ $container = get_theme_mod('understrap_container_type');
             </nav><!-- .site-navigation -->
 
         </div><!-- #wrapper-navbar end -->
+
+
+<!-- Code for slider -->
+<div class="slider-wrapper">
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+            <li data-target="#carousel" data-slide-to="3"></li>
+            <li data-target="#carousel" data-slide-to="4"></li>
+            </ol>
+            <!-- Inner slides w/ captions -->
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album1.jpg" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">Thissssssssssssssssssss is the first sliiiiiiiiiiiiiiiiiiiiide. I will use this first slide to test caption text wrapping and other stuff like that. Very nice.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album2.jpg" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">This is the Second slide</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album3.jpg" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">This is the Third slide</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album4.jpg" alt="Forth slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">...</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src= "<?php bloginfo('template_url'); ?>/img/album5.jpg" alt="Fifth slide">
+                <div class="carousel-caption d-none d-md-block">
+                <p onload="fitCaptionText()">...</p>
+                </div>
+            </div>
+        </div>
+        <!-- Left and Right slide controls -->
+        <a class="carousel-control-prev" href="#carousel" role="button" onclick="slideLeft()" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel" role="button" onclick="slideRight()" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+    </div>
+</div>
+<!-- Code for slider -->
+
     </div> <!-- header -->
+
+
