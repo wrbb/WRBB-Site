@@ -24,7 +24,7 @@ foreach ($items as $show) {
 	$i += 1;
 }
 
-array_multisort(array_map(strtolower, array_column($items, 'title')), $items);
+array_multisort(array_map('strtolower', array_column($items, 'title')), $items);
 ?>
 
 <div class="wrapper" id="full-width-page-wrapper">

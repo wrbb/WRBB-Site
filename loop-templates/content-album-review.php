@@ -1,6 +1,6 @@
 <?php
 /**
- * Single post partial template for interviews.
+ * Single post partial template for album reviews.
  *
  * @package understrap
  */

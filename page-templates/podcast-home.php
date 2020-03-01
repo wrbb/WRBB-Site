@@ -23,9 +23,9 @@ $shows = array('360-huntington', 'black-in-boston', 'brainwaves', 'hu-nu', 'irc-
 
 		<?php for ($i = 0; $i < count($shows); $i++) :
 			$show = $shows[$i];
-			$catquery = new WP_Query('category_name=' . $show . '&post_type=podcasts');
-			$catquery->the_post();
-			$catID = get_the_category(); ?>
+			$cat_query = new WP_Query('category_name=' . $show . '&post_type=podcasts');
+			$cat_query->the_post();
+			$cat_id = get_the_category(); ?>
 			<?php if ($i % 2 == 0) : ?>
 				<div class="podcast-info d-flex row">
 			<?php else : ?>
@@ -36,7 +36,7 @@ $shows = array('360-huntington', 'black-in-boston', 'brainwaves', 'hu-nu', 'irc-
 					</div>
 
 					<div class="col-sm-4">
-						<?php echo category_description( $catID[0] ); ?>
+						<?php echo category_description( $cat_id[0] ); ?>
 					</div>
 
 					<div class="col-sm-4">
@@ -46,7 +46,7 @@ $shows = array('360-huntington', 'black-in-boston', 'brainwaves', 'hu-nu', 'irc-
 							<h5><?php echo $post->post_title ?></h5>
 							<p class="podcast-notes"><?php echo wp_trim_words($post->post_content, 50) ?></p>
 							<a href="<?php echo get_permalink() ?>">
-								<img class="play-button" src="<?php bloginfo('template_url') ?>/src/img/play-button.svg">
+								<img class="play-button--podcast" src="<?php bloginfo('template_url') ?>/src/img/play-button.svg">
 								<span class="listen-now">LISTEN NOW</span>
 							</a>
 						</div>
