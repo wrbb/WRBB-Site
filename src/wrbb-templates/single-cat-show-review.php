@@ -8,13 +8,6 @@ get_header();
 $container  = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<html>
-
-<head>
-	<link rel ="stylesheet" href="css/styles.css">
-	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-</head>
-
 <div class="wrapper" id="single-wrapper">
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
@@ -71,10 +64,13 @@ $container  = get_theme_mod( 'understrap_container_type' );
                             <p class="author-description"><?php esc_textarea(the_author_meta('description')) ?></p>
                         <?php endif; ?>
                 </div>
+
             </div>
+
         </div><!-- .row -->
+
     </div><!-- Container end -->
-</div><!-- Wrapper end -->			
-</html>
+
+</div><!-- Wrapper end -->
 
 <?php get_footer(); ?>
