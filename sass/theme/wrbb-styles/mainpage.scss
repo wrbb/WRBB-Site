@@ -29,12 +29,17 @@
 }
 
 .mpa-meta #title {
-	margin-bottom: 5px;
+	font-family: 'Playfair Display', serif;
+	font-weight: 900;
+	margin-bottom: 0;
 }
 
 #mpa-date {
-	margin-bottom: 0;
+	font-family: 'Playfair Display', serif;
+	font-style: italic;
+	font-weight: 300;
 	font-size: 12px;
+	margin-bottom: 0;
 }
 
 @media only screen and (max-width: 575px) {

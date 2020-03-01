@@ -141,9 +141,9 @@ function mp_understrap_posted_on()
   );
   $byline = sprintf(
     esc_html_x('%s', 'post author', 'understrap'),
-    '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>'
+    '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author_meta('first_name') . " " . get_the_author_meta('last_name')) . '</a></span>'
   );
-  echo '<p id="mpa-date">' . $posted_on . '</p><p id="mpa-author"> ' . $byline . '</p>'; // WPCS: XSS OK.
+  echo '<p id="mpa-date"> ' . $posted_on . '</p><p id="mpa-author"> ' . $byline . '</p>'; // WPCS: XSS OK.
 }
 /**
  * Used for article thumbnails on the home page
@@ -167,7 +167,7 @@ function understrap_posted_on() {
   );
   $byline = sprintf(
     esc_html_x( 'by %s', 'post author', 'understrap' ),
-    '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+    '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html(get_the_author_meta('first_name') . " " . get_the_author_meta('last_name')) . '</a></span>'
   );
   echo '<p>' . $byline . '<span style="color: red"> | </span>' . $posted_on . '</p>'; // WPCS: XSS OK.
 }
