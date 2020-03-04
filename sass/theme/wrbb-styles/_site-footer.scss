@@ -122,3 +122,18 @@
 		}
 	}
 }
+
+/* Mobile Styles */
+@media only screen and (max-width: 720px) {
+	#wrapper-footer {
+		#colophon {
+			.site-info {
+				.form {
+					input[type=email] {
+						width: auto;
+					}
+				}
+			}
+		}
+	}
+}

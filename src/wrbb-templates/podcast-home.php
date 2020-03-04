@@ -1,9 +1,8 @@
 <?php
 /**
- * Template Name: Podcast Home Template
+ * Podcast Menu
  *
- * Template for the podcast menu.
- *
+ * @author Spencer LaChance
  * @package understrap
  */
 

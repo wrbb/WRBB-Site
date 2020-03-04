@@ -40,10 +40,9 @@ $container = get_theme_mod('understrap_container_type');
 <body <?php body_class(); ?>>
 
 <div class="hfeed site" id="page">
-    <div class="header <?php echo 'null' ?>">
-        <div class="row">
-            <div class="col-xs-12 head-img"><img src="<?php bloginfo('template_url'); ?>/black-w-red.png" id="wrbb-head-logo">
-            </div>
+    <div class="header">
+        <div class="head-img">
+            <img src="<?php bloginfo('template_url'); ?>/black-w-red.png" id="wrbb-head-logo">
         </div>
         <div class="menu-bar">
             <div class="left-side row">
