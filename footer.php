@@ -91,6 +91,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 	</div><!-- wrapper end -->
 
+    <?php get_template_part( 'src/wrbb-templates/playerbar' ); ?>
+
 	</div><!-- #page we need this extra closing tag here -->
 
 	<?php wp_footer(); ?>
