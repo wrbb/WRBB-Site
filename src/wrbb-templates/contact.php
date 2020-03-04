@@ -1,10 +1,12 @@
 <?php
 /**
- * Template Name: Contact
- * The template for the playerbar located on the bottom of the screen
+ * Contact Page
  *
+ * @author Bryce Thuilot
  * @package understraps
  */
+
+get_header();
 ?>
 
 <div class="padding-top-bottom" xmlns="http://www.w3.org/1999/html">
@@ -341,3 +343,5 @@
         </div>
     </div>
 </div>
+
+<?php get_footer() ?>

@@ -1,12 +1,12 @@
 <?php
 /**
- * Template Name: Playerbar Popup
- * The popup window with the playerbar
+ * Playerbar Popup window containing the playerbar controls
  *
+ * @author Spencer LaChance
  * @package understraps
  */
 
-include __DIR__ . '/../src/wrbb-templates/getClient.php';
+include 'getClient.php';
 // @var SpinitronApiClient $client
 $result = $client->search( 'shows', [ 'start' => '+0 hour', 'count' => '1' ] );
 $show = $result['items'][0]['title'];

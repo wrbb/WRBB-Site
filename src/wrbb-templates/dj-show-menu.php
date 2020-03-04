@@ -1,14 +1,15 @@
 <?php
 /**
- * Template Name: DJ Show Menu Page
+ * DJ Show Menu
  *
+ * @author Spencer LaChance
  * @package understrap
  */
 
 get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 
-include __DIR__ . '/../src/wrbb-templates/getClient.php';
+include 'getClient.php';
 // @var SpinitronApiClient $client
 $result = $client->search('shows', ['start' => '+1 week', 'count' => '200']);
 
