@@ -7,19 +7,22 @@
 
 ?>
 
-<?php
-global $post;
-$post_slug = $post->post_name;
-$category_name = "";
+<!-- Get post ID of current page (in wordpress, page is a post) -->
+<?php global $post;
+$global_post = $post;
+$page_id = $post->ID;
 ?>
 
-<?php if ($post_slug == "interview-page") : ?>
-    <?php $category_name = "interview-article" ?>
-<?php elseif ($post_slug == "album-review-page") : ?>
-    <?php $category_name = "album-review-article" ?>
-<?php elseif ($post_slug == "show-review-page") : ?>
-    <?php $category_name = "show-review-article" ?>
-<?php endif; ?>
+<?php
+// get category slug in wordpress
+if (is_single()) {
+    $cats = get_the_category();
+    $cat = $cats[0];
+} else {
+    $cat = get_category(get_query_var('cat'));
+}
+$cat_slug = $cat->slug;
+?>
 
 <!-- Import Roboto font -->
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -35,63 +38,73 @@ $category_name = "";
     <!-- Wrapper for 3 related articles partitioned into columns -->
     <div class="related-articles-columns">
 
-        <!-- Get post ID of current page (in wordpress, page is a post) -->
-        <?php global $post;
-            $page_id = $post->ID;
+        <!-- Get tags of current page -->
+        <?php $page_tags = get_the_tags($id = $page_id); ?>
+
+        <?php $page_tags_slugs = array();
+        if ($page_tags) {
+            foreach ($page_tags as $tag) {
+                array_push($page_tags_slugs, $tag->slug);
+            }
+        }
         ?>
 
-        <!-- Get tags of current page -->
-        <?php $page_tags = get_the_tags( $page_id ); ?>
-
         <!-- Queries wordpress backend for all posts of category "main-page-article" -->
-        <?php $catquery = new WP_Query( array ('orderby' => 'rand', 'category_name' => $category_name ) ); ?>
+        <!--        --><?php //$catquery = new WP_Query( array ('orderby' => 'rand', 'category_name' => $category_name ) ); ?>
+        <?php $cat_query = new WP_Query(array('orderby' => 'rand', 'category_name' => $cat_slug)); ?>
 
         <!-- Queries wordpress backend for posts that have tags similar to tags of current page -->
-        <?php $tag_query = new WP_Query( array( 'orderby' => 'rand', 'tag_slug__in' => $page_tags ) ); ?>
+        <?php $tag_query = new WP_Query(array('orderby' => 'rand', 'tag_slug__in' => $page_tags_slugs)); ?>
 
         <?php $postCount = 0; ?>
 
-        <!-- begin by filling Related Articles with posts that have same tags as current page -->
-        <?php if ($tag_query->have_posts() ) : ?>
+        <!-- begin by filling Related Articles with posts that have same category as current page -->
+        <?php if ($cat_query->have_posts()) : ?>
 
             <div class="row mp-articles">
 
-                <?php while ($postCount < 3 && $tag_query->have_posts()) : $tag_query->the_post(); ?>
+                <?php while ($postCount < 3 && $cat_query->have_posts()) : $cat_query->the_post(); ?>
 
-                    <div class="col-sm-4 mpa">
-                        <div class="related-article">
-                            <?php get_template_part( 'loop-templates/content-mainpage', get_post_format() ); ?>
+                    <?php if (get_the_title() !== $global_post->post_title) : ?>
+
+                        <div class="col-sm-4 mpa">
+                            <div class="related-article">
+                                <?php get_template_part('loop-templates/content-mainpage', get_post_format()); ?>
+                            </div>
                         </div>
-                    </div>
 
-                    <?php $postCount++; ?>
+                        <?php $postCount++; ?>
+
+                    <?php endif; ?>
 
                 <?php endwhile; ?>
 
-            </div>
-
         <?php endif; ?>
 
-        <!-- If there weren't enough posts with similar tag to current page, fill remaining positions
-        of 3 total positions with other 'main-page-article' posts -->
+        <!-- If there weren't enough posts with same category to current page, fill remaining positions
+        of 3 total positions with other 'main-page-article' posts of same tag -->
         <?php if ($postCount < 3) : ?>
 
-            <div class="relate-articles-columns">
+                <?php while ($postCount < 3 && $tag_query->have_posts()) : $tag_query->the_post(); ?>
 
-                <?php while ($postCount < 3 && $catquery->have_posts()) : $catquery->the_post(); ?>
+                    <?php if (get_the_title() !== $global_post->post_title) : ?>
 
-                    <div class="column">
-                        <?php get_template_part( 'loop-templates/content-mainpage', get_post_format() ); ?>
-                    </div>
+                        <div class="col-sm-4 mpa">
+                            <div class="related-article">
+                                <?php get_template_part('loop-templates/content-mainpage', get_post_format()); ?>
+                            </div>
+                        </div>
 
-                    <?php $postCount++; ?>
+                        <?php $postCount++; ?>
+
+                    <?php endif; ?>
 
                 <?php endwhile; ?>
 
             </div>
 
         <?php endif; ?>
-    
+
     </div><!-- End of container for related articles columns -->
 
 </div> <!-- End of container for entire related articles section -->
