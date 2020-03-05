@@ -20,7 +20,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 				<?php while ( have_posts() ) : the_post(); // Load post content?>
 
-					<?php get_template_part( 'loop-templates/content', 'album-review' ); ?>
+					<?php get_template_part( 'loop-templates/content', 'article' ); ?>
 
 					<?php understrap_post_nav(); ?>
 

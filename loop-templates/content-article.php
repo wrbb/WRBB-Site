@@ -1,10 +1,9 @@
 <?php
 /**
- * Single post partial template for show reviews.
+ * Single post partial template for articles (editorials, interviews, album and show reviews).
  *
  * @package understrap
  */
-
 ?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
