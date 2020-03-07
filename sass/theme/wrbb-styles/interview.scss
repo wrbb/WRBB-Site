@@ -10,8 +10,6 @@
 
 .entry-header {
 	position: relative;
-	z-index: 2;
-	bottom: 10px;
 }
 
 #article-title {
@@ -23,6 +21,7 @@
 	font-family: 'Playfair Display', serif;
 	font-weight: bold;
 	line-height: normal;
+	z-index: 2;
 }
 
 .entry-meta {
@@ -37,7 +36,6 @@
 
 .sidebar {
 	position: relative;
-	top: 70px;
 }
 
 .spotify {

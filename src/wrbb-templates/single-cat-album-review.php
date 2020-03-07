@@ -14,6 +14,18 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 		<hr id="header-line">
 
+        <header class="entry-header">
+
+            <?php the_title( '<h1 class="entry-title"><span id="article-title">', '</span></h1>' ); ?>
+
+            <div class="entry-meta">
+
+                <?php understrap_posted_on($post->ID); ?>
+
+            </div><!-- .entry-meta -->
+
+        </header><!-- .entry-header -->
+
 		<div class="row" id="album-review-content">
 
 			<main class="site-main col-md-8" id="post-main">
