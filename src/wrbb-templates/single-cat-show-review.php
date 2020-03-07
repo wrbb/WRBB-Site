@@ -14,13 +14,25 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 		<hr id="header-line">
 
+        <header class="entry-header">
+
+            <?php the_title( '<h1 class="entry-title"><span id="article-title">', '</span></h1>' ); ?>
+
+            <div class="entry-meta">
+
+                <?php understrap_posted_on($post->ID); ?>
+
+            </div><!-- .entry-meta -->
+
+        </header><!-- .entry-header -->
+
 		<div class="row" id="show-review-content">
 
 			<main class="site-main col-md-8" id="post-main">
 
 				<?php while ( have_posts() ) : the_post(); // Load post content?>
 
-					<?php get_template_part( 'loop-templates/content', 'show-review' ); ?>
+					<?php get_template_part( 'loop-templates/content', 'article' ); ?>
 
 					<?php understrap_post_nav(); ?>
 
@@ -54,15 +66,15 @@ $container  = get_theme_mod( 'understrap_container_type' );
                 </div>
 
                 <div class="author-box">
-                        <div class="author-img"><?php echo get_avatar(get_the_author_meta('user_email'), '30') ?></div>
-                            
-                        <p class="author"><a href=<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>>
-                        <?php echo get_the_author_meta('first_name');?>
-                        <?php echo get_the_author_meta('last_name'); ?></a></p>
+                    <div class="author-img"><?php echo get_avatar(get_the_author_meta('user_email'), '30') ?></div>
 
-                        <?php if (get_the_author_meta('description')) : ?>
-                            <p class="author-description"><?php esc_textarea(the_author_meta('description')) ?></p>
-                        <?php endif; ?>
+                    <p class="author"><a href=<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>>
+                    <?php echo get_the_author_meta('first_name');?>
+                    <?php echo get_the_author_meta('last_name'); ?></a></p>
+
+                    <?php if (get_the_author_meta('description')) : ?>
+                        <p class="author-description"><?php esc_textarea(the_author_meta('description')) ?></p>
+                    <?php endif; ?>
                 </div>
 
             </div>

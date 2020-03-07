@@ -14,13 +14,25 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 		<hr id="header-line">
 
+        <header class="entry-header">
+
+            <?php the_title( '<h1 class="entry-title"><span id="article-title">', '</span></h1>' ); ?>
+
+            <div class="entry-meta">
+
+                <?php understrap_posted_on($post->ID); ?>
+
+            </div><!-- .entry-meta -->
+
+        </header><!-- .entry-header -->
+
 		<div class="row" id="interview-content">
 
 			<main class="site-main col-sm-8" id="post-main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'loop-templates/content', 'interview' ); ?>
+					<?php get_template_part( 'loop-templates/content', 'article' ); ?>
 
 					<?php understrap_post_nav(); ?>
 

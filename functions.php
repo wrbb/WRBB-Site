@@ -149,8 +149,10 @@ function mp_understrap_posted_on()
  * Used for article thumbnails on the home page
  * Prints HTML with meta information for the current post-date/time and author.
  * Overrides function in inc/template-tags.php
+ *
+ * @param int $post_id The ID of the current post
  */
-function understrap_posted_on() {
+function understrap_posted_on($post_id = 0) {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
     $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
@@ -165,11 +167,25 @@ function understrap_posted_on() {
     esc_html_x( '%s', 'post date', 'understrap' ),
     '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
   );
-  $byline = sprintf(
-    esc_html_x( 'by %s', 'post author', 'understrap' ),
-    '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html(get_the_author_meta('first_name') . " " . get_the_author_meta('last_name')) . '</a></span>'
-  );
-  echo '<p>' . $byline . '<span style="color: red"> | </span>' . $posted_on . '</p>'; // WPCS: XSS OK.
+  if ($post_id == 0) {
+	  $byline = sprintf(
+		  esc_html_x( 'by %s', 'post author', 'understrap' ),
+		  '<span class="author vcard"><a class="url fn n" href="' .
+		    esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' .
+		    esc_html(get_the_author_meta('first_name') . " " . get_the_author_meta('last_name')) . '</a></span>'
+	  );
+  } else {
+  	// This function is being called outside the loop, so the $author_id must be specified
+	  $author_id = get_post_field('post_author', $post_id);
+	  $byline = sprintf(
+		  esc_html_x( 'by %s', 'post author', 'understrap' ),
+		  '<span class="author vcard"><a class="url fn n" href="' .
+		    esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
+		    esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
+		    '</a></span>'
+	  );
+  }
+	echo '<p>' . $byline . '<span style="color: red"> | </span>' . $posted_on . '</p>'; // WPCS: XSS OK.
 }
 
 /**
