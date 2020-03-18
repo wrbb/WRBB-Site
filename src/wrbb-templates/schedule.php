@@ -1,9 +1,8 @@
 <?php
 /**
- * Template Name: Schedule Page Template
+ * Schedule Page
  *
- * Template for displaying a schedule page.
- *
+ * @author Joseph Kaming-Thanassi
  * @package understrap
  */
 ?>
@@ -22,7 +21,7 @@
 		<?php get_header(); ?>
 	</head>
 	<body>
-		<iframe style="width:100%; min-height: 90vh; margin:auto;" src="https://spinitron.com/WRBB/calendar"></iframe>
+		<iframe class="schedule" src="https://spinitron.com/WRBB/calendar"></iframe>
 	</body>
 	<?php get_footer(); ?>
 </html>

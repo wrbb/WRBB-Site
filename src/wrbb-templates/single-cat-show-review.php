@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all album reviews.
+ * The template for displaying all show reviews.
  *
  * @package understrap
  */
@@ -26,7 +26,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
         </header><!-- .entry-header -->
 
-		<div class="row" id="album-review-content">
+		<div class="row" id="show-review-content">
 
 			<main class="site-main col-md-8" id="post-main">
 
@@ -42,6 +42,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 							comments_template();
 						endif;
 					?>
+
 				<?php endwhile; // end of the loop. ?>
 
 			</main><!-- #main -->
@@ -65,27 +66,23 @@ $container  = get_theme_mod( 'understrap_container_type' );
                 </div>
 
                 <div class="author-box">
-                        <div class="author-img"><?php echo get_avatar(get_the_author_meta('user_email'), '30') ?></div>
-                            
-                        <p class="author"><a href=<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>>
-                        <?php echo get_the_author_meta('first_name');?>
-                        <?php echo get_the_author_meta('last_name'); ?></a></p>
+                    <div class="author-img"><?php echo get_avatar(get_the_author_meta('user_email'), '30') ?></div>
 
-                        <?php if (get_the_author_meta('description')) : ?>
-                            <p class="author-description"><?php esc_textarea(the_author_meta('description')) ?></p>
-                        <?php endif; ?>
+                    <p class="author"><a href=<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>>
+                    <?php echo get_the_author_meta('first_name');?>
+                    <?php echo get_the_author_meta('last_name'); ?></a></p>
+
+                    <?php if (get_the_author_meta('description')) : ?>
+                        <p class="author-description"><?php esc_textarea(the_author_meta('description')) ?></p>
+                    <?php endif; ?>
                 </div>
-                
+
             </div>
 
-		</div><!-- .row -->
-			
+        </div><!-- .row -->
+
     </div><!-- Container end -->
 
 </div><!-- Wrapper end -->
-
-</html>
-
-<?php get_template_part ( 'src/wrbb-templates/related-articles', "related-articles" ) ?>
 
 <?php get_footer(); ?>
