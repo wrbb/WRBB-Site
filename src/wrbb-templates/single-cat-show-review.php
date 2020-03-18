@@ -85,4 +85,6 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 </div><!-- Wrapper end -->
 
+<?php get_template_part ( 'src/wrbb-templates/related-articles', "related-articles" ) ?>
+
 <?php get_footer(); ?>
