@@ -1,4 +1,3 @@
-
 #header-line {
 	border-style: solid;
 	border-color: red;
@@ -11,32 +10,33 @@
 
 .entry-header {
 	position: relative;
-	z-index: 2;
-	bottom: 10px;
 }
 
 #article-title {
+	-webkit-box-decoration-break: clone;
 	background-color: white;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 0 10px;
 	position: relative;
 	left: -10px;
+	font-family: 'Playfair Display', serif;
+	font-weight: bold;
+	line-height: normal;
+	z-index: 2;
 }
 
 .entry-meta {
 	padding-top: 10px;
+	font-family: 'Playfair Display', serif;
+	font-style: italic;
 }
 
 .post-navigation {
 	margin-bottom: 20px;
 }
 
-.sidebar {
-	position: relative;
-	top: 70px;
-}
-
 .spotify {
+	font-family: "Playfair Display", serif;
+	font-style: italic;
 	margin: auto;
 	max-width: 300px;
 }
@@ -45,7 +45,8 @@
 	display: flex;
 	justify-content: space-between;
 	max-width: 250px;
-	margin: 25px auto;
+	margin: auto;
+	padding: 50px 0;
 }
 
 .socials a {
@@ -54,7 +55,7 @@
 }
 
 .author-box {
-	margin: 30px auto;
+	margin: auto;
 	max-width: 300px;
 }
 
@@ -63,18 +64,25 @@
 }
 
 .author-box .author {
-	display: inline;
+	font-family: 'Playfair Display', serif;
 	font-size: 20px;
-	vertical-align: -10%;
+	font-style: italic;
 	padding-left: 5px;
+	display: inline;
+	vertical-align: -10%;
 }
 
 .author-description {
+	font-family: 'Roboto', sans-serif;
 	padding-top: 15px;
 }
 
 @media only screen and (max-width: 575px) {
 	.sidebar {
 		position: static;
+	}
+
+	.socials {
+		padding: 25px 0;
 	}
 }

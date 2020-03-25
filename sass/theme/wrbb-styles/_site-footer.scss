@@ -7,7 +7,7 @@
 
 #wrapper-footer{
 
-	background-color: #000;
+	background-color:#191819;
 
 	#colophon {
 
@@ -98,6 +98,11 @@
 				}
 			}
 
+			.logo{
+				width: 150px;
+				height: 75px;
+			}
+
 			a {
 				color: #D30F0F;
 				color: inherit;
@@ -114,6 +119,21 @@
 			}
 
 
+		}
+	}
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 720px) {
+	#wrapper-footer {
+		#colophon {
+			.site-info {
+				.form {
+					input[type=email] {
+						width: auto;
+					}
+				}
+			}
 		}
 	}
 }

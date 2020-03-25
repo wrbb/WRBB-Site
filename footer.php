@@ -58,13 +58,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<body>
 									<a href="">articles</a>
 									<a href="">articles</a>
-									<a href="http://wrbbradio.org/"><img src="img/logo.png" class="logo" alt="WRBB Logo"></a>
+									<a href="http://wrbbradio.org/"><img src="<?php bloginfo('template_url'); ?>/img/logo.png" class="logo" alt="WRBB Logo"></a>
 									<a href="">articles</a>
 									<a href="">articles</a>
 								</body>
 							</div>
 					
-								<a href="<?php  echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>">
+								<a href="<?php echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>">
 								<?php printf( 
 								/* translators:*/
 								esc_html__( 'Proudly powered by %s', 'understrap' ),'WordPress' ); ?></a>
@@ -90,6 +90,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		</div><!-- container end -->
 
 	</div><!-- wrapper end -->
+
+    <?php get_template_part( 'src/wrbb-templates/playerbar' ); ?>
 
 	</div><!-- #page we need this extra closing tag here -->
 
