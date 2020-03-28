@@ -10,11 +10,14 @@ get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 
 include 'getClient.php';
+
 // @var SpinitronApiClient $client
 $result = $client->search('shows', ['start' => '+1 week', 'count' => '200']);
 
 $items = $result['items'];
+
 $i = 0;
+
 foreach ($items as $show) {
 	if ($show['id'] == 72215) {
 		$items[$i]['title'] = "Smooth Grooves";
