@@ -1,7 +1,8 @@
 <?php
 /**
- * Template Name: DJ Show Bio Page
+ * DJ Show Bio
  *
+ * @author Spencer LaChance
  * @package understrap
  */
 
@@ -10,7 +11,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 $showID = $_GET['id'];
 
-include __DIR__ . '/../src/wrbb-templates/getClient.php';
+include 'getClient.php';
 // @var SpinitronApiClient $client
 $show = $client->search('shows/'.$showID, []);
 
@@ -30,7 +31,7 @@ echo '</script>';
 <div class="wrapper" id="full-width-page-wrapper">
 	<div class="<?php echo esc_attr( $container ); ?>" id="content">
 		<hr id="header-line">
-		<h2 class="entry-header"><span class="single-title">dj show bios.</span></h2>
+		<h2 class="entry-header"><span class="single-title">dj show bio.</span></h2>
 
 		<!-- Check if there is a DJ logo for this show and display it if there is -->
 		<?php $path = '/src/img/djlogos/' . $show['title'] . '.jpg';
