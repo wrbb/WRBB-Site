@@ -1,23 +1,28 @@
 .related-articles-container h1 {
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 36px;
-    line-height: 48px;
-    margin-left: 257px;
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 48px;
+  margin-left: 257px;
 }
 
 #related-articles-line {
-    width: 100%;
-    height: 5px;
-    margin-top: -10px;
-    background-color: #D30F0F;
+  width: 100%;
+  height: 5px;
+  margin-top: -10px;
+  background-color: #D30F0F;
 }
 
 .related-article {
-    max-width: 270px;
-    margin: auto;
+  max-width: 270px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
 }
+
+
 
 
 

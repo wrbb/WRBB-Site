@@ -8,8 +8,6 @@ get_header();
 $container  = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<html>
-
 <head>
 	<link rel ="stylesheet" href="css/styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -78,8 +76,6 @@ $container  = get_theme_mod( 'understrap_container_type' );
 </div><!-- Container end -->
 
 </div><!-- Wrapper end -->
-
-</html>
 
 <?php get_template_part ( 'src/wrbb-templates/related-articles', "related-articles" ) ?>
 
