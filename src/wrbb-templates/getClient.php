@@ -7,12 +7,8 @@ if (!isset($client)) {
     include_once __DIR__ . '/SpinitronApiClient.php';
     // Put your station's API key into a file named "api-key.txt" one dir up from this file.
     // You can change the cache directory but it must be writable by the web server.
-    try {
-        $client = new SpinitronApiClient(
-            trim(file_get_contents(__DIR__ . '/api-key.txt')),
-            __DIR__ . '/cache'
-        );
-    } catch (Exception $e) {
-        echo $e ;
-    }
+    $client = new SpinitronApiClient(
+        trim(file_get_contents(__DIR__ . '/api-key.txt')),
+        __DIR__ . '/cache'
+    );
 }
