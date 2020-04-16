@@ -122,7 +122,7 @@ function my_single_template($single)
  * Prints HTML with meta information for the current post-date/time and author.
  * Overrides function in inc/template-tags.php
  */
-function mp_understrap_posted_on()
+function mp_understrap_posted_on($post_id)
 {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   if (get_the_time('U') !== get_the_modified_time('U')) {
@@ -139,10 +139,14 @@ function mp_understrap_posted_on()
     esc_html_x('%s', 'post date', 'understrap'),
     '<a href="' . esc_url(get_permalink()) . '" rel="bookmark">' . $time_string . '</a>'
   );
-  $byline = sprintf(
-    esc_html_x('%s', 'post author', 'understrap'),
-    '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author_meta('first_name') . " " . get_the_author_meta('last_name')) . '</a></span>'
-  );
+	$author_id = get_post_field('post_author', $post_id);
+	$byline = sprintf(
+		esc_html_x( 'by %s', 'post author', 'understrap' ),
+		'<span class="author vcard"><a class="url fn n" href="' .
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
+		esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
+		'</a></span>'
+	);
   echo '<p id="mpa-date"> ' . $posted_on . '</p><p id="mpa-author"> ' . $byline . '</p>'; // WPCS: XSS OK.
 }
 /**

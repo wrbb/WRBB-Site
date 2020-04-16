@@ -14,13 +14,11 @@ $container   = get_theme_mod( 'understrap_container_type' );
 	<?php get_template_part( 'global-templates/hero' ); ?>
 <?php endif; ?>
 
-<?php include 'slider.html';?>
-
 <div class="wrapper" id="index-wrapper">
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<hr class="header-line">
+		<hr class="header-line" id="mp-line">
 
 		<?php $cat_query = new WP_Query( 'category_name=main-page-article' ); ?>
 
@@ -30,7 +28,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 				<?php while ($cat_query->have_posts()) : $cat_query->the_post(); ?>
 
-					<div class="col-sm-3 mpa">
+					<div class="col-sm-3">
 
 						<?php get_template_part( 'loop-templates/content-mainpage', get_post_format() ); ?>
 
