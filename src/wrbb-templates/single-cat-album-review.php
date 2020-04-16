@@ -12,7 +12,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<hr id="header-line">
+		<hr class="header-line">
         <header class="entry-header">
             <?php the_title( '<h1 class="entry-title"><span id="article-title">', '</span></h1>' ); ?>
             <div class="entry-meta">
@@ -73,11 +73,11 @@ $container  = get_theme_mod( 'understrap_container_type' );
             </div>
 
 		</div><!-- .row -->
+
+	    <?php get_template_part ( 'src/wrbb-templates/related-articles', "related-articles" ) ?>
 			
-</div><!-- Container end -->
+	</div><!-- Container end -->
 
 </div><!-- Wrapper end -->
-
-<?php get_template_part ( 'src/wrbb-templates/related-articles', "related-articles" ) ?>
 
 <?php get_footer(); ?>

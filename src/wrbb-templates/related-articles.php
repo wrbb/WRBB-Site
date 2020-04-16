@@ -65,30 +65,28 @@ $posts_to_render = array_values(array_unique($posts_to_render));
     <!-- Container for entire related articles section -->
     <div class="related-articles-container">
 
-        <h1>related articles.</h1>
+        <h2>related articles.</h2>
 
         <!-- Underline for related articles -->
-        <hr id="related-articles-line">
+        <hr class="header-line" id="ra-line">
 
         <!-- Wrapper for 3 related articles partitioned into columns -->
-        <div class="related-articles-columns">
+        <div>
 
             <div class="row mp-articles">
 
-                    <?php for ($i = 0; $i < 3; $i++) { ?>
+                <?php for ($i = 0; $i < 3; $i++) { ?>
 
-                        <div class="col-sm-4 mpa">
-                            <div class="related-article">
-                                <?php get_template_part('loop-templates/content-mainpage',
-                                    get_post_format($post = $posts_to_render[$i])); ?>
-                            </div>
-                        </div>
+                    <div class="col-sm-4 related-article">
+                        <?php get_template_part('loop-templates/content-mainpage',
+                            get_post_format($post = $posts_to_render[$i])); ?>
+                    </div>
 
-                    <?php } ?>
+                <?php } ?>
 
             </div><!-- .row -->
 
-        </div><!-- .related-articles-columns -->
+        </div>
 
     </div><!-- .related-articles-container -->
 
