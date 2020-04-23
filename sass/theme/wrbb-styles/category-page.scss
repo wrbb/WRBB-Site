@@ -1,0 +1,36 @@
+.content-header {
+    font-family: 'Playfair Display', 'serif';
+    padding-top: 1em;
+}
+
+.content-title{
+    -webkit-transition: 1s;
+    -moz-transition:    1s;
+    -ms-transition:     1s;
+    -o-transition:      1s;
+    transition:         1s;
+}
+
+.content-title:hover {
+    color: #d30f0f;
+    text-decoration: none;
+}
+
+.content-meta {
+    font-family: 'Playfair Display', 'serif';
+}
+
+.thumbnail {
+    float: left;
+    padding-right: 10px;
+}
+
+.content-summary {
+    font-style: italic;
+    padding-top: 2.5em;
+    padding-bottom: 3em;
+}
+
+.container{
+    padding-bottom: 0.5em;
+}
