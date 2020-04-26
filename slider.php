@@ -5,43 +5,73 @@ $post_slug = $post->post_name;
 $category_name = "";
 ?>
 
-<?php if ( $post_slug == "feature-page" ) : ?>
-	<?php $category_name = "feature-article" ?>
-<?php elseif ( $post_slug == "review-main-page" ) : ?>
-	<?php $category_name = "review-article" ?>
-<?php elseif ( is_front_page() ) : ?>
-	<?php $category_name = "main-page-article" ?>
+<?php if ($post_slug == "feature-main-page") : ?>
+    <?php $category_name = "feature-main" ?>
+<?php elseif ($post_slug == "review-main-page") : ?>
+    <?php $category_name = "review-main" ?>
+<?php elseif (is_front_page()) : ?>
+    <?php $category_name = "main-page-article" ?>
 <?php endif; ?>
 
-<?php $cat_query = new WP_Query( array( 'category_name' => $category_name ) ); ?>
+<?php $cat_query = new WP_Query(array('category_name' => $category_name)); ?>
 
-<?php $images_for_page_by_slug = array() ?>
+<?php
+$images_for_page_by_slug = array();
+$captions_for_page_by_slug = array();
+$post_count = 0;
+?>
 
-<?php if ( $cat_query->have_posts() ) : ?>
+<?php if ($cat_query->have_posts()) : ?>
 
-	<?php while ( $cat_query->have_posts() ) : $cat_query->the_post(); ?>
+    <?php while ($cat_query->have_posts()) : $cat_query->the_post(); ?>
 
-		<?php array_push( $images_for_page_by_slug, get_the_post_thumbnail() ) ?>
+        <?php
+        array_push($images_for_page_by_slug, get_the_post_thumbnail());
+        array_push($captions_for_page_by_slug, get_the_title());
+        $post_count++;
+        ?>
 
-	<?php endwhile; ?>
+    <?php endwhile; ?>
 
 <?php endif; ?>
 
-<?php if ( count( $images_for_page_by_slug ) == 0 ) : ?>
-	<?php get_template_part( 'default-post', 'default' ); ?>
-<?php elseif ( count( $images_for_page_by_slug ) == 1 ) : ?>
+<?php if ($post_count == 0) : ?>
+    <div class="slider-wrapper">
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100 singular-image"
+                         src="<?php bloginfo('template_url'); ?>/src/img/twitter.png" alt="Twitter">
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="header-image-fullscreen">
-    <?php echo $images_for_page_by_slug[0] ?>
-</div>
+<?php elseif ($post_count == 1) : ?>
+    <div class="slider-wrapper">
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <!--                    <img class="d-block w-100" alt="First slide" src=-->
+                    <!--                    --><?php //echo $images_for_page_by_slug[0]; ?><!-- >-->
+                    <div class="d-block w-100">
+                        <?php echo $images_for_page_by_slug[0]; ?>
+                    </div>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <p><?php echo $captions_for_page_by_slug[0]; ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
 <?php else : ?>
-
     <div class="slider-wrapper">
         <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
 
-            <?php if ( count( $images_for_page_by_slug ) == 2 ) : ?>
-
+            <?php if ($post_count == 2) : ?>
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -50,20 +80,24 @@ $category_name = "";
                 <!-- Inner slides w/ captions -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" alt="First slide" src= <?php echo $images_for_page_by_slug[0] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[0]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 1</p>
+                            <p><?php echo $captions_for_page_by_slug[0] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Second slide" src= <?php echo $images_for_page_by_slug[1] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[1]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 2</p>
+                            <p><?php echo $captions_for_page_by_slug[1] ?></p>
                         </div>
                     </div>
                 </div>
 
-            <?php elseif ( count( $images_for_page_by_slug ) == 3 ) : ?>
+            <?php elseif ($post_count == 3) : ?>
 
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -74,26 +108,32 @@ $category_name = "";
                 <!-- Inner slides w/ captions -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" alt="First slide" src= <?php echo $images_for_page_by_slug[0] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[0]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 1</p>
+                            <p><?php echo $captions_for_page_by_slug[0] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Second slide" src= <?php echo $images_for_page_by_slug[1] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[1]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 2</p>
+                            <p><?php echo $captions_for_page_by_slug[1] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Third slide" src= <?php echo $images_for_page_by_slug[2] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[2]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 3</p>
+                            <p><?php echo $captions_for_page_by_slug[2] ?></p>
                         </div>
                     </div>
                 </div>
 
-            <?php elseif ( count( $images_for_page_by_slug ) == 4 ) : ?>
+            <?php elseif ($post_count == 4) : ?>
 
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -105,27 +145,35 @@ $category_name = "";
                 <!-- Inner slides w/ captions -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" alt="First slide" src= <?php echo $images_for_page_by_slug[0] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[0]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 1</p>
+                            <p><?php echo $captions_for_page_by_slug[0] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Second slide" src= <?php echo $images_for_page_by_slug[1] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[1]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 2</p>
+                            <p><?php echo $captions_for_page_by_slug[1] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Third slide" src= <?php echo $images_for_page_by_slug[2] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[2]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 3</p>
+                            <p><?php echo $captions_for_page_by_slug[2] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Forth slide" src= <?php echo $images_for_page_by_slug[3] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[3]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">...</p>
+                            <p><?php echo $captions_for_page_by_slug[3] ?></p>
                         </div>
                     </div>
                 </div>
@@ -143,33 +191,43 @@ $category_name = "";
                 <!-- Inner slides w/ captions -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" alt="First slide" src= <?php echo $images_for_page_by_slug[0] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[0]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 1</p>
+                            <p><?php echo $captions_for_page_by_slug[0] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Second slide" src= <?php echo $images_for_page_by_slug[1] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[1]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 2</p>
+                            <p><?php echo $captions_for_page_by_slug[1] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Third slide" src= <?php echo $images_for_page_by_slug[2] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[2]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">Caption for slide 3</p>
+                            <p><?php echo $captions_for_page_by_slug[2] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Forth slide" src= <?php echo $images_for_page_by_slug[3] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[3]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">...</p>
+                            <p><?php echo $captions_for_page_by_slug[3] ?></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" alt="Fifth slide" src= <?php echo $images_for_page_by_slug[4] ?>>
+                        <div class="d-block w-100">
+                            <?php echo $images_for_page_by_slug[4]; ?>
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
-                            <p onload="fitCaptionText()">...</p>
+                            <p><?php echo $captions_for_page_by_slug[4] ?></p>
                         </div>
                     </div>
                 </div>
@@ -177,14 +235,17 @@ $category_name = "";
             <?php endif; ?>
 
             <!-- Left and Right slide controls -->
-            <a class="carousel-control-prev" href="#carousel" role="button" onclick="slideLeft()" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel" role="button" onclick="slideRight()" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="l-r-controls">
+                <a class="carousel-control-prev" href="#carousel" role="button" onclick="slideLeft()" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" onclick="slideRight()"
+                   data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
 
         </div>
     </div>

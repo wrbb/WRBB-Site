@@ -1,50 +1,63 @@
 body {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .entry-header img {
-	width: 270px;
-	height: 200px;
+  width: 270px;
+  height: 200px;
 }
 
 .header-line {
-	border-style: solid;
-	border-color: red;
-	border-width: medium;
-	position: absolute;
-	left: 0;
-    right: 0;
-	z-index: 1;
-	margin-top: -5px;
+  border: medium solid #D30F0F;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  margin-top: -5px;
 }
 
 .mp-articles {
-	position: relative;
-	z-index: 2;
-	top: 30px;
-	margin: auto;
+  position: relative;
+  z-index: 2;
+  top: 30px;
+  margin: auto;
 }
 
 .mpa-meta {
-	margin: 5px 20px;
+  margin: 5px 20px;
 }
 
 .mpa-meta #title {
-	font-family: 'Playfair Display', serif;
-	font-weight: 900;
-	margin-bottom: 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+
+.entry-title {
+  font-family: 'Playfair Display', serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 48px;
+  //margin-bottom: 50px;
+  position: relative;
+  bottom: 32px;
+}
+
+.header-line-container {
+  margin-top: 30px;
 }
 
 #mpa-date {
-	font-family: 'Playfair Display', serif;
-	font-style: italic;
-	font-weight: 300;
-	font-size: 12px;
-	margin-bottom: 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12px;
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 575px) {
-	.entry-header {
-		text-align: center;
-	}
+  .entry-header {
+    text-align: center;
+  }
 }
