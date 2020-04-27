@@ -28,6 +28,10 @@
 	justify-content: space-between;
 }
 
+.pagination {
+  margin-top: 10px;
+}
+
 .mpa-meta {
 	margin: 5px 20px;
 }
@@ -44,6 +48,10 @@
 	font-weight: 300;
 	font-size: 12px;
 	margin-bottom: 0;
+}
+
+.thumbnail-image {
+	object-fit: cover;
 }
 
 @media only screen and (max-width: 575px) {

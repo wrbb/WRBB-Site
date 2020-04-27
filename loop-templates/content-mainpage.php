@@ -12,7 +12,7 @@
 
         <div class="mpa-img">
 		    <a href="<?php echo esc_url( get_permalink() ) ?>">
-			    <img src="<?php echo get_the_post_thumbnail_url( $post->ID ); ?>">
+			    <img class="thumbnail-image" src="<?php echo get_the_post_thumbnail_url( $post->ID ); ?>">
 		    </a>
         </div>
 
