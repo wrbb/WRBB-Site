@@ -1,10 +1,11 @@
-<!-- Code for slider -->
+<!-- Code for image slider. Will display a different version of the slider depending on how many posts that page has.  -->
 <?php
 global $post;
 $post_slug = $post->post_name;
 $category_name = "";
 ?>
 
+<!--Establish the name of the category to do a WP_Query on-->
 <?php if ($post_slug == "feature-main-page") : ?>
     <?php $category_name = "feature-main" ?>
 <?php elseif ($post_slug == "review-main-page") : ?>
@@ -21,6 +22,7 @@ $captions_for_page_by_slug = array();
 $post_count = 0;
 ?>
 
+<!--Grab each posts' image thumbnail and title for the slider-->
 <?php if ($cat_query->have_posts()) : ?>
 
     <?php while ($cat_query->have_posts()) : $cat_query->the_post(); ?>
@@ -35,6 +37,7 @@ $post_count = 0;
 
 <?php endif; ?>
 
+<!--If the page has no posts-->
 <?php if ($post_count == 0) : ?>
     <div class="slider-wrapper">
         <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
@@ -47,13 +50,12 @@ $post_count = 0;
         </div>
     </div>
 
+    <!--If the page has 1 post-->
 <?php elseif ($post_count == 1) : ?>
     <div class="slider-wrapper">
         <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <!--                    <img class="d-block w-100" alt="First slide" src=-->
-                    <!--                    --><?php //echo $images_for_page_by_slug[0]; ?><!-- >-->
                     <div class="d-block w-100">
                         <?php echo $images_for_page_by_slug[0]; ?>
                     </div>
@@ -66,7 +68,7 @@ $post_count = 0;
     </div>
     </div>
 
-
+    <!--If the page has 2 or more posts posts-->
 <?php else : ?>
     <div class="slider-wrapper">
         <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
