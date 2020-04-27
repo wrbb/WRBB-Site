@@ -35,7 +35,7 @@ array_multisort(array_map('strtolower', array_column($items, 'title')), $items);
 
     <div class="<?php echo esc_attr($container); ?>" id="content">
 
-        <hr id="header-line">
+		<hr class="header-line">
 
         <h2 class="entry-header"><span class="single-title">dj show bios.</span></h2>
 

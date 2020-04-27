@@ -13,7 +13,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<hr id="header-line">
+		<hr class="header-line">
 
 		<div class="row">
 

@@ -16,7 +16,7 @@ $shows = array('360-huntington', 'black-in-boston', 'brainwaves', 'hu-nu', 'irc-
 
 	<div class="<?php echo esc_attr($container); ?>" id="content">
 
-		<hr id="header-line">
+		<hr class="header-line">
 
 		<h2 class="entry-header"><span id="article-title">WRBB Podcasts</span></h2>
 
