@@ -17,7 +17,7 @@
         </div>
 
 		<div class="mpa-meta">
-			<?php the_title( sprintf( '<h5 id="title"><a href="%s" rel="bookmark">',
+			<?php the_title( sprintf( '<h5 class="thumbnail-title"><a href="%s" rel="bookmark">',
 				esc_url( get_permalink() ) ), '</a></h5>' );
 
 			if ( 'post' == get_post_type() ) {

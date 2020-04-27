@@ -47,10 +47,10 @@ array_multisort(array_map('strtolower', array_column($items, 'title')), $items);
                 $endTime = date('-gA', strtotime($show['end']));
                 $time = $startTime . $endTime; ?>
 
-                <div class="col-sm-3">
+                <div class="col-sm-3 menu-show">
                     <a href="<?php bloginfo('url'); ?>/dj-show-bio?id=<?php echo $show['id'] ?>">
                         <img class="thumbnail-image" src="<?php echo $show['image'] ?>">
-                        <h5><?php echo $show['title'] ?></h5>
+                        <h5 class="thumbnail-title"><?php echo $show['title'] ?></h5>
                     </a>
                     <p><?php echo date('l', strtotime($show['start'])) ?> <?php echo $time ?></p>
                 </div>
