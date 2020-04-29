@@ -1,16 +1,22 @@
-.entry-header img {
-	width: 270px;
-	height: 200px;
+.mpa-img {
+	position: relative;
 }
 
-.header-line {
-	border-style: solid;
-	border-color: red;
-	border-width: medium;
+.mpa-img::after {
+	display: block;
+	content: '';
+	padding-bottom: calc(250 / 305 * 100%);
+}
+
+.mpa-img img {
 	position: absolute;
 	left: 0;
-    right: 0;
-	z-index: 1;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#mp-line {
 	margin-top: -5px;
 }
 
@@ -19,13 +25,18 @@
 	z-index: 2;
 	top: 30px;
 	margin: auto;
+	justify-content: space-between;
+}
+
+.pagination {
+  margin-top: 10px;
 }
 
 .mpa-meta {
 	margin: 5px 20px;
 }
 
-.mpa-meta #title {
+.thumbnail-title {
 	font-family: 'Playfair Display', serif;
 	font-weight: 900;
 	margin-bottom: 0;
@@ -37,6 +48,10 @@
 	font-weight: 300;
 	font-size: 12px;
 	margin-bottom: 0;
+}
+
+.thumbnail-image {
+	object-fit: cover;
 }
 
 @media only screen and (max-width: 575px) {

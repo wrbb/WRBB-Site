@@ -1,4 +1,4 @@
-#header-line {
+.header-line {
 	border-style: solid;
 	border-color: red;
 	border-width: medium;
@@ -10,6 +10,8 @@
 
 .entry-header {
 	position: relative;
+	z-index: 2;
+	bottom: 10px;
 }
 
 #article-title {
