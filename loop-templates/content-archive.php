@@ -1,40 +1,44 @@
 <?php
 /**
- * Search results partial template.
+ * Template for a single post entry on a category page
  *
  * @package understrap
  */
-
 ?>
+
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
-	<header class="content-header">
+	<div class="cat-page-entry">
 
-		<?php the_title( sprintf( '<h2><a class = "content-title" href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
-		'</a></h2>' ); ?>
+	    <div class='thumbnail-image' id="cat-page">
+		    <a href="<?php echo esc_url( get_permalink() ) ?>">
+			    <img src="<?php echo get_the_post_thumbnail_url( $post->ID ); ?>">
+		    </a>
+	    </div>
 
-		<?php if ( 'post' == get_post_type() ) : ?>
+	    <div class="article-preview">
 
-			<div class="content-meta">
+		    <?php the_title( sprintf( '<h2><a class="content-title" href="%s" rel="bookmark">',
+			    esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
-				<?php understrap_posted_on(); ?>
+		    <?php if ( 'post' == get_post_type() ) : ?>
 
-			</div><!-- .content-meta -->
+			    <div class="content-meta">
 
-			<div class = 'thumbnail'>
-				<a href="<?php echo esc_url( get_permalink() ) ?>">
-					<img src="<?php echo get_the_post_thumbnail_url( $post->ID, 'thumbnail'); ?>">
-				</a>
-			</div>
+				    <?php understrap_posted_on(); ?>
 
-		<?php endif; ?>
+			    </div><!-- .content-meta -->
 
-	</header><!-- .content-header -->
+		    <?php endif; ?>
 
-	<div class="content-summary">
+            <div class="content-summary">
 
-		<?php the_excerpt(); ?>
+	            <?php the_excerpt(); ?>
 
-	</div><!-- .content-summary -->
+            </div><!-- .content-summary -->
+
+	    </div><!-- .article-preview -->
+
+	</div><!-- .cat-page-entry -->
 
 </article><!-- #post-## -->

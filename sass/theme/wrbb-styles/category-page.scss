@@ -1,14 +1,19 @@
-.content-header {
+.cat-page-entry {
+    margin: 2em 0;
+    min-height: 220px;
+}
+
+.article-preview {
     font-family: 'Playfair Display', 'serif';
     padding-top: 1em;
 }
 
-.content-title{
-    -webkit-transition: 1s;
-    -moz-transition:    1s;
-    -ms-transition:     1s;
-    -o-transition:      1s;
-    transition:         1s;
+.content-title {
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
 }
 
 .content-title:hover {
@@ -20,17 +25,12 @@
     font-family: 'Playfair Display', 'serif';
 }
 
-.thumbnail {
+#cat-page {
+    width: 270px;
     float: left;
-    padding-right: 10px;
+    margin-right: 1em;
 }
 
 .content-summary {
     font-style: italic;
-    padding-top: 2.5em;
-    padding-bottom: 3em;
-}
-
-.container{
-    padding-bottom: 0.5em;
 }
