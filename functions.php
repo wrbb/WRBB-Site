@@ -322,3 +322,14 @@ add_shortcode( 'podcast', 'podcast_func' );
 @ini_set( 'upload_max_size' , '64M' );
 @ini_set( 'post_max_size', '64M');
 @ini_set( 'max_execution_time', '300' );
+
+/**
+ * Adds a custom read more link to all excerpts, manually or automatically generated
+ *
+ * @param string $post_excerpt Posts's excerpt.
+ *
+ * @return string
+ */
+function understrap_all_excerpts_get_more_link( $post_excerpt ) {
+	return $post_excerpt . ' [...]';
+}

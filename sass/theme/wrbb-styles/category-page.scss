@@ -1,0 +1,36 @@
+.cat-page-entry {
+    margin: 2em 0;
+    min-height: 220px;
+}
+
+.article-preview {
+    font-family: 'Playfair Display', 'serif';
+    padding-top: 1em;
+}
+
+.content-title {
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+
+.content-title:hover {
+    color: #d30f0f;
+    text-decoration: none;
+}
+
+.content-meta {
+    font-family: 'Playfair Display', 'serif';
+}
+
+#cat-page {
+    width: 270px;
+    float: left;
+    margin-right: 1em;
+}
+
+.content-summary {
+    font-style: italic;
+}
