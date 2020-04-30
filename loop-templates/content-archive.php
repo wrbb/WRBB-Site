@@ -21,21 +21,13 @@
 		    <?php the_title( sprintf( '<h2><a class="content-title" href="%s" rel="bookmark">',
 			    esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
-		    <?php if ( 'post' == get_post_type() ) : ?>
-
-			    <div class="content-meta">
-
-				    <?php understrap_posted_on(); ?>
-
-			    </div><!-- .content-meta -->
-
-		    <?php endif; ?>
+            <div class="content-meta">
+                <?php understrap_posted_on(); ?>
+            </div>
 
             <div class="content-summary">
-
 	            <?php the_excerpt(); ?>
-
-            </div><!-- .content-summary -->
+            </div>
 
 	    </div><!-- .article-preview -->
 
