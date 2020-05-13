@@ -32,9 +32,6 @@ $container = get_theme_mod('understrap_container_type');
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
     <!-- History.js -->
     <script src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
-    <!-- Ajaxify -->
-    <script src="http://rawgithub.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
-    <script src="src\js\wrbb-js\slider.js"></script>
 
 </head>
 
@@ -194,5 +191,7 @@ $container = get_theme_mod('understrap_container_type');
         <?php endif; ?>
 
     </div> <!-- header -->
+</div>
+
 
 

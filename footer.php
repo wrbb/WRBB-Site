@@ -16,10 +16,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <html>
 
 	<head>
-
-		<link rel ="stylesheet" href="css/styles.css">
 		<script src="https://kit.fontawesome.com/ef315d9147.js" crossorigin="anonymous"></script>
-		
 	</head>
 
 	<div class="wrapper" id="wrapper-footer">
