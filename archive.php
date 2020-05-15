@@ -24,7 +24,7 @@ get_header();
 
 				<?php if ( have_posts() ) : ?>
 						<header class="entry-header">
-							<?php single_cat_title( '<h1 class="entry-title"><span id="article-title">', '</span></h1>' ); ?>
+							<?php single_cat_title( '<h1 class="entry-title"><span class="article-title">', '</span></h1>' ); ?>
 						</header><!-- .entry-header -->
 
 					<?php /* Start the Loop */ ?>

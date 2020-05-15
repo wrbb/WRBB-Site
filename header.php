@@ -172,19 +172,20 @@ $container = get_theme_mod('understrap_container_type');
 
         </div><!-- #wrapper-navbar end -->
 
+        <!-- ******************* Slider ******************* -->
+
         <!--Find slug of current page-->
         <?php
         global $post;
         $post_slug = $post->post_name;
+        $slider_slugs = array("main-page-menu-selection", "main-page", "feature-main-page", "review-main-page");
         ?>
 
         <!--Display slider with images taken from posts in that category if any of these pages indicated by slug-->
-        <?php if (is_front_page() || $post_slug == "main-page-menu-selection" || $post_slug == "main-page"
-            || $post_slug == "article-main-page" || $post_slug == "music-main-page" || $post_slug == "feature-main-page"
-            || $post_slug == "review-main-page") : ?>
-            <?php get_template_part('slider', 'slider'); ?>
-            <!--Static image otherwise-->
+        <?php if (is_front_page() || in_array($post_slug, $slider_slugs)) : ?>
+            <?php get_template_part('slider'); ?>
         <?php else: ?>
+            <!--Static image otherwise-->
             <div class="header-image-fullscreen">
                 <?php the_post_thumbnail('full'); ?>
             </div>

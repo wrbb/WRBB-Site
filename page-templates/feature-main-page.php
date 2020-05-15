@@ -16,49 +16,40 @@ $container = get_theme_mod('understrap_container_type');
     <?php get_template_part('global-templates/hero'); ?>
 <?php endif; ?>
 
-    <div class="wrapper" id="index-wrapper">
+<div class="wrapper" id="index-wrapper">
 
-        <div class="<?php echo esc_attr($container); ?>" id="content" tabindex="-1">
+    <div class="<?php echo esc_attr($container); ?>" id="content" tabindex="-1">
 
-            <div class="header-line-container">
+        <hr class="header-line">
+        <header class="entry-header">
+            <h1 class="entry-title"><span class="article-title">features.</span></h1>
+        </header>
 
-                <hr class="header-line">
+        <?php $cat_query = new WP_Query('category_name=feature-main'); ?>
 
-                <h1 class="entry-title"><span id="article-title">music.</span></h1>
+        <?php if ($cat_query->have_posts()) : ?>
+
+            <div class="row frmp-articles">
+
+                <?php while ($cat_query->have_posts()) : $cat_query->the_post(); ?>
+
+                    <div class="col-sm-3 mpa">
+
+                        <?php get_template_part('loop-templates/content-mainpage', get_post_format()); ?>
+
+                    </div>
+
+                <?php endwhile; ?>
 
             </div>
 
-            <?php $cat_query = new WP_Query('category_name=feature-main'); ?>
+        <?php endif; ?>
 
-            <?php if ($cat_query->have_posts()) : ?>
+        <!-- The pagination component -->
+        <?php understrap_pagination(); ?>
 
-                <div class="row mp-articles">
+    </div><!-- Container end -->
 
-                    <?php while ($cat_query->have_posts()) : $cat_query->the_post(); ?>
-
-                        <div class="col-sm-3 mpa">
-
-                            <?php get_template_part('loop-templates/content-mainpage', get_post_format()); ?>
-
-                        </div>
-
-                    <?php endwhile; ?>
-
-                </div>
-
-            <?php else : ?>
-
-                <?php get_template_part('loop-templates/content-mainpage', 'none'); ?>
-
-            <?php endif; ?>
-
-            <!-- The pagination component -->
-            <?php understrap_pagination(); ?>
-
-        </div><!-- Container end -->
-
-    </div><!-- Wrapper end -->
-
-<?php get_template_part('src/wrbb-templates/playerbar'); ?>
+</div><!-- Wrapper end -->
 
 <?php get_footer(); ?>

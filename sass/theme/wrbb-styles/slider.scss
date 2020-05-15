@@ -2,7 +2,7 @@
 
   .carousel {
     width: auto;
-    height: 400px;
+    height: 600px;
     border: 1px solid black;
   }
 
@@ -34,7 +34,6 @@
     padding: 4px;
     margin: -7px 15px;
     opacity: 1;
-    border: .025px solid gray;
   }
 
   .carousel-caption {
@@ -42,17 +41,15 @@
     border-radius: 5px;
     position: absolute;
     left: 625px;
-    top: 225px;
     display: inline-block;
-    width: 610px;
-    height: 168px;
     word-wrap: break-word;
+    padding: 20px;
   }
 
   .carousel-item img, .singular-image {
-    display: inline-block;
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 
   .carousel-caption p {
@@ -66,4 +63,14 @@
     vertical-align: center;
   }
 
+  .carousel-caption a {
+    color: white;
+  }
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 1200px) {
+  .carousel-indicators {
+    display: none;
+  }
 }

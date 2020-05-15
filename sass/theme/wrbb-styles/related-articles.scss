@@ -17,6 +17,17 @@
   max-width: 305px;
 }
 
+.ra-articles {
+  margin-top: 3em;
+  justify-content: space-between;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 720px) {
+  .related-article {
+    margin: auto;
+  }
+}
 
 
 

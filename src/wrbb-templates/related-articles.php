@@ -73,7 +73,7 @@ $posts_to_render = array_values(array_unique($posts_to_render));
         <!-- Wrapper for 3 related articles partitioned into columns -->
         <div>
 
-            <div class="row mp-articles">
+            <div class="row ra-articles">
 
                 <?php for ($i = 0; $i < 3; $i++) { ?>
 

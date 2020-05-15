@@ -18,7 +18,7 @@ $shows = array('360-huntington', 'black-in-boston', 'brainwaves', 'hu-nu', 'irc-
 
 		<hr class="header-line">
 
-		<h2 class="entry-header"><span id="article-title">WRBB Podcasts</span></h2>
+		<h2 class="entry-header"><span class="article-title">WRBB Podcasts</span></h2>
 
 		<?php for ($i = 0; $i < count($shows); $i++) :
 			$show = $shows[$i];
