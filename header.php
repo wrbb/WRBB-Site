@@ -178,7 +178,7 @@ $container = get_theme_mod('understrap_container_type');
         <?php
         global $post;
         $post_slug = $post->post_name;
-        $slider_slugs = array("main-page-menu-selection", "main-page", "feature-main-page", "review-main-page");
+        $slider_slugs = array("main-page", "feature-main-page", "review-main-page");
         ?>
 
         <!--Display slider with images taken from posts in that category if any of these pages indicated by slug-->
