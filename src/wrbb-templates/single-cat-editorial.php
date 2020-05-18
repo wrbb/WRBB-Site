@@ -16,7 +16,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
         <header class="entry-header">
 
-            <?php the_title( '<h1 class="entry-title"><span id="article-title">', '</span></h1>' ); ?>
+            <?php the_title( '<h1 class="entry-title"><span class="article-title">', '</span></h1>' ); ?>
 
             <div class="entry-meta">
 
