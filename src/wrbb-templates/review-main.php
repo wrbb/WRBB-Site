@@ -24,13 +24,13 @@ $container = get_theme_mod('understrap_container_type');
             <h1 class="entry-title"><span class="article-title">reviews.</span></h1>
         </header>
 
-        <?php $cat_query = new WP_Query('category_name=review-main'); ?>
+        <?php $cat_query = new WP_Query(array('category_name' => 'main-page-article+review')); ?>
 
         <?php if ($cat_query->have_posts()) : ?>
 
             <div class="row frmp-articles">
 
-                <?php while ($cat_query->have_posts()) : $cat_query->the_post(); ?>
+	            <?php for ($i = 0; $i < 8 && $cat_query->have_posts(); $i++) : $cat_query->the_post(); ?>
 
                     <div class="col-sm-3 mpa">
 
@@ -38,7 +38,7 @@ $container = get_theme_mod('understrap_container_type');
 
                     </div>
 
-                <?php endwhile; ?>
+                <?php endfor; ?>
 
             </div>
 

@@ -26,7 +26,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 			<div class="row mp-articles">
 
-				<?php while ($cat_query->have_posts()) : $cat_query->the_post(); ?>
+				<?php for ($i = 0; $i < 8 && $cat_query->have_posts(); $i++) : $cat_query->the_post(); ?>
 
 					<div class="col-sm-3">
 
@@ -34,7 +34,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 					</div>
 
-				<?php endwhile; ?>
+				<?php endfor; ?>
 
 			</div>
 

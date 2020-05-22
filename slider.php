@@ -6,9 +6,9 @@ $category_name = "";
 
 // Establish the name of the category to do a WP_Query on
 if ($post_slug == "feature-main-page")
-    $category_name = "feature-main";
+    $category_name = "main-page-article+feature";
 elseif ($post_slug == "review-main-page")
-    $category_name = "review-main";
+    $category_name = "main-page-article+review";
 elseif (is_front_page())
     $category_name = "main-page-article";
 
