@@ -67,7 +67,7 @@ if ($cat_query->have_posts()) {
                         </div>
                         <div class="carousel-caption d-none d-lg-block">
                             <a href="<?php echo $links_for_page_by_slug[0]; ?>">
-                                <p><?php echo $captions_for_page_by_slug[0] ?></p>
+                                <h3><?php echo $captions_for_page_by_slug[0] ?></h3>
                             </a>
                         </div>
                 </div>
@@ -80,7 +80,7 @@ if ($cat_query->have_posts()) {
                         </div>
                         <div class="carousel-caption d-none d-lg-block">
                             <a href="<?php echo $links_for_page_by_slug[$i]; ?>">
-                                <p><?php echo $captions_for_page_by_slug[$i] ?></p>
+                                <h3><?php echo $captions_for_page_by_slug[$i] ?></h3>
                             </a>
                         </div>
                     </div>

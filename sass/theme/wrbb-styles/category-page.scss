@@ -4,8 +4,11 @@
 }
 
 .article-preview {
-    font-family: 'Playfair Display', 'serif';
     padding-top: 1em;
+}
+
+.article-preview p {
+    font-family: 'Playfair Display', 'serif';
 }
 
 .content-title {
@@ -19,10 +22,6 @@
 .content-title:hover {
     color: #d30f0f;
     text-decoration: none;
-}
-
-.content-meta {
-    font-family: 'Playfair Display', 'serif';
 }
 
 #cat-page {

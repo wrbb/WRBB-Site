@@ -18,15 +18,18 @@
 	padding: 0 10px;
 	position: relative;
 	left: -10px;
-	font-family: 'Playfair Display', serif;
-	font-weight: bold;
 	line-height: normal;
 	z-index: 2;
 }
 
-.entry-meta {
+.entry-meta > p {
 	font-family: 'Playfair Display', serif;
 	font-style: italic;
+}
+
+.pipe {
+	color: red;
+	font-style: normal;
 }
 
 .post-navigation {
@@ -34,7 +37,6 @@
 }
 
 .spotify {
-	font-family: "Playfair Display", serif;
 	font-style: italic;
 	margin: auto;
 	max-width: 300px;
@@ -72,7 +74,6 @@
 }
 
 .author-description {
-	font-family: 'Roboto', sans-serif;
 	padding-top: 15px;
 }
 
