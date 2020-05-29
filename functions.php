@@ -189,7 +189,7 @@ function understrap_posted_on($post_id = 0) {
 		    '</a></span>'
 	  );
   }
-	echo '<p>' . $byline . '<span style="color: red"> | </span>' . $posted_on . '</p>'; // WPCS: XSS OK.
+	echo '<p>' . $byline . '<span class="pipe"> | </span>' . $posted_on . '</p>'; // WPCS: XSS OK.
 }
 
 /**

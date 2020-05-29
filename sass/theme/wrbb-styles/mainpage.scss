@@ -1,3 +1,12 @@
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Playfair Display', serif;
+	font-weight: bold;
+}
+
+p {
+	font-family: 'Roboto', sans-serif;
+}
+
 .thumbnail-image {
 	position: relative;
 }
@@ -38,8 +47,6 @@
 }
 
 .thumbnail-title {
-	font-family: 'Playfair Display', serif;
-	font-weight: 900;
 	margin-bottom: 0;
 }
 
