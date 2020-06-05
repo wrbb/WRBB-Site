@@ -3,7 +3,7 @@
   border-bottom: 5px solid #d30f0f;
   line-height: 0.1em;
   margin: 10px 0 20px;
-  padding-left: 6vw; }
+  padding-left: 8.9vw; }
 
 #donate-header span {
   background: #fff;
@@ -54,16 +54,16 @@ a:hover {
 }
 
 
-
 button:hover {
   animation: rotate 0.7s ease-in-out both;
   animation-delay: 0.06s;
 }
 
-//img.wp-post-image {
-//  padding:20px;
-//  border:1px solid #021a40;
-//}
+@media only screen and (max-width: 575px) {
+  #donate-header {
+    padding-left: 30vw;
+  }
+}
 
 @keyframes rotate {
   0% {
