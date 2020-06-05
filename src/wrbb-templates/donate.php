@@ -10,7 +10,7 @@ get_header();
 ?>
 
 <div class="padding-top-bottom" xmlns="http://www.w3.org/1999/html">
-    <h2 id="donate-header"><span>donate.</span></h2>
+    <h2 id="donate-header"><span>support.</span></h2>
 
 </div>
 
@@ -29,7 +29,7 @@ get_header();
 
     <div class="row justify-content-center padding-top-bottom">
         <a href="https://giving.northeastern.edu/live/profiles/440-club-wrbb">
-            <button id="donate-button" type="submit" class="btn btn-danger">Donate</button>
+            <button id="donate-button">Donate</button>
         </a>
     </div>
 </div>
