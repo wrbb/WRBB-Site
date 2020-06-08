@@ -135,10 +135,7 @@ function mp_understrap_posted_on($post_id)
     esc_attr(get_the_modified_date('c')),
     esc_html(get_the_modified_date())
   );
-  $posted_on = sprintf(
-    esc_html_x('%s', 'post date', 'understrap'),
-    '<a href="' . esc_url(get_permalink()) . '" rel="bookmark">' . $time_string . '</a>'
-  );
+  $posted_on = sprintf(esc_html_x('%s', 'post date', 'understrap'), $time_string);
 	$author_id = get_post_field('post_author', $post_id);
 	$byline = sprintf(
 		esc_html_x( 'by %s', 'post author', 'understrap' ),
@@ -167,10 +164,7 @@ function understrap_posted_on($post_id = 0) {
     esc_attr( get_the_modified_date( 'c' ) ),
     esc_html( get_the_modified_date() )
   );
-  $posted_on = sprintf(
-    esc_html_x( '%s', 'post date', 'understrap' ),
-    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-  );
+  $posted_on = sprintf(esc_html_x( '%s', 'post date', 'understrap' ), $time_string);
   if ($post_id == 0) {
 	  $byline = sprintf(
 		  esc_html_x( 'by %s', 'post author', 'understrap' ),
