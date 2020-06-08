@@ -1,26 +1,9 @@
 .header {
-  .menu-bar {
-    font-family: 'Playfair Display', serif;
-    font-weight: bolder;
-    overflow: hidden;
-  }
-
-  .menu-link {
-    text-align: center;
-    overflow: hidden;
-    width: 30%;
-  }
-
-  .head-img {
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
-  }
+  position: relative;
 
   .header-image-fullscreen {
     width: 100%;
     height: 600px;
-    border: 1px solid #979797;
   }
 
   .header-image-fullscreen img {
@@ -28,33 +11,39 @@
     height: 100%;
     object-fit: cover;
   }
+}
 
-  #wrbb-head-logo {
-    width: 15%;
-    display: inline-block;
-  }
+.wrbb-navbar {
+  background: linear-gradient(
+                  to bottom,
+                  rgba(0, 0, 0, 0.5),
+                  rgba(255, 255, 255, 0.5));
+  position: absolute;
+  z-index: 2;
+}
 
-  .left-side {
-    float: left;
-    width: 50%;
-  }
+.dropdown-title {
+  margin-top: 40px;
+  padding: 5px 10px;
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: White;
+}
 
-  .right-side {
-    float: right;
-    width: 50%;
-  }
+.header-logo {
+  width: 150px;
+  padding-top: 10px;
+}
 
-  .options {
-    display: none;
-  }
+.dropdown-title:hover {
+  background-color: #ff0000;
+  //height: 60px;
+  //padding-top: 10px;
+  //display: inline-block;
+}
 
-  .options:hover {
-    display: block;
-  }
-
-  .menu-link-name:hover + .options {
-    display: block;
-    opacity: 1;
-  }
-
+.down-arrow {
+  width: 20px;
 }
