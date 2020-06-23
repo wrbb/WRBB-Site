@@ -40,9 +40,6 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 		<?php endif; ?>
 
-		<!-- The pagination component -->
-		<?php understrap_pagination(); ?>
-
 	</div><!-- Container end -->
 
 </div><!-- Wrapper end -->
