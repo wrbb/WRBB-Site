@@ -105,7 +105,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
                                 <li class="list-group-item">
 
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-3 align-self-center">
                                            <?php echo get_the_post_thumbnail() ?>
                                         </div>
 
