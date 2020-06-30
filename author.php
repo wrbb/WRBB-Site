@@ -117,12 +117,17 @@ $container   = get_theme_mod( 'understrap_container_type' );
                                                 </a>
                                             </h3>
 
+
+                                            <div>
+                                                <?php understrap_posted_on(); ?>
+                                            </div>
+
                                             <p>
                                                 <?php the_excerpt(); ?>
                                             </p>
 
 
-                                            <?php understrap_posted_on(); ?>
+
                                             <?php esc_html_e( 'in',
                                                 'understrap' ); ?>
                                             <?php the_category( '&' ); ?>
