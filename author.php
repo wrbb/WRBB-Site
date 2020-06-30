@@ -107,7 +107,9 @@ $container   = get_theme_mod( 'understrap_container_type' );
                                     <div class="row">
                                         <div class="col-3 align-self-center">
                                             <a href="<?php the_permalink() ?>">
-                                                <?php echo get_the_post_thumbnail() ?>
+                                                <?php if (has_post_thumbnail()) : ?>
+                                                    <?php  the_post_thumbnail(); ?>
+                                                <?php endif; ?>
                                             </a>
                                         </div>
 
