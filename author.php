@@ -112,13 +112,14 @@ $container   = get_theme_mod( 'understrap_container_type' );
                                         <div class="col-8">
                                             <h3>
                                                 <a rel="bookmark" href="<?php the_permalink() ?>"
-                                                   title="<?php esc_html_e( 'Permanent Link:', 'understrap' ); ?> <?php the_title(); ?>">
+                                                   title="<?php esc_html_e( 'Permanent Link:', 'understrap' ); ?> <?php the_title(); ?>"
+                                                    class="article-title">
                                                     <?php the_title(); ?>
                                                 </a>
                                             </h3>
 
 
-                                            <div>
+                                            <div class="">
                                                 <?php understrap_posted_on(); ?>
                                             </div>
 
