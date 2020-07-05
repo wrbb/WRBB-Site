@@ -95,6 +95,10 @@ wp_localize_script('jquery', 'php_vars', $js_data);
             <div class="header-image-fullscreen">
                 <?php the_post_thumbnail('full'); ?>
             </div>
+        <?php else: ?>
+            <script>
+                jQuery('.wrbb-navbar').css({'position' : 'static', 'background-color' : 'black'});
+            </script>
         <?php endif; ?>
 
     </div> <!-- header -->
