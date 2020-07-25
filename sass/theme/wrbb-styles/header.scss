@@ -42,6 +42,7 @@
   color: white;
   list-style: none;
   padding: 0;
+  z-index: 3;
 }
 
 .dropdown-content p {
@@ -93,5 +94,17 @@
         color: white;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .wrbb-menu {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: map_get($grid-breakpoints, md)) {
+  .dropdown-toggle {
+    pointer-events: none;
   }
 }

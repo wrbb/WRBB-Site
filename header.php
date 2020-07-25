@@ -66,7 +66,6 @@ wp_localize_script('jquery', 'php_vars', $js_data);
                 <?php wp_nav_menu(
                     array(
                         'theme_location' => 'primary',
-                        'container_class' => 'container-fluid',
                         'menu_class' => 'navbar-nav wrbb-menu',
                         'fallback_cb' => '',
                         'depth' => 2,

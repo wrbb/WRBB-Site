@@ -40,7 +40,6 @@
   .carousel-caption {
     background: rgba(25, 24, 25, 0.7);
     border-radius: 5px;
-    position: absolute;
     left: 625px;
     display: inline-block;
     word-wrap: break-word;
@@ -56,11 +55,16 @@
   .carousel-caption a {
     color: white;
   }
-}
 
-/* Mobile Styles */
-@media only screen and (max-width: 1200px) {
-  .carousel-indicators {
-    display: none;
+  /* Mobile Styles */
+  @media only screen and (max-width: 1200px) {
+    .carousel-indicators {
+      display: none;
+    }
+
+    .carousel-caption {
+      left: 15%;
+    }
   }
 }
+
