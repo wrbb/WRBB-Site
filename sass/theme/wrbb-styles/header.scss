@@ -1,26 +1,9 @@
 .header {
-  .menu-bar {
-    font-family: 'Playfair Display', serif;
-    font-weight: bolder;
-    overflow: hidden;
-  }
-
-  .menu-link {
-    text-align: center;
-    overflow: hidden;
-    width: 30%;
-  }
-
-  .head-img {
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
-  }
+  position: relative;
 
   .header-image-fullscreen {
     width: 100%;
     height: 600px;
-    border: 1px solid #979797;
   }
 
   .header-image-fullscreen img {
@@ -28,33 +11,107 @@
     height: 100%;
     object-fit: cover;
   }
+}
 
-  #wrbb-head-logo {
-    width: 15%;
-    display: inline-block;
+.wrbb-navbar {
+  background: linear-gradient(
+                  to bottom,
+                  rgba(0, 0, 0, 0.5),
+                  rgba(225, 225, 225, 0.5));
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  width: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #d30f0f;
+  min-width: 150%;
+  text-align: left;
+  font-style: italic;
+  color: white;
+  list-style: none;
+  padding: 0;
+  z-index: 3;
+}
+
+.dropdown-content a {
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  padding: 0.5em;
+}
+
+.header-logo {
+  width: 200px;
+  margin: auto;
+  padding: 10px;
+}
+
+.wrbb-menu {
+  justify-content: space-around;
+}
+
+.nav-link {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+// The arrow next to the dropdown titles
+.dropdown-toggle::after {
+  color: #d30f0f;
+}
+.dropdown-toggle.selected::after {
+  color: white;
+}
+
+.navbar-dark {
+  .navbar-nav {
+    .nav-link {
+      color: white;
+
+      @include hover-focus {
+        color: white;
+      }
+    }
   }
+}
 
-  .left-side {
-    float: left;
-    width: 50%;
-  }
-
-  .right-side {
-    float: right;
-    width: 50%;
-  }
-
-  .options {
+/* Mobile styles */
+@media only screen and (max-width: 767px) {
+  .wrbb-menu {
     display: none;
   }
 
-  .options:hover {
-    display: block;
+  .wrbb-menu.selected {
+    display: inherit;
   }
 
-  .menu-link-name:hover + .options {
-    display: block;
-    opacity: 1;
+  .nav-link {
+    margin: auto;
+    width: fit-content;
   }
 
+  .wrbb-navbar.selected {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  .dropdown-content {
+    position: static;
+    text-align: center;
+    min-width: 100%;
+  }
+}
+
+/* Tablet styles */
+@media only screen and (max-width: map_get($grid-breakpoints, md)) {
+  // On mobile, the dropdown title links (e.g. reviews, features) are disabled until the user
+  // opens the dropdown. In other words, on the first click, the dropdown is opened, and on the
+  // second, the user is taken to the link.
+  .dropdown-toggle {
+    pointer-events: none;
+  }
 }

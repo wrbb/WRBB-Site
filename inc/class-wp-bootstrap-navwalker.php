@@ -49,7 +49,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 			}
 			$indent = str_repeat( $t, $depth );
 			// Default class to add to the file.
-			$classes = array( 'dropdown-menu' );
+			$classes = array( 'dropdown-content' );
 			/**
 			 * Filters the CSS class(es) applied to a menu list element.
 			 *
@@ -62,21 +62,23 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 			$class_names = join( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 			/**
-			 * The `.dropdown-menu` container needs to have a labelledby
+			 * The `.dropdown-content` container needs to have a labelledby
 			 * attribute which points to it's trigger link.
 			 *
 			 * Form a string for the labelledby attribute from the the latest
 			 * link with an id that was added to the $output.
 			 */
 			$labelledby = '';
+			$id = '';
 			// find all links with an id in the output.
 			preg_match_all( '/(<a.*?id=\"|\')(.*?)\"|\'.*?>/im', $output, $matches );
 			// with pointer at end of array check if we got an ID match.
 			if ( end( $matches[2] ) ) {
 				// build a string to use as aria-labelledby.
 				$labelledby = 'aria-labelledby="' . end( $matches[2] ) . '"';
+				$id = 'id="' . end( $matches[2] ) . '"';
 			}
-			$output .= "{$n}{$indent}<ul$class_names $labelledby role=\"menu\">{$n}";
+			$output .= "{$n}{$indent}<ul$class_names $labelledby $id role=\"menu\">{$n}";
 		}
 
 		/**
@@ -182,19 +184,18 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 			$atts['rel']    = ! empty( $item->xfn ) ? $item->xfn : '';
 			// If item has_children add atts to <a>.
 			if ( isset( $args->has_children ) && $args->has_children && 0 === $depth && $args->depth > 1 ) {
-				$atts['href']          = '#';
-				$atts['data-toggle']   = 'dropdown';
+				if (!empty( $item->url )) $atts['href'] = $item->url;
 				$atts['aria-haspopup'] = 'true';
 				$atts['aria-expanded'] = 'false';
-				$atts['class']         = 'dropdown-toggle nav-link';
-				$atts['id']            = 'menu-item-dropdown-' . $item->ID;
+				$atts['class']         = 'dropdown-toggle nav-link h4';
+				$atts['id']            = 'menu-item-' . $item->ID;
 			} else {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '#';
 				// Items in dropdowns use .dropdown-item instead of .nav-link.
 				if ( $depth > 0 ) {
 					$atts['class'] = 'dropdown-item';
 				} else {
-					$atts['class'] = 'nav-link';
+					$atts['class'] = 'nav-link h4';
 				}
 			}
 
