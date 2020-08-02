@@ -25,13 +25,6 @@
   width: 100%;
 }
 
-.single-dropdown {
-  position: relative;
-  text-align: center;
-  padding: 0;
-  margin-top: 40px;
-}
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -43,12 +36,6 @@
   list-style: none;
   padding: 0;
   z-index: 3;
-}
-
-.dropdown-content p {
-  color: white;
-  padding: 12px 10px;
-  margin-bottom: 0;
 }
 
 .dropdown-content a {
@@ -64,10 +51,6 @@
   padding: 10px;
 }
 
-.down-arrow {
-  width: 20px;
-}
-
 .wrbb-menu {
   justify-content: space-around;
 }
@@ -77,10 +60,10 @@
   font-weight: bold;
 }
 
+// The arrow next to the dropdown titles
 .dropdown-toggle::after {
   color: #d30f0f;
 }
-
 .dropdown-toggle.selected::after {
   color: white;
 }

@@ -21,20 +21,29 @@ wp_localize_script('jquery', 'php_vars', $js_data);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>">
+    <meta name="apple-mobile-web-app-title"
+        content="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>">
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display"/>
+    <link rel="stylesheet" type="text/css"
+        href="//fonts.googleapis.com/css?family=Playfair+Display"/>
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
     <?php wp_head(); ?>
     <!-- Inport font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
     <!-- AJAX-ify all links -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+    <script
+        src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"
+    ></script>
     <!-- History.js -->
-    <script src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+    <script
+        src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"
+    ></script>
 
 </head>
 
@@ -48,7 +57,8 @@ wp_localize_script('jquery', 'php_vars', $js_data);
 
             <div class="header-logo">
                 <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <img alt="white and red logo" src="<?php echo $template_url; ?>/src/img/white-w-red.png"/>
+                    <img alt="white and red logo"
+                         src="<?php echo $template_url; ?>/src/img/white-w-red.png"/>
                 </a>
             </div>
 
@@ -57,8 +67,9 @@ wp_localize_script('jquery', 'php_vars', $js_data);
 
             <nav class="navbar-expand-md navbar-dark">
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -86,7 +97,8 @@ wp_localize_script('jquery', 'php_vars', $js_data);
         $slider_slugs = array("main-page", "feature-main-page", "review-main-page");
         ?>
 
-        <!--Display slider with images taken from posts in that category if any of these pages indicated by slug-->
+        <!--Display slider with images taken from posts in that category if any of these pages
+        indicated by slug-->
         <?php if (is_front_page() || in_array($post_slug, $slider_slugs)) : ?>
             <?php get_template_part('slider'); ?>
         <?php elseif (has_post_thumbnail()) : ?>
