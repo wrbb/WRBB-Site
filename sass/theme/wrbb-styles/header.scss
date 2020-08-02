@@ -19,7 +19,7 @@
                   rgba(0, 0, 0, 0.5),
                   rgba(225, 225, 225, 0.5));
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   margin: 0;
   font-family: 'Playfair Display', serif;
   width: 100%;
@@ -97,13 +97,37 @@
   }
 }
 
+/* Mobile styles */
 @media only screen and (max-width: 767px) {
   .wrbb-menu {
     display: none;
   }
+
+  .wrbb-menu.selected {
+    display: inherit;
+  }
+
+  .nav-link {
+    margin: auto;
+    width: fit-content;
+  }
+
+  .wrbb-navbar.selected {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  .dropdown-content {
+    position: static;
+    text-align: center;
+    min-width: 100%;
+  }
 }
 
+/* Tablet styles */
 @media only screen and (max-width: map_get($grid-breakpoints, md)) {
+  // On mobile, the dropdown title links (e.g. reviews, features) are disabled until the user
+  // opens the dropdown. In other words, on the first click, the dropdown is opened, and on the
+  // second, the user is taken to the link.
   .dropdown-toggle {
     pointer-events: none;
   }

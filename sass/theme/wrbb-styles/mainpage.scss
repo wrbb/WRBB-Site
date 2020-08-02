@@ -1,5 +1,6 @@
 .thumbnail-image {
 	position: relative;
+	z-index: 2;
 }
 
 .thumbnail-image::after {
