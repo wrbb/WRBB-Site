@@ -31,7 +31,7 @@ echo '</script>';
 <div class="wrapper" id="full-width-page-wrapper">
 	<div class="<?php echo esc_attr( $container ); ?>" id="content">
 		<hr class="header-line">
-		<h2 class="entry-header"><span class="single-title">dj show bio.</span></h2>
+		<h2 class="entry-header"><span class="article-title">dj show bio.</span></h2>
 
 		<!-- Check if there is a DJ logo for this show and display it if there is -->
 		<?php $path = '/src/img/djlogos/' . $show['title'] . '.jpg';

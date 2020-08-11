@@ -65,7 +65,7 @@ if ($cat_query->have_posts()) {
                                 <?php echo $images_for_page_by_slug[0]; ?>
                             </a>
                         </div>
-                        <div class="carousel-caption d-none d-lg-block">
+                        <div class="carousel-caption">
                             <a href="<?php echo $links_for_page_by_slug[0]; ?>">
                                 <h3><?php echo $captions_for_page_by_slug[0] ?></h3>
                             </a>
@@ -78,7 +78,7 @@ if ($cat_query->have_posts()) {
                                 <?php echo $images_for_page_by_slug[$i]; ?>
                             </a>
                         </div>
-                        <div class="carousel-caption d-none d-lg-block">
+                        <div class="carousel-caption">
                             <a href="<?php echo $links_for_page_by_slug[$i]; ?>">
                                 <h3><?php echo $captions_for_page_by_slug[$i] ?></h3>
                             </a>
@@ -90,12 +90,11 @@ if ($cat_query->have_posts()) {
 	        <?php if ($post_count > 1) : ?>
                 <!-- Left and Right slide controls -->
                 <div class="l-r-controls">
-                    <a class="carousel-control-prev" href="#carousel" role="button" onclick="slideLeft()" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carousel" role="button" onclick="slideRight()"
-                       data-slide="next">
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>

@@ -37,7 +37,7 @@ array_multisort(array_map('strtolower', array_column($items, 'title')), $items);
 
 		<hr class="header-line">
 
-        <h2 class="entry-header"><span class="single-title">dj show bios.</span></h2>
+        <h2 class="entry-header"><span class="article-title">dj show bios.</span></h2>
 
         <div class="row shows">
 

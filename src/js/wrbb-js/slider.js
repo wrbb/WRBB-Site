@@ -1,11 +1,6 @@
-function slideLeft() {
+jQuery(".carousel-control-prev").click(function() {
     jQuery("#carousel").carousel("prev");
-    };
-
-function slideRight() {
+});
+jQuery(".carousel-control-next").click(function() {
     jQuery("#carousel").carousel("next");
-    };
-
-function fitCaptionText() {
-    jQuery('p').fitText(0.38);
-    };
+});
