@@ -18,8 +18,6 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 		<div class="row">
 
-			<!-- Do the left sidebar check -->
-<!--			--><?php //get_template_part( 'global-templates/left-sidebar-check' ); ?>
 
 			<main class="site-main" id="main">
 
@@ -32,44 +30,31 @@ $container   = get_theme_mod( 'understrap_container_type' );
 						$author_name ) : get_userdata( intval( $author ) );
 					?>
 
-                    <h3 class="entry-header">
+                    <h1 class="entry-header">
                         <span class="article-title">
                             <?php esc_html_e( 'Articles by', 'understrap' ); ?>
                             <?php echo esc_html( $curauth->nickname ); ?>
 
                         </span>
-                    </h3>
+                    </h1>
 
 
                     <h4>
-                        <div class="row">
+                        <div>
 
-                            <div class="col-2 align-self-center px-1">
-                                <?php esc_html_e( 'About: ', 'understrap' ); ?>
+                            <div class="flex-column">
+                                <?php esc_html_e( 'About ', 'understrap' ); ?>
                                 <?php echo esc_html( $curauth->first_name ) . " " . esc_html( $curauth->last_name ); ?>
                             </div>
 
-                            <div class="col-10 float-left">
-                                <?php if ( ! empty( $curauth->ID ) ) : ?>
-                                    <?php echo get_avatar( $curauth->ID ); ?>
-                                <?php endif; ?>
-
-                            </div>
                         </div>
                     </h4>
-
-
-<!--                    avatar -->
-<!--					--><?php //if ( ! empty( $curauth->ID ) ) : ?>
-<!--						--><?php //echo get_avatar( $curauth->ID ); ?>
-<!--					--><?php //endif; ?>
 
 
 
 					<dl>
                         <?php if ( ! empty( $curauth->user_description ) ) : ?>
 
-                            <dt><?php esc_html_e( 'Profile', 'understrap' ); ?></dt>
                             <dd>
                                 <?php echo esc_html( $curauth->user_description ); ?>
 
@@ -92,7 +77,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
 					</dl>
 
 
-				</header><!-- .page-header -->
+				</header>
 
 				<ul class="list-group list-group-flush">
 
@@ -108,8 +93,12 @@ $container   = get_theme_mod( 'understrap_container_type' );
                                         <div class="col-3 align-self-center">
                                             <a href="<?php the_permalink() ?>">
                                                 <?php if (has_post_thumbnail()) : ?>
-                                                    <?php  the_post_thumbnail(); ?>
+                                                    <?php the_post_thumbnail('full', array( 'class' => 'img-thumbnail' )); ?>
                                                 <?php endif; ?>
+
+
+
+
                                             </a>
                                         </div>
 
@@ -131,11 +120,6 @@ $container   = get_theme_mod( 'understrap_container_type' );
                                                 <?php the_excerpt(); ?>
                                             </p>
 
-
-
-                                            <?php esc_html_e( 'in',
-                                                'understrap' ); ?>
-                                            <?php the_category( '&' ); ?>
                                         </div>
 
                                     </div>
@@ -149,22 +133,19 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 					<?php endif; ?>
 
-					<!-- End Loop -->
-
 				</ul>
 
-			</main><!-- #main -->
+			</main>
 
-			<!-- The pagination component -->
+
 			<?php understrap_pagination(); ?>
 
-		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
 
-	</div> <!-- .row -->
 
-</div><!-- Container end -->
+	</div>
 
-</div><!-- Wrapper end -->
+</div>
+
+</div>
 
 <?php get_footer(); ?>
