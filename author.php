@@ -18,7 +18,6 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 		<div class="row">
 
-
 			<main class="site-main" id="main">
 
                 <hr class="header-line">
@@ -38,19 +37,16 @@ $container   = get_theme_mod( 'understrap_container_type' );
                         </span>
                     </h1>
 
-
-                    <h4>
-                        <div>
-
-                            <div class="flex-column">
-                                <?php esc_html_e( 'About ', 'understrap' ); ?>
-                                <?php echo esc_html( $curauth->first_name ) . " " . esc_html( $curauth->last_name ); ?>
-                            </div>
-
-                        </div>
-                    </h4>
-
-
+                    <hr>
+                    
+                    <h5 class="flex-column bio-title">
+                        <?php esc_html_e( 'About ', 'understrap' ); ?>
+                        <?php
+                            echo
+                            esc_html( $curauth->first_name ) . " " .
+                            esc_html( $curauth->last_name );
+                        ?>
+                    </h5>
 
 					<dl>
                         <?php if ( ! empty( $curauth->user_description ) ) : ?>
@@ -85,46 +81,20 @@ $container   = get_theme_mod( 'understrap_container_type' );
 					<?php if ( have_posts() ) : ?>
 						<?php while ( have_posts() ) : the_post(); ?>
 
-                            <?php if (strcmp(get_post_status(), "publish") == 0) :?>
+                            <?php
+                            if (strcmp(get_post_status(), "publish") == 0) {
+	                            /*
+                                 * Include the Post-Format-specific template for the content.
+                                 * If you want to override this in a child theme, then include a
+	                             * file called content-___.php (where ___ is the Post Format name)
+	                             * and that will be used instead.
+                                 */
+	                            get_template_part(
+                                    'loop-templates/content-archive', get_post_format()
+                                );
+                            }
+                            ?>
 
-                                <li class="list-group-item">
-
-                                    <div class="row">
-                                        <div class="col-3 align-self-center">
-                                            <a href="<?php the_permalink() ?>">
-                                                <?php if (has_post_thumbnail()) : ?>
-                                                    <?php the_post_thumbnail('full', array( 'class' => 'img-thumbnail' )); ?>
-                                                <?php endif; ?>
-
-
-
-
-                                            </a>
-                                        </div>
-
-                                        <div class="col-8">
-                                            <h3>
-                                                <a rel="bookmark" href="<?php the_permalink() ?>"
-                                                   title="<?php esc_html_e( 'Permanent Link:', 'understrap' ); ?> <?php the_title(); ?>"
-                                                    class="article-title">
-                                                    <?php the_title(); ?>
-                                                </a>
-                                            </h3>
-
-
-                                            <div class="">
-                                                <?php understrap_posted_on(); ?>
-                                            </div>
-
-                                            <p>
-                                                <?php the_excerpt(); ?>
-                                            </p>
-
-                                        </div>
-
-                                    </div>
-                                </li>
-                            <?php endif; ?>
 						<?php endwhile; ?>
 
 					<?php else : ?>
@@ -137,14 +107,11 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 			</main>
 
-
 			<?php understrap_pagination(); ?>
 
+	    </div>
 
-
-	</div>
-
-</div>
+    </div>
 
 </div>
 
