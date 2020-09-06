@@ -1,9 +1,10 @@
 .header-line {
-	border: medium solid #D30F0F;
+	background-color: #D30F0F;
 	position: absolute;
 	left: 0;
 	right: 0;
 	z-index: 1;
+  	padding: 2px;
 }
 
 .entry-header {

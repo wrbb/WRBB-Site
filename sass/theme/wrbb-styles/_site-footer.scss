@@ -91,10 +91,13 @@
 
 			.logo-articles{
 				text-align: center;
-				a{
+				a {
 					font-weight: normal;
 					font-size: 20px;
 					padding-right: $size__spacing-unit;
+				}
+				div {
+					padding: 0;
 				}
 			}
 
