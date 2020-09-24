@@ -60,10 +60,13 @@ wp_localize_script('jquery', 'php_vars', $js_data);
                     <img alt="white and red logo"
                          src="<?php echo $template_url; ?>/src/img/white-w-red.png"/>
                 </a>
+
             </div>
 
             <a class="skip-link screen-reader-text sr-only"
                href="#content"><?php esc_html_e('Skip to content', 'understrap'); ?></a>
+
+            <span class="navbar-toggler-icon"></span>
 
             <nav class="navbar-expand-md navbar-dark">
 
@@ -85,6 +88,8 @@ wp_localize_script('jquery', 'php_vars', $js_data);
                 ); ?>
 
             </nav><!-- .site-navigation -->
+            <?php get_template_part('searchform'); ?>
+
 
         </div><!-- #wrapper-navbar end -->
 
@@ -111,6 +116,7 @@ wp_localize_script('jquery', 'php_vars', $js_data);
                 jQuery('.wrbb-navbar').css({'position' : 'static', 'background-color' : 'black'});
             </script>
         <?php endif; ?>
+
 
     </div> <!-- header -->
 </div>
