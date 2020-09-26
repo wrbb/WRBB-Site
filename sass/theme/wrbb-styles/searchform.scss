@@ -1,0 +1,49 @@
+form{
+  position: relative;
+  top: 10%;
+  left: 87.5%;
+  transform: translate(-50%,-50%);
+  transition: all 1s;
+  width: 50px;
+  height: 35px;
+  background: none;
+  box-sizing: border-box;
+  border-radius: 25px;
+  border: 4px solid white;
+
+  padding: 10px;
+}
+
+input.field{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;;
+  height: 42.5px;
+  line-height: 30px;
+  outline: 0;
+  border: 0;
+  display: none;
+  font-size: 1em;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+
+.fa{
+
+  color: #ffffff;
+
+}
+
+form:hover{
+  width: 200px;
+  cursor: pointer;
+}
+
+form:hover input{
+  display: block;
+}
+
+form:hover .fa{
+  display: none;
+}
