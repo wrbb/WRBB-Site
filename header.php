@@ -63,6 +63,10 @@ wp_localize_script('jquery', 'php_vars', $js_data);
 
             </div>
 
+            <div clas="searchform-container">
+                <?php get_template_part('searchform'); ?>
+            </div>
+
             <a class="skip-link screen-reader-text sr-only"
                href="#content"><?php esc_html_e('Skip to content', 'understrap'); ?></a>
 
@@ -88,7 +92,6 @@ wp_localize_script('jquery', 'php_vars', $js_data);
                 ); ?>
 
             </nav><!-- .site-navigation -->
-            <?php get_template_part('searchform'); ?>
 
 
         </div><!-- #wrapper-navbar end -->

@@ -12,7 +12,7 @@
 <!--    </label>-->
 	<div class="d-inline-flex" id="search-container">
 
-		<input class="field form-control" id="s" name="s" type="text"
+		<input class="field form-control" id="search-input" name="s" type="text"
 			placeholder="<?php esc_attr_e( 'Search &hellip;', 'understrap' ); ?>" value="<?php the_search_query(); ?>">
         <i class="fa fa-search"></i>
 
