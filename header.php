@@ -70,7 +70,6 @@ wp_localize_script('jquery', 'php_vars', $js_data);
             <a class="skip-link screen-reader-text sr-only"
                href="#content"><?php esc_html_e('Skip to content', 'understrap'); ?></a>
 
-            <span class="navbar-toggler-icon"></span>
 
             <nav class="navbar-expand-md navbar-dark">
 
