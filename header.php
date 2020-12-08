@@ -63,7 +63,7 @@ wp_localize_script('jquery', 'php_vars', $js_data);
 
             </div>
 
-            <div>
+            <div class="searchform">
                 <?php get_template_part('searchform'); ?>
             </div>
 
