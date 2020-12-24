@@ -60,12 +60,9 @@ wp_localize_script('jquery', 'php_vars', $js_data);
                     <img alt="white and red logo"
                          src="<?php echo $template_url; ?>/src/img/white-w-red.png"/>
                 </a>
-
             </div>
 
-            <div class="searchform">
-                <?php get_template_part('searchform'); ?>
-            </div>
+            <?php get_template_part('searchform'); ?>
 
             <a class="skip-link screen-reader-text sr-only"
                href="#content"><?php esc_html_e('Skip to content', 'understrap'); ?></a>
