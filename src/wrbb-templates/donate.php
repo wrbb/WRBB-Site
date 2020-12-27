@@ -27,7 +27,7 @@ $container = get_theme_mod('understrap_container_type');
             </p>
         </div>
 
-        <a href="https://giving.northeastern.edu/live/profiles/440-club-wrbb">
+        <a class="donate-link" href="https://giving.northeastern.edu/live/profiles/440-club-wrbb">
             <button id="donate-button">Donate</button>
         </a>
     </div>
