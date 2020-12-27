@@ -202,10 +202,7 @@ function podcast_posted_on() {
     esc_attr( get_the_modified_date( 'c' ) ),
     esc_html( get_the_modified_date() )
   );
-  $posted_on = sprintf(
-    esc_html_x( '%s', 'post date', 'understrap' ),
-    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-  );
+  $posted_on = sprintf( esc_html_x( '%s', 'post date', 'understrap' ), $time_string );
   echo '<p>' . $posted_on . '</p>'; // WPCS: XSS OK.
 }
 
@@ -326,4 +323,45 @@ add_shortcode( 'podcast', 'podcast_func' );
  */
 function understrap_all_excerpts_get_more_link( $post_excerpt ) {
 	return $post_excerpt . ' [...]';
+}
+
+
+// Below code taken from https://wordpress.stackexchange.com/a/8747
+// Give users the option to add featured images to categories (meant for podcast logos)
+add_action ( 'edit_category_form_fields', 'extra_category_fields');
+
+//add extra fields to category edit form callback function
+function extra_category_fields( $tag ) {    //check for existing featured ID
+	$t_id = $tag->term_id;
+	$cat_meta = get_option( "category_$t_id");
+	?>
+	<tr class="form-field">
+		<th scope="row" valign="top">
+			<label for="cat_Image_url"><?php _e('Podcast Logo URL'); ?></label>
+		</th>
+		<td>
+			<input type="text" name="Cat_meta[img]" id="Cat_meta[img]" size="3" style="width:60%;" value="<?php echo $cat_meta['img'] ? $cat_meta['img'] : ''; ?>"><br />
+			<span class="description"><?php _e('Enter the URL for the podcast logo image that you want displayed on the podcast pages.'); ?></span>
+		</td>
+	</tr>
+	<?php
+}
+
+// save extra category extra fields hook
+add_action( 'edited_category', 'save_extra_category_fields' );
+
+// save extra category extra fields callback function
+function save_extra_category_fields( $term_id ) {
+	if ( isset( $_POST['Cat_meta'] ) ) {
+		$t_id     = $term_id;
+		$cat_meta = get_option( "category_$t_id" );
+		$cat_keys = array_keys( $_POST['Cat_meta'] );
+		foreach ( $cat_keys as $key ) {
+			if ( isset( $_POST['Cat_meta'][ $key ] ) ) {
+				$cat_meta[ $key ] = $_POST['Cat_meta'][ $key ];
+			}
+		}
+		//save the option array
+		update_option( "category_$t_id", $cat_meta );
+	}
 }
