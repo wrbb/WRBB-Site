@@ -77,7 +77,7 @@ $is_radiojar = true;
   "streamName": "9950r946bzzuv",
   "enableUpdates": true,
   "defaultImage": "//www.radiojar.com/img/sample_images/Radio_Stations_Avatar_BLUE.png",
-  "autoplay":false
+  "autoplay": true
  });
  rjq('#rjp-radiojar-player').off('rj-track-load-event');
  rjq('#rjp-radiojar-player').on('rj-track-load-event', function(event, data) {
@@ -167,25 +167,18 @@ $is_radiojar = true;
     <p class="current-show">
         <strong>Current Show:</strong>
         <br>
-			<?php echo $show ?>
+		<?php echo $show ?>
     </p>
     <div class="player-controls">
         <div class="player-play-pause">
             <a class="play-button--popup" id="popup-button">
-							<?php echo $play_button ?>
+			    <?php echo $play_button ?>
             </a>
         </div>
         <div class="volume-controls">
             <i id="volume-icon" class="fa fa-volume-up fa-lg" aria-hidden="true"></i>
             <label for='volume-slider'></label>
-            <input
-                    id='volume-slider'
-                    type="range"
-                    min="1"
-                    max="100"
-                    step="1"
-                    value="50"
-            >
+            <input id='volume-slider' type="range" min="1" max="100" step="1" value="50">
         </div>
     </div>
 </div>
