@@ -9,7 +9,9 @@
 
 get_header();
 
-$is_podcast = get_post_type() == "podcasts";
+$category = get_queried_object();
+$parent = get_category($category->category_parent);
+$is_podcast = $parent->slug == "podcast";
 ?>
 
 <?php $container = get_theme_mod( 'understrap_container_type' );?>
@@ -30,7 +32,7 @@ $is_podcast = get_post_type() == "podcasts";
 
                 <div class="category-info">
                     <?php
-                    $cat_id = get_queried_object_id();
+                    $cat_id = $category->term_id;
                     $cat_data = get_option( "category_$cat_id" );
                     if ($is_podcast && isset($cat_data['img'])) :
 	                    $show_slug = $wp_query->get_queried_object()->slug;
