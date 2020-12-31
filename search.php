@@ -42,7 +42,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
 						 * If you want to overload this in a child theme then include a file
 						 * called content-search.php and that will be used instead.
 						 */
-						get_template_part( 'loop-templates/content', 'search' );
+						get_template_part( 'loop-templates/content', 'archive' );
 						?>
 
 					<?php endwhile; ?>
