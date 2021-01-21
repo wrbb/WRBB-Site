@@ -26,7 +26,8 @@
 }
 
 .dropdown-content {
-  display: none;
+  visibility: hidden;
+  height: 0;
   position: absolute;
   background-color: #d30f0f;
   min-width: 150%;
@@ -36,6 +37,19 @@
   list-style: none;
   padding: 0;
   z-index: 3;
+}
+
+.nav-item:hover {
+  background-color: #d30f0f;
+}
+
+.nav-item:hover .dropdown-content {
+  visibility: visible;
+  height: 100%;
+}
+
+.nav-item:hover .dropdown-toggle::after {
+  color: white;
 }
 
 .dropdown-content a {
@@ -64,9 +78,6 @@
 .dropdown-toggle::after {
   color: #d30f0f;
 }
-.dropdown-toggle.selected::after {
-  color: white;
-}
 
 .navbar-dark {
   .navbar-nav {
@@ -86,7 +97,7 @@
     display: none;
   }
 
-  .wrbb-menu.selected {
+  .wrbb-menu.nav-open {
     display: inherit;
   }
 
@@ -95,7 +106,7 @@
     width: fit-content;
   }
 
-  .wrbb-navbar.selected {
+  .wrbb-navbar.nav-open {
     background: rgba(0, 0, 0, 0.75);
   }
 
@@ -106,7 +117,7 @@
   }
 }
 
-/* Tablet styles */
+/* Tablet and Mobile styles */
 @media only screen and (max-width: map_get($grid-breakpoints, md)) {
   // On mobile, the dropdown title links (e.g. reviews, features) are disabled until the user
   // opens the dropdown. In other words, on the first click, the dropdown is opened, and on the
