@@ -40,11 +40,17 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
                     while ( have_posts() ) : the_post(); ?>
 
-                        <?php if (strcmp(get_post_type(the_post()), 'podcast') == 0)  : ?>
+                        <?php if (get_post_type() == 'podcasts') : ?>
 
                             <?php
                             get_template_part( 'loop-templates/content', 'archive-podcast' );
                             ?>
+
+                        <?php elseif (get_post_type() == 'page') : ?>
+
+		                    <?php
+		                    get_template_part( 'loop-templates/content', 'archive-page' );
+		                    ?>
 
                         <?php else : ?>
 

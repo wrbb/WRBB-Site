@@ -105,7 +105,7 @@ wp_localize_script('jquery', 'php_vars', $js_data);
         indicated by slug-->
         <?php if (is_front_page() || in_array($post_slug, $slider_slugs)) : ?>
             <?php get_template_part('slider'); ?>
-        <?php elseif (has_post_thumbnail() && !is_archive()) : ?>
+        <?php elseif (has_post_thumbnail() && !is_archive() && !is_search()) : ?>
             <!--Static image otherwise-->
             <div class="header-image-fullscreen">
                 <?php the_post_thumbnail('full'); ?>
