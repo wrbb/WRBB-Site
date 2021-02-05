@@ -41,7 +41,6 @@ form.searchform:hover #search-input {
 /* Mobile styles */
 @media only screen and (max-width: 576px) {
   form.searchform {
-    top: 10%;
-    position: fixed;
+    top: 84px;
   }
 }
