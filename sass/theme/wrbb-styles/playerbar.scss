@@ -1,0 +1,69 @@
+.playerbar {
+  color: $white;
+  background-color: $black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  z-index: 99;
+  font-size: 1.2em;
+  padding: 8px;
+  text-align: center;
+
+  &--popup {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.current-show {
+  margin: 0;
+}
+
+.player-controls {
+  margin: auto;
+}
+
+.player-play-pause {
+  display: flex;
+  justify-content: center;
+}
+
+.play-button {
+  &--popup {
+    padding: 12px;
+  }
+  &--toast {
+    padding: 0;
+    border-radius: 50%;
+    border-width: 0;
+    background-color: $black;
+  }
+}
+
+.fa-play-circle {
+  color: $white;
+}
+
+#player-desc {
+  padding-bottom: 0;
+  padding-left: 4px;
+}
+
+.player-text {
+  text-align: center;
+}
+
+#volume-slider {
+  position: relative;
+  top: 4px;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 720px) {
+  .playerbar--toast {
+    width: 100%;
+    display: table;
+  }
+}

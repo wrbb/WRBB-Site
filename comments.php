@@ -31,21 +31,19 @@ if ( post_password_required() ) {
 				if ( 1 === (int)$comments_number ) {
 					printf(
 						/* translators: %s: post title */
-						esc_html_x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'understrap' ),
-						'<span>' . get_the_title() . '</span>'
+						esc_html_x( '1 Comment.', 'comments title', 'understrap' )
 					);
 				} else {
 					printf( // WPCS: XSS OK.
 						/* translators: 1: number of comments, 2: post title */
 						esc_html( _nx(
-							'%1$s thought on &ldquo;%2$s&rdquo;',
-							'%1$s thoughts on &ldquo;%2$s&rdquo;',
+							'%1$s Comment.',
+							'%1$s Comments.',
 							$comments_number,
 							'comments title',
 							'understrap'
 						) ),
-						number_format_i18n( $comments_number ),
-						'<span>' . get_the_title() . '</span>'
+						$comments_number
 					);
 				}
 			?>

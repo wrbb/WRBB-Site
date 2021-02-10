@@ -1,0 +1,128 @@
+.header {
+  position: relative;
+
+  .header-image-fullscreen {
+    width: 100%;
+    height: 600px;
+  }
+
+  .header-image-fullscreen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.wrbb-navbar {
+  background: linear-gradient(
+                  to bottom,
+                  rgba(0, 0, 0, 0.5),
+                  rgba(225, 225, 225, 0.5));
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  width: 100%;
+}
+
+.dropdown-content {
+  visibility: hidden;
+  height: 0;
+  position: absolute;
+  background-color: #d30f0f;
+  min-width: 150%;
+  text-align: left;
+  font-style: italic;
+  color: white;
+  list-style: none;
+  padding: 0;
+  z-index: 3;
+}
+
+.nav-item:hover {
+  background-color: #d30f0f;
+}
+
+.nav-item:hover .dropdown-content {
+  visibility: visible;
+  height: 100%;
+}
+
+.nav-item:hover .dropdown-toggle::after {
+  color: white;
+}
+
+.dropdown-content a {
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  padding: 0.5em;
+}
+
+.header-logo {
+  width: 200px;
+  margin: auto;
+  padding: 10px;
+}
+
+.wrbb-menu {
+  justify-content: space-around;
+}
+
+.nav-link {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+// The arrow next to the dropdown titles
+.dropdown-toggle::after {
+  color: #d30f0f;
+}
+
+.navbar-dark {
+  .navbar-nav {
+    .nav-link {
+      color: white;
+
+      @include hover-focus {
+        color: white;
+      }
+    }
+  }
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 767px) {
+  .wrbb-menu {
+    display: none;
+  }
+
+  .wrbb-menu.nav-open {
+    display: inherit;
+  }
+
+  .nav-link {
+    margin: auto;
+    width: fit-content;
+  }
+
+  .wrbb-navbar.nav-open {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  .dropdown-content {
+    position: static;
+    text-align: center;
+    min-width: 100%;
+  }
+}
+
+/* Tablet and Mobile styles */
+@media only screen and (max-width: map_get($grid-breakpoints, md)) {
+  // On mobile, the dropdown title links (e.g. reviews, features) are disabled until the user
+  // opens the dropdown. In other words, on the first click, the dropdown is opened, and on the
+  // second, the user is taken to the link.
+  .dropdown-toggle {
+    pointer-events: none;
+  }
+}

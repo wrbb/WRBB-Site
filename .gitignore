@@ -18,6 +18,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Development
-.idea
-.vs_code
+src/wrbb-templates/cache/
+src/img/djlogos
+
+# IDE
+.idea/
+.idea/*
+
+# Compiled files
+js/*
+js/theme.*
+css/*
+css/theme.*
+src/wrbb-templates/api-key.txt
