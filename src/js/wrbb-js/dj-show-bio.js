@@ -11,5 +11,3 @@ jQuery( ".playlistButton" ).click(function() {
 		}
 	}
 });
-
-jQuery('document').ready(() => console.log('hello'));
