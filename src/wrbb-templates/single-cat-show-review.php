@@ -67,13 +67,20 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
                 <?php if(get_the_author_meta('description')): ?>
                     <div class="author-box">
-                            <div class="author-img"><?php echo get_avatar(get_the_author_meta('user_email'), '30') ?></div>
+                        <div class="author-img">
+                            <?php echo get_avatar(get_the_author_meta('user_email'), '30') ?>
+                        </div>
 
-                            <p class="author"><a href=<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>>
-                            <?php echo get_the_author_meta('first_name');?>
-                            <?php echo get_the_author_meta('last_name'); ?></a></p>
+                        <p class="author">
+                            <a href=<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>>
+                                <?php echo get_the_author_meta('first_name');?>
+                                <?php echo get_the_author_meta('last_name'); ?>
+                            </a>
+                        </p>
 
-                            <p class="author-description"><?php esc_textarea(the_author_meta('description')) ?></p>
+                        <p class="author-description">
+                            <?php esc_textarea(the_author_meta('description')) ?>
+                        </p>
                     </div>
                 <?php endif; ?>
 
