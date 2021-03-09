@@ -27,7 +27,6 @@
 
 .dropdown-content {
   visibility: hidden;
-  height: 0;
   position: absolute;
   background-color: #d30f0f;
   min-width: 150%;
@@ -45,7 +44,6 @@
 
 .nav-item:hover .dropdown-content {
   visibility: visible;
-  height: 100%;
 }
 
 .nav-item:hover .dropdown-toggle::after {
@@ -124,5 +122,17 @@
   // second, the user is taken to the link.
   .dropdown-toggle {
     pointer-events: none;
+  }
+}
+
+/* Mobile styles */
+@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
+  // These styles are needed so that the outlines of the dropdowns don't
+  // show when they're not open.
+  .dropdown-content {
+    height: 0;
+  }
+  .nav-item:hover .dropdown-content {
+    height: 100%;
   }
 }
