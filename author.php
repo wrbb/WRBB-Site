@@ -39,14 +39,16 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
                     <hr>
                     
-                    <h5 class="flex-column bio-title">
-                        <?php esc_html_e( 'About ', 'understrap' ); ?>
-                        <?php
-                            echo
-                            esc_html( $curauth->first_name ) . " " .
-                            esc_html( $curauth->last_name );
-                        ?>
-                    </h5>
+                    <?php if(! empty( $curauth->user_description )): ?>
+                        <h5 class="flex-column bio-title">
+                            <?php esc_html_e( 'About ', 'understrap' ); ?>
+                            <?php
+                                echo
+                                esc_html( $curauth->first_name ) . " " .
+                                esc_html( $curauth->last_name );
+                            ?>
+                        </h5>
+                    <?php endif; ?>
 
 					<dl>
                         <?php if ( ! empty( $curauth->user_description ) ) : ?>
