@@ -8,6 +8,10 @@ get_header();
 $container = get_theme_mod('understrap_container_type');
 ?>
 
+<div class="featured-image-caption">
+    <?php $key="featured-image-caption"; echo get_post_meta($post->ID, $key, true); ?>
+</div>
+
 <div class="wrapper" id="single-wrapper">
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
