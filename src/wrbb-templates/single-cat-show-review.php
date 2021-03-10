@@ -55,9 +55,9 @@ $container  = get_theme_mod( 'understrap_container_type' );
                 
                 <div class="spotify">
                     <div id= "tagline">
-                        </strong><h5><?php $key="Spotify Tagline"; echo get_post_meta($post->ID, $key, true); ?></h5></strong>
+                        </strong><h5><?php $key="spotify-tagline"; echo get_post_meta($post->ID, $key, true); ?></h5></strong>
                     </div>
-                    <?php $key="Spotify Embed Code"; echo get_post_meta($post->ID, $key, true); ?>
+                    <?php $key="spotify-embed-code"; echo get_post_meta($post->ID, $key, true); ?>
                 </div>
                     
                 <div class="socials">
