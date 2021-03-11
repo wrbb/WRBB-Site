@@ -38,6 +38,10 @@
   z-index: 3;
 }
 
+.menu-item:last-child .dropdown-content {
+  right: 0;
+}
+
 .nav-item:hover {
   background-color: #d30f0f;
 }
