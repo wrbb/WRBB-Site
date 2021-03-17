@@ -32,7 +32,8 @@ $container   = get_theme_mod( 'understrap_container_type' );
                     <h1 class="entry-header">
                         <span class="article-title">
                             <?php esc_html_e( 'Articles by', 'understrap' ); ?>
-                            <?php echo esc_html( $curauth->nickname ); ?>
+                            <?php echo get_the_author_meta('first_name');?>
+                            <?php echo get_the_author_meta('last_name'); ?>
 
                         </span>
                     </h1>
