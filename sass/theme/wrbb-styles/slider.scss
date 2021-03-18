@@ -56,14 +56,21 @@
     color: white;
   }
 
-  /* Mobile Styles */
-  @media only screen and (max-width: 1200px) {
+  /* Mobile and Tablet Styles */
+  @media only screen and (max-width: map_get($grid-breakpoints, lg)) {
     .carousel-indicators {
       display: none;
     }
 
     .carousel-caption {
       left: 15%;
+    }
+  }
+
+  /* Mobile Styles */
+  @media only screen and (max-width: map_get($grid-breakpoints, sm)) {
+    .carousel-caption h3 {
+      font-size: 1.5rem;
     }
   }
 }
