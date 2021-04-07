@@ -16,10 +16,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <html>
 
 	<head>
-
-		<link rel ="stylesheet" href="css/styles.css">
 		<script src="https://kit.fontawesome.com/ef315d9147.js" crossorigin="anonymous"></script>
-		
 	</head>
 
 	<div class="wrapper" id="wrapper-footer">
@@ -42,42 +39,63 @@ $container = get_theme_mod( 'understrap_container_type' );
 								</form>
 							</div>
 
+                            <br>
+
 							<div class="social-media" style="text-align: center;">
-								<body>
-									<br>
-									<a href="https://www.facebook.com/WRBBRadio/"><i class="fab fa-facebook fa-lg"></i></a>
-									<a href="https://www.instagram.com/wrbbradio/"><i class="fab fa-instagram fa-lg"></i></a>
-									<a href="https://twitter.com/wrbbradio"><i class="fab fa-twitter fa-lg"></i></a>
-									<a href="https://open.spotify.com/user/pfe0l6pbdx8667wos0gwqtwx9?si=JsuhCoLER_mAmO2S_ppfMQ"><i class="fab fa-spotify fa-lg"></i></a>
-									<br>
-									<a href=""></a>
-								</body>
+                                <a href="https://www.facebook.com/WRBBRadio/"><i class="fab fa-facebook fa-lg"></i></a>
+                                <a href="https://www.instagram.com/wrbbradio/"><i class="fab fa-instagram fa-lg"></i></a>
+                                <a href="https://twitter.com/wrbbradio"><i class="fab fa-twitter fa-lg"></i></a>
+                                <a href="https://open.spotify.com/user/pfe0l6pbdx8667wos0gwqtwx9?si=JsuhCoLER_mAmO2S_ppfMQ"><i class="fab fa-spotify fa-lg"></i></a>
 							</div>
 
-							<div class = "logo-articles">
-								<body>
-									<a href="">articles</a>
-									<a href="">articles</a>
-									<a href="http://wrbbradio.org/"><img src="<?php bloginfo('template_url'); ?>/img/logo.png" class="logo" alt="WRBB Logo"></a>
-									<a href="">articles</a>
-									<a href="">articles</a>
-								</body>
+                            <br>
+
+							<div class="row logo-articles">
+                                <?php
+                                $album_review_link = get_category_link(get_category_by_slug("album-review"));
+                                $show_review_link = get_category_link(get_category_by_slug("show-review"));
+                                $editorial_link = get_category_link(get_category_by_slug("editorial"));
+                                $interview_link = get_category_link(get_category_by_slug("interview"));
+                                ?>
+                                <div class="col-lg-5 cat-links">
+                                    <a href="<?php echo esc_url($album_review_link) ?>" class="cat-link">
+                                        album reviews.
+                                    </a>
+                                    <a href="<?php echo esc_url($show_review_link) ?>" class="cat-link">
+                                        show reviews.
+                                    </a>
+                                </div>
+                                <div class="col-lg-2"
+                                    <a href="http://wrbbradio.org/">
+                                        <img src="<?php bloginfo('template_url'); ?>/img/logo.png" class="logo" alt="WRBB Logo">
+                                    </a>
+                                </div>
+                                <div class="col-lg-5 cat-links">
+                                    <a href="<?php echo esc_url($editorial_link) ?>" class="cat-link">
+                                        editorials.
+                                    </a>
+                                    <a href="<?php echo esc_url($interview_link) ?>" class="cat-link">
+                                        interviews.
+                                    </a>
+                                </div>
 							</div>
+
+                            <br>
 					
-								<a href="<?php echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>">
-								<?php printf( 
-								/* translators:*/
-								esc_html__( 'Proudly powered by %s', 'understrap' ),'WordPress' ); ?></a>
-									<span class="sep"> | </span>
-						
-								<?php printf( // WPCS: XSS ok.
-								/* translators:*/
-									esc_html__( 'Theme: %1$s by %2$s.', 'understrap' ), $the_theme->get( 'Name' ),  '<a href="'.esc_url( __('http://understrap.com', 'understrap')).'">understrap.com</a>' ); ?> 
-					
-								(<?php printf( // WPCS: XSS ok.
-								/* translators:*/
-									esc_html__( 'Version: %1$s', 'understrap' ), $the_theme->get( 'Version' ) ); ?>)
-								
+                            <a href="<?php echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>">
+                            <?php printf(
+                            /* translators:*/
+                            esc_html__( 'Proudly powered by %s', 'understrap' ),'WordPress' ); ?></a>
+                                <span class="sep"> | </span>
+
+                            <?php printf( // WPCS: XSS ok.
+                            /* translators:*/
+                                esc_html__( 'Theme: %1$s by %2$s.', 'understrap' ), $the_theme->get( 'Name' ),  '<a href="'.esc_url( __('http://understrap.com', 'understrap')).'">understrap.com</a>' ); ?>
+
+                            (<?php printf( // WPCS: XSS ok.
+                            /* translators:*/
+                                esc_html__( 'Version: %1$s', 'understrap' ), $the_theme->get( 'Version' ) ); ?>)
+
 
 						</div><!-- .site-info -->
 
@@ -90,6 +108,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		</div><!-- container end -->
 
 	</div><!-- wrapper end -->
+
+    <?php get_template_part( 'src/wrbb-templates/playerbar' ); ?>
 
 	</div><!-- #page we need this extra closing tag here -->
 

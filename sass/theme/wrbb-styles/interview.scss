@@ -1,11 +1,10 @@
-#header-line {
-	border-style: solid;
-	border-color: red;
-	border-width: medium;
+.header-line {
+	background-color: #D30F0F;
 	position: absolute;
 	left: 0;
 	right: 0;
 	z-index: 1;
+  	padding: 2px;
 }
 
 .entry-header {
@@ -14,34 +13,31 @@
 	bottom: 10px;
 }
 
-#article-title {
+.article-title {
 	-webkit-box-decoration-break: clone;
 	background-color: white;
 	padding: 0 10px;
 	position: relative;
 	left: -10px;
-	font-family: 'Playfair Display', serif;
-	font-weight: bold;
 	line-height: normal;
+	z-index: 2;
 }
 
-.entry-meta {
-	padding-top: 10px;
+.entry-meta > p {
 	font-family: 'Playfair Display', serif;
 	font-style: italic;
+}
+
+.pipe {
+	color: red;
+	font-style: normal;
 }
 
 .post-navigation {
 	margin-bottom: 20px;
 }
 
-.sidebar {
-	position: relative;
-	top: 70px;
-}
-
 .spotify {
-	font-family: "Playfair Display", serif;
 	font-style: italic;
 	margin: auto;
 	max-width: 300px;
@@ -79,7 +75,6 @@
 }
 
 .author-description {
-	font-family: 'Roboto', sans-serif;
 	padding-top: 15px;
 }
 

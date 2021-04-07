@@ -122,7 +122,7 @@ function my_single_template($single)
  * Prints HTML with meta information for the current post-date/time and author.
  * Overrides function in inc/template-tags.php
  */
-function mp_understrap_posted_on()
+function mp_understrap_posted_on($post_id)
 {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   if (get_the_time('U') !== get_the_modified_time('U')) {
@@ -135,22 +135,25 @@ function mp_understrap_posted_on()
     esc_attr(get_the_modified_date('c')),
     esc_html(get_the_modified_date())
   );
-  $posted_on = sprintf(
-    esc_html_x('%s', 'post date', 'understrap'),
-    '<a href="' . esc_url(get_permalink()) . '" rel="bookmark">' . $time_string . '</a>'
-  );
-  $byline = sprintf(
-    esc_html_x('%s', 'post author', 'understrap'),
-    '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>'
-  );
-  echo '<p id="mpa-date">' . $posted_on . '</p><p id="mpa-author"> ' . $byline . '</p>'; // WPCS: XSS OK.
+  $posted_on = sprintf(esc_html_x('%s', 'post date', 'understrap'), $time_string);
+	$author_id = get_post_field('post_author', $post_id);
+	$byline = sprintf(
+		esc_html_x( 'by %s', 'post author', 'understrap' ),
+		'<span class="author vcard"><a class="url fn n" href="' .
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
+		esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
+		'</a></span>'
+	);
+  echo '<p id="mpa-date"> ' . $posted_on . '</p><p id="mpa-author"> ' . $byline . '</p>'; // WPCS: XSS OK.
 }
 /**
  * Used for article thumbnails on the home page
  * Prints HTML with meta information for the current post-date/time and author.
  * Overrides function in inc/template-tags.php
+ *
+ * @param int $post_id The ID of the current post
  */
-function understrap_posted_on() {
+function understrap_posted_on($post_id = 0) {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
     $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
@@ -161,15 +164,26 @@ function understrap_posted_on() {
     esc_attr( get_the_modified_date( 'c' ) ),
     esc_html( get_the_modified_date() )
   );
-  $posted_on = sprintf(
-    esc_html_x( '%s', 'post date', 'understrap' ),
-    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-  );
-  $byline = sprintf(
-    esc_html_x( 'by %s', 'post author', 'understrap' ),
-    '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-  );
-  echo '<p>' . $byline . '<span style="color: red"> | </span>' . $posted_on . '</p>'; // WPCS: XSS OK.
+  $posted_on = sprintf(esc_html_x( '%s', 'post date', 'understrap' ), $time_string);
+  if ($post_id == 0) {
+	  $byline = sprintf(
+		  esc_html_x( 'by %s', 'post author', 'understrap' ),
+		  '<span class="author vcard"><a class="url fn n" href="' .
+		    esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' .
+		    esc_html(get_the_author_meta('first_name') . " " . get_the_author_meta('last_name')) . '</a></span>'
+	  );
+  } else {
+  	// This function is being called outside the loop, so the $author_id must be specified
+	  $author_id = get_post_field('post_author', $post_id);
+	  $byline = sprintf(
+		  esc_html_x( 'by %s', 'post author', 'understrap' ),
+		  '<span class="author vcard"><a class="url fn n" href="' .
+		    esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
+		    esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
+		    '</a></span>'
+	  );
+  }
+	echo '<p>' . $byline . '<span class="pipe"> | </span>' . $posted_on . '</p>'; // WPCS: XSS OK.
 }
 
 /**
@@ -188,10 +202,7 @@ function podcast_posted_on() {
     esc_attr( get_the_modified_date( 'c' ) ),
     esc_html( get_the_modified_date() )
   );
-  $posted_on = sprintf(
-    esc_html_x( '%s', 'post date', 'understrap' ),
-    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-  );
+  $posted_on = sprintf( esc_html_x( '%s', 'post date', 'understrap' ), $time_string );
   echo '<p>' . $posted_on . '</p>'; // WPCS: XSS OK.
 }
 
@@ -302,3 +313,55 @@ add_shortcode( 'podcast', 'podcast_func' );
 @ini_set( 'upload_max_size' , '64M' );
 @ini_set( 'post_max_size', '64M');
 @ini_set( 'max_execution_time', '300' );
+
+/**
+ * Adds a custom read more link to all excerpts, manually or automatically generated
+ *
+ * @param string $post_excerpt Posts's excerpt.
+ *
+ * @return string
+ */
+function understrap_all_excerpts_get_more_link( $post_excerpt ) {
+	return $post_excerpt . ' [...]';
+}
+
+
+// Below code taken from https://wordpress.stackexchange.com/a/8747
+// Give users the option to add featured images to categories (meant for podcast logos)
+add_action ( 'edit_category_form_fields', 'extra_category_fields');
+
+//add extra fields to category edit form callback function
+function extra_category_fields( $tag ) {    //check for existing featured ID
+	$t_id = $tag->term_id;
+	$cat_meta = get_option( "category_$t_id");
+	?>
+	<tr class="form-field">
+		<th scope="row" valign="top">
+			<label for="cat_Image_url"><?php _e('Podcast Logo URL'); ?></label>
+		</th>
+		<td>
+			<input type="text" name="Cat_meta[img]" id="Cat_meta[img]" size="3" style="width:60%;" value="<?php echo $cat_meta['img'] ? $cat_meta['img'] : ''; ?>"><br />
+			<span class="description"><?php _e('Enter the URL for the podcast logo image that you want displayed on the podcast pages.'); ?></span>
+		</td>
+	</tr>
+	<?php
+}
+
+// save extra category extra fields hook
+add_action( 'edited_category', 'save_extra_category_fields' );
+
+// save extra category extra fields callback function
+function save_extra_category_fields( $term_id ) {
+	if ( isset( $_POST['Cat_meta'] ) ) {
+		$t_id     = $term_id;
+		$cat_meta = get_option( "category_$t_id" );
+		$cat_keys = array_keys( $_POST['Cat_meta'] );
+		foreach ( $cat_keys as $key ) {
+			if ( isset( $_POST['Cat_meta'][ $key ] ) ) {
+				$cat_meta[ $key ] = $_POST['Cat_meta'][ $key ];
+			}
+		}
+		//save the option array
+		update_option( "category_$t_id", $cat_meta );
+	}
+}

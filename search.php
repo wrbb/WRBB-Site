@@ -16,10 +16,6 @@ $container   = get_theme_mod( 'understrap_container_type' );
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
 		<div class="row">
-
-			<!-- Do the left sidebar check and opens the primary div -->
-			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
-
 			<main class="site-main" id="main">
 
 				<?php if ( have_posts() ) : ?>
@@ -34,16 +30,37 @@ $container   = get_theme_mod( 'understrap_container_type' );
 					</header><!-- .page-header -->
 
 					<?php /* Start the Loop */ ?>
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php
 
-						<?php
-						/**
-						 * Run the loop for the search to output the results.
-						 * If you want to overload this in a child theme then include a file
-						 * called content-search.php and that will be used instead.
-						 */
-						get_template_part( 'loop-templates/content', 'search' );
-						?>
+                    /**
+                     * Run the loop for the search to output the results.
+                     * If you want to overload this in a child theme then include a file
+                     * called content-search.php and that will be used instead.
+                     */
+
+                    while ( have_posts() ) : the_post(); ?>
+
+                        <?php if (get_post_type() == 'podcasts') : ?>
+
+                            <?php
+                            get_template_part( 'loop-templates/content', 'archive-podcast' );
+                            ?>
+
+                        <?php elseif (get_post_type() == 'page') : ?>
+
+		                    <?php
+		                    get_template_part( 'loop-templates/content', 'archive-page' );
+		                    ?>
+
+                        <?php else : ?>
+
+                            <?php
+                            get_template_part( 'loop-templates/content', 'archive' );
+                            ?>
+
+                        <?php endif; ?>
+
+                    <hr>
 
 					<?php endwhile; ?>
 
@@ -58,8 +75,6 @@ $container   = get_theme_mod( 'understrap_container_type' );
 			<!-- The pagination component -->
 			<?php understrap_pagination(); ?>
 
-		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
 
 	</div><!-- .row -->
 

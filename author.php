@@ -18,55 +18,83 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 		<div class="row">
 
-			<!-- Do the left sidebar check -->
-			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
-
 			<main class="site-main" id="main">
 
-				<header class="page-header author-header">
+                <hr class="header-line">
+
+				<header class="page-header">
 
 					<?php
 					$curauth = ( isset( $_GET['author_name'] ) ) ? get_user_by( 'slug',
 						$author_name ) : get_userdata( intval( $author ) );
 					?>
 
-					<h1><?php esc_html_e( 'About:', 'understrap' ); ?><?php echo esc_html( $curauth->nickname ); ?></h1>
+                    <h1 class="entry-header">
+                        <span class="article-title">
+                            <?php esc_html_e( 'Articles by', 'understrap' ); ?>
+                            <?php echo esc_html( $curauth->nickname ); ?>
 
-					<?php if ( ! empty( $curauth->ID ) ) : ?>
-						<?php echo get_avatar( $curauth->ID ); ?>
-					<?php endif; ?>
+                        </span>
+                    </h1>
+
+                    <hr>
+                    
+                    <h5 class="flex-column bio-title">
+                        <?php esc_html_e( 'About ', 'understrap' ); ?>
+                        <?php
+                            echo
+                            esc_html( $curauth->first_name ) . " " .
+                            esc_html( $curauth->last_name );
+                        ?>
+                    </h5>
 
 					<dl>
+                        <?php if ( ! empty( $curauth->user_description ) ) : ?>
+
+                            <dd>
+                                <?php echo esc_html( $curauth->user_description ); ?>
+
+                            </dd>
+                        <?php endif; ?>
+
+
 						<?php if ( ! empty( $curauth->user_url ) ) : ?>
-							<dt><?php esc_html_e( 'Website', 'understrap' ); ?></dt>
-							<dd>
-								<a href="<?php echo esc_url( $curauth->user_url ); ?>"><?php echo esc_html( $curauth->user_url ); ?></a>
+							<dt></dt>
+
+                            <dd>
+                                <a href="<?php echo esc_url( $curauth->user_url ); ?>">
+                                    <span><i class="fas fa-link"></i></span>
+                                    <?php echo esc_html( $curauth->user_url ); ?>
+                                </a>
 							</dd>
 						<?php endif; ?>
 
-						<?php if ( ! empty( $curauth->user_description ) ) : ?>
-							<dt><?php esc_html_e( 'Profile', 'understrap' ); ?></dt>
-							<dd><?php echo esc_html( $curauth->user_description ); ?></dd>
-						<?php endif; ?>
+
 					</dl>
 
-					<h2><?php esc_html_e( 'Posts by', 'understrap' ); ?> <?php echo esc_html( $curauth->nickname ); ?>
-						:</h2>
 
-				</header><!-- .page-header -->
+				</header>
 
-				<ul>
+				<ul class="list-group list-group-flush">
 
 					<!-- The Loop -->
 					<?php if ( have_posts() ) : ?>
 						<?php while ( have_posts() ) : the_post(); ?>
-							<li>
-								<a rel="bookmark" href="<?php the_permalink() ?>"
-								   title="<?php esc_html_e( 'Permanent Link:', 'understrap' ); ?> <?php the_title(); ?>">
-									<?php the_title(); ?></a>,
-								<?php understrap_posted_on(); ?> <?php esc_html_e( 'in',
-								'understrap' ); ?> <?php the_category( '&' ); ?>
-							</li>
+
+                            <?php
+                            if (strcmp(get_post_status(), "publish") == 0) {
+	                            /*
+                                 * Include the Post-Format-specific template for the content.
+                                 * If you want to override this in a child theme, then include a
+	                             * file called content-___.php (where ___ is the Post Format name)
+	                             * and that will be used instead.
+                                 */
+	                            get_template_part(
+                                    'loop-templates/content-archive', get_post_format()
+                                );
+                            }
+                            ?>
+
 						<?php endwhile; ?>
 
 					<?php else : ?>
@@ -75,22 +103,16 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 					<?php endif; ?>
 
-					<!-- End Loop -->
-
 				</ul>
 
-			</main><!-- #main -->
+			</main>
 
-			<!-- The pagination component -->
 			<?php understrap_pagination(); ?>
 
-		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
+	    </div>
 
-	</div> <!-- .row -->
+    </div>
 
-</div><!-- Container end -->
-
-</div><!-- Wrapper end -->
+</div>
 
 <?php get_footer(); ?>

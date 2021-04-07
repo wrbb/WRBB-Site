@@ -8,18 +8,17 @@ get_header();
 $container  = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<html>
-
-<head>
-	<link rel ="stylesheet" href="css/styles.css">
-	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-</head>
-
 <div class="wrapper" id="single-wrapper">
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<hr id="header-line">
+		<hr class="header-line">
+        <header class="entry-header">
+            <?php the_title( '<h1 class="entry-title"><span class="article-title">', '</span></h1>' ); ?>
+            <div class="entry-meta">
+                <?php understrap_posted_on($post->ID); ?>
+            </div><!-- .entry-meta -->
+        </header><!-- .entry-header -->
 
 		<div class="row" id="album-review-content">
 
@@ -27,7 +26,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 				<?php while ( have_posts() ) : the_post(); // Load post content?>
 
-					<?php get_template_part( 'loop-templates/content', 'album-review' ); ?>
+					<?php get_template_part( 'loop-templates/content', 'article' ); ?>
 
 					<?php understrap_post_nav(); ?>
 
@@ -42,14 +41,14 @@ $container  = get_theme_mod( 'understrap_container_type' );
 			</main><!-- #main -->
 
             <div class="col-md-4 sidebar">
-                
+
                 <div class="spotify">
                     <div id= "tagline">
                         </strong><h5><?php $key="Spotify Tagline"; echo get_post_meta($post->ID, $key, true); ?></h5></strong>
                     </div>
                     <?php $key="Spotify Embed Code"; echo get_post_meta($post->ID, $key, true); ?>
                 </div>
-                    
+
                 <div class="socials">
                     <a href="https://twitter.com/wrbbradio" target="_blank">
                         <img src="<?php bloginfo('template_url'); ?>/src/img/twitter.png" alt="Twitter"></a>
@@ -61,7 +60,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
                 <div class="author-box">
                         <div class="author-img"><?php echo get_avatar(get_the_author_meta('user_email'), '30') ?></div>
-                            
+
                         <p class="author"><a href=<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>>
                         <?php echo get_the_author_meta('first_name');?>
                         <?php echo get_the_author_meta('last_name'); ?></a></p>
@@ -70,15 +69,15 @@ $container  = get_theme_mod( 'understrap_container_type' );
                             <p class="author-description"><?php esc_textarea(the_author_meta('description')) ?></p>
                         <?php endif; ?>
                 </div>
-                
+
             </div>
 
 		</div><!-- .row -->
+
+	    <?php get_template_part ( 'src/wrbb-templates/related-articles', "related-articles" ) ?>
 			
-</div><!-- Container end -->
+	</div><!-- Container end -->
 
 </div><!-- Wrapper end -->
-
-</html>
 
 <?php get_footer(); ?>

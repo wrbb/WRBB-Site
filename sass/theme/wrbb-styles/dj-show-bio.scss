@@ -1,38 +1,13 @@
-
-#header-line {
-	border-style: solid;
-	border-color: red;
-	border-width: medium;
-	position: absolute;
-	left: 0;
-	right: 0;
-	z-index: 1;
+.dj-menu-entry {
+	margin-top: 1em;
 }
 
-.entry-header {
-	position: relative;
-	z-index: 2;
-	bottom: 10px;
-}
-
-.shows img {
-	width: 270px;
-	height: 200px;
-	border-style: solid;
-	border-color: gray;
-	margin: 10px 0;
-}
-
-.shows p {
+.dj-menu-entry p {
 	font-size: 12px;
 }
 
-.single-title {
-	background-color: white;
-	padding-left: 10px;
-	padding-right: 10px;
-	position: relative;
-	left: -10px;
+.dj-menu-entry .thumbnail-title {
+	margin-top: 0.5em;
 }
 
 .show-image {
