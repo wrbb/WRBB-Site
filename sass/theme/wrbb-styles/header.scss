@@ -36,7 +36,7 @@
   list-style: none;
   padding: 0;
   z-index: 3;
-  transition: opacity 0.3s
+  transition: opacity 0.3s;
 }
 
 .menu-item:last-child .dropdown-content {
@@ -99,7 +99,7 @@
 }
 
 /* Mobile styles */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
   .wrbb-menu {
     display: none;
   }
@@ -123,21 +123,9 @@
     position: static;
     text-align: center;
     min-width: 100%;
+    overflow: hidden;
   }
 
-  .nav-item:hover .dropdown-content {
-    max-height: 1000px;
-  }
-}
-
-/* Mobile styles */
-@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
-  // These styles are needed so that the outlines of the dropdowns don't
-  // show when they're not open.
-  .dropdown-content {
-    max-height: 0;
-    transition: max-height 0.3s, opacity 0.3s;
-  }
   .nav-item:hover .dropdown-content {
     max-height: 1000px;
   }
