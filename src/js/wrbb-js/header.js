@@ -1,9 +1,13 @@
 let isMobile = window.matchMedia("only screen and (max-width: 992px)").matches;
 
+jQuery(".dropdown-content").hide();
+
 jQuery(".nav-item").on({
     mouseenter: function () {
         // Dropdown was opened
         let dropdown_id = this.id;
+        jQuery(".nav-item#" + dropdown_id).css("background-color", "#d30f0f");
+        jQuery(".dropdown-content#" + dropdown_id).show("fast");
         if (isMobile) {
             // Restore the dropdown title links because they are disabled until the user
             // opens the dropdown on mobile.
@@ -17,7 +21,11 @@ jQuery(".nav-item").on({
     mouseleave: function () {
         // Dropdown was closed
         let dropdown_id = this.id;
-        if (isMobile) jQuery(".dropdown-toggle#" + dropdown_id).css("pointer-events", "none");
+        jQuery(".nav-item#" + dropdown_id).css("background-color", "inherit");
+        jQuery(".dropdown-content#" + dropdown_id).hide("fast");
+        if (isMobile) {
+            jQuery(".dropdown-toggle#" + dropdown_id).css("pointer-events", "none");
+        }
     }
 });
 
