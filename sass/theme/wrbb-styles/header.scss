@@ -144,15 +144,3 @@
     pointer-events: none;
   }
 }
-
-/* Mobile styles */
-@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
-  // These styles are needed so that the outlines of the dropdowns don't
-  // show when they're not open.
-  .dropdown-content {
-    height: 0;
-  }
-  .nav-item:hover .dropdown-content {
-    height: 100%;
-  }
-}
