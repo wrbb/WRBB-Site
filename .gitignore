@@ -19,7 +19,9 @@ yarn-debug.log*
 yarn-error.log*
 
 src/wrbb-templates/cache/
+src/wrbb-templates/api-key.txt
 src/img/djlogos
+package-lock.json
 
 # IDE
 .idea/
@@ -30,4 +32,3 @@ js/*
 js/theme.*
 css/*
 css/theme.*
-src/wrbb-templates/api-key.txt

@@ -34,7 +34,7 @@ if (isMobile) {
         jQuery(".wrbb-navbar").removeClass("nav-open");
     })
     // Don't close the nav when the user clicks inside of it
-    jQuery(".header").click(function (e) {
+    jQuery(".wrbb-navbar").click(function (e) {
         e.stopPropagation();
     })
 }
