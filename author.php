@@ -32,21 +32,24 @@ $container   = get_theme_mod( 'understrap_container_type' );
                     <h1 class="entry-header">
                         <span class="article-title">
                             <?php esc_html_e( 'Articles by', 'understrap' ); ?>
-                            <?php echo esc_html( $curauth->nickname ); ?>
+                            <?php echo get_the_author_meta('first_name');?>
+                            <?php echo get_the_author_meta('last_name'); ?>
 
                         </span>
                     </h1>
 
                     <hr>
                     
-                    <h5 class="flex-column bio-title">
-                        <?php esc_html_e( 'About ', 'understrap' ); ?>
-                        <?php
-                            echo
-                            esc_html( $curauth->first_name ) . " " .
-                            esc_html( $curauth->last_name );
-                        ?>
-                    </h5>
+                    <?php if(! empty( $curauth->user_description )): ?>
+                        <h5 class="flex-column bio-title">
+                            <?php esc_html_e( 'About ', 'understrap' ); ?>
+                            <?php
+                                echo
+                                esc_html( $curauth->first_name ) . " " .
+                                esc_html( $curauth->last_name );
+                            ?>
+                        </h5>
+                    <?php endif; ?>
 
 					<dl>
                         <?php if ( ! empty( $curauth->user_description ) ) : ?>

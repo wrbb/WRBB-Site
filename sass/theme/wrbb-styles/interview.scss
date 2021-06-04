@@ -25,7 +25,6 @@
 
 .entry-meta > p {
 	font-family: 'Playfair Display', serif;
-	font-style: italic;
 }
 
 .pipe {
@@ -33,12 +32,7 @@
 	font-style: normal;
 }
 
-.post-navigation {
-	margin-bottom: 20px;
-}
-
 .spotify {
-	font-style: italic;
 	margin: auto;
 	max-width: 300px;
 }
@@ -68,7 +62,6 @@
 .author-box .author {
 	font-family: 'Playfair Display', serif;
 	font-size: 20px;
-	font-style: italic;
 	padding-left: 5px;
 	display: inline;
 	vertical-align: -10%;
@@ -76,6 +69,12 @@
 
 .author-description {
 	padding-top: 15px;
+}
+
+.featured-image-caption {
+	font-weight: bold;
+	margin: 5px;
+	font-size: 12px;
 }
 
 @media only screen and (max-width: 575px) {

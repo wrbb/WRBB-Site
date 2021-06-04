@@ -82,19 +82,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                             <br>
 					
-                            <a href="<?php echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>">
                             <?php printf(
                             /* translators:*/
-                            esc_html__( 'Proudly powered by %s', 'understrap' ),'WordPress' ); ?></a>
-                                <span class="sep"> | </span>
+                            esc_html__( 'Proudly powered by %s', 'understrap' ),'<a href="'.esc_url( __( 'http://wordpress.org/','understrap' )).'">WordPress</a>' ); ?>
 
                             <?php printf( // WPCS: XSS ok.
                             /* translators:*/
-                                esc_html__( 'Theme: %1$s by %2$s.', 'understrap' ), $the_theme->get( 'Name' ),  '<a href="'.esc_url( __('http://understrap.com', 'understrap')).'">understrap.com</a>' ); ?>
-
-                            (<?php printf( // WPCS: XSS ok.
-                            /* translators:*/
-                                esc_html__( 'Version: %1$s', 'understrap' ), $the_theme->get( 'Version' ) ); ?>)
+                                esc_html__( 'and %s.', 'understrap' ), '<a href="'.esc_url( __('http://understrap.com', 'understrap')).'">UnderStrap</a>' ); ?>
 
 
 						</div><!-- .site-info -->

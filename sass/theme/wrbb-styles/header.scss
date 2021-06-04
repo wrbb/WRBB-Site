@@ -26,7 +26,6 @@
 }
 
 .dropdown-content {
-  opacity: 0;
   position: absolute;
   background-color: #d30f0f;
   min-width: 150%;
@@ -47,16 +46,8 @@
   transition: background-color 0.3s
 }
 
-.nav-item:hover {
-  background-color: #d30f0f;
-}
-
-.nav-item:hover .dropdown-content {
-  opacity: 100%;
-}
-
-.nav-item:hover .dropdown-toggle::after {
-  color: white;
+.menu-item:last-child .dropdown-content {
+  right: 0;
 }
 
 .dropdown-content a {
@@ -84,6 +75,11 @@
 // The arrow next to the dropdown titles
 .dropdown-toggle::after {
   color: #d30f0f;
+  transition: color 0.3s;
+}
+
+.dropdown:hover .dropdown-toggle::after {
+  color: white;
 }
 
 .navbar-dark {
@@ -118,16 +114,12 @@
   }
 
   .dropdown-content {
-    max-height: 0;
-    transition: max-height 0.3s, opacity 0.3s;
+    // The JQuery transition is fast on mobile, so this matches that
+    transition: opacity 0s;
     position: static;
     text-align: center;
     min-width: 100%;
     overflow: hidden;
-  }
-
-  .nav-item:hover .dropdown-content {
-    max-height: 1000px;
   }
 }
 

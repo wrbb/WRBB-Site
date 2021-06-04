@@ -157,7 +157,6 @@ $is_radiojar = true;
 
         jQuery('#volume-slider').on('change', () => {
             let val = jQuery('#volume-slider').val();
-            console.log(val);
             setAudioLevel(val / 100);
         });
     });
