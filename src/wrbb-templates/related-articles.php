@@ -65,7 +65,7 @@ $posts_to_render = array_values(array_unique($posts_to_render));
     <!-- Container for entire related articles section -->
     <div class="related-articles-container">
 
-        <h2>related articles.</h2>
+        <h2 class="ra-title">related articles.</h2>
 
         <!-- Underline for related articles -->
         <hr class="header-line" id="ra-line">
