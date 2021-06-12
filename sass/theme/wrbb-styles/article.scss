@@ -77,12 +77,17 @@
 	font-size: 12px;
 }
 
-@media only screen and (max-width: 575px) {
+/* Mobile styles */
+@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
 	.sidebar {
 		position: static;
 	}
 
 	.socials {
 		padding: 25px 0;
+	}
+
+	.entry-title {
+		font-size: 2em;
 	}
 }
