@@ -85,7 +85,7 @@
 					display: inline-block;
 					font-size: 42px;
 					color: #D30F0F;
-					margin-right: $size__spacing-unit;
+					margin: 0 calc(#{$size__spacing-unit} / 2);
 				}
 			}
 
@@ -94,7 +94,7 @@
 				a {
 					font-weight: normal;
 					font-size: 20px;
-					padding-right: $size__spacing-unit;
+					padding: 0 calc(#{$size__spacing-unit} / 2);
 				}
 				div {
 					padding: 0;
@@ -126,10 +126,12 @@
 	}
 }
 
-/* Mobile Styles */
-@media only screen and (max-width: 720px) {
+/* Tablet and Mobile styles */
+@media only screen and (max-width: map_get($grid-breakpoints, md)) {
 	#wrapper-footer {
 		#colophon {
+			margin-bottom: 80px;
+
 			.site-info {
 				.form {
 					input[type=email] {

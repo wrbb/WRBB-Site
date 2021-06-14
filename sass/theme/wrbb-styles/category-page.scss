@@ -32,7 +32,7 @@
     text-decoration: none;
 }
 
-#cat-page {
+.thumbnail-image#cat-page {
     width: 270px;
     float: left;
     margin-right: 1em;
@@ -40,4 +40,17 @@
 
 .content-summary {
     font-style: italic;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
+    .cat-page-entry {
+        margin: 2em;
+    }
+
+    .thumbnail-image#cat-page {
+        width: 100%;
+        float: none;
+        margin: auto;
+    }
 }

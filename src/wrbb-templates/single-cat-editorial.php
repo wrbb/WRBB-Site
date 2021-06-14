@@ -32,7 +32,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 		<div class="row" id="show-review-content">
 
-			<main class="site-main col-md-8" id="post-main">
+			<main class="site-main col-lg-8" id="post-main">
 
 				<?php while ( have_posts() ) : the_post(); // Load post content?>
 
@@ -49,7 +49,7 @@ $container  = get_theme_mod( 'understrap_container_type' );
 
 			</main><!-- #main -->
 
-            <div class="col-md-4 sidebar">
+            <div class="col-lg-4 sidebar">
                 
                 <div class="spotify">
                     <div id= "tagline">

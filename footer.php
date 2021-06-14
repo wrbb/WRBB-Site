@@ -31,16 +31,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 						<div class="site-info">
 
-							<div class= "form">
-								<form action= ""> 
-									<label>Let's stay in touch!</label><br>
-									<input type= "email" name= "email" value= "Email address">
-									<input type= "submit" value="Submit"> <br>
-								</form>
-							</div>
-
-                            <br>
-
 							<div class="social-media" style="text-align: center;">
                                 <a href="https://www.facebook.com/WRBBRadio/"><i class="fab fa-facebook fa-lg"></i></a>
                                 <a href="https://www.instagram.com/wrbbradio/"><i class="fab fa-instagram fa-lg"></i></a>

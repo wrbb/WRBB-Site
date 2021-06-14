@@ -16,9 +16,13 @@
 }
 
 /* Mobile Styles */
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
   .related-article {
     margin: auto;
+  }
+
+  .ra-title {
+    text-align: center;
   }
 }
 
