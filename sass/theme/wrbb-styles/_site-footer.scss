@@ -46,6 +46,7 @@
 			-ms-hyphens: auto;
 			hyphens: auto;
 			word-wrap: break-word;
+			text-align: center;
 
 			.form{
 
@@ -127,7 +128,7 @@
 }
 
 /* Tablet and Mobile styles */
-@media only screen and (max-width: map_get($grid-breakpoints, md)) {
+@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
 	#wrapper-footer {
 		#colophon {
 			margin-bottom: 80px;

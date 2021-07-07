@@ -35,7 +35,6 @@
   list-style: none;
   padding: 0;
   z-index: 3;
-  transition: opacity 0.3s;
 }
 
 .menu-item:last-child .dropdown-content {
@@ -114,8 +113,6 @@
   }
 
   .dropdown-content {
-    // The JQuery transition is fast on mobile, so this matches that
-    transition: opacity 0s;
     position: static;
     text-align: center;
     min-width: 100%;
