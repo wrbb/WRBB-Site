@@ -19,7 +19,7 @@ function make_popup(name, title, email) {
     </div>`;
 }
 
-const TEAMS = ["Redesign", "Marketing", "Media", "Technical", "Operations", "Podcast", "Events", "Programming"];
+const TEAMS = ["Redesign", "Marketing", "Media", "Technical", "Operations", "Podcast", "Events", "Programming", "Sports"];
 
 function createTeamModal(team, teamName) {
     let html = 
