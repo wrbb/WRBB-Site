@@ -8,13 +8,13 @@
 
 include 'getClient.php';
 // @var SpinitronApiClient $client
-$result = $client->search( 'shows', [ 'start' => '+0 hour', 'count' => '1' ] );
+$result = $client->search( 'shows', [ 'start' => '+0 hour', 'end' => '+1 hour', 'count' => '1' ] );
 $show = $result['items'][0]['title'];
 
 $play_button = '<i class="fa fa-play-circle fa-2x"></i>';
 $pause_button = '<i class="fa fa-pause-circle fa-2x"></i>';
 
-$is_radiojar = true;
+$is_radiojar = false;
 ?>
 
 <!DOCTYPE html>

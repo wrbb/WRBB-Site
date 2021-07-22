@@ -19,42 +19,43 @@ $container = get_theme_mod('understrap_container_type');
         <hr class="header-line">
         <h2 class="entry-header"><span class="article-title">contact us.</span></h2>
 
-        <div class="row justify-content-center padding-top-bottom_small">
-            <div class="col-10">
-                <p class="contact-text">
-                    Hey! We’d love to hear from you. If you have someone you specifically want to
-                    reach out to, look below for e-board emails! If not, we'd love to hear your
-                    general shoutout!
-                </p>
-            </div>
-        </div>
-        <form>
-            <div class="row justify-content-center padding-top-bottom_small">
-                <div class="col-5">
-                    <label for="firstNameInput">First name:</label>
-                    <input type="text" class="form-control input-black-border" id="firstNameInput" aria-describedby="firstNameHelp">
-                </div>
-                <div class="col-5">
-                    <label for="firstNameInput">Last name:</label>
-                    <input type="text" class="form-control input-black-border" id="lastNameInput" aria-describedby="lastNameHelp">
-                </div>
-            </div>
-            <div class="row justify-content-center padding-top-bottom_small">
-                <div class="col-10">
-                    <label for="emailInput">Email:</label>
-                    <input type="email" class="form-control input-black-border" id="emailInput" aria-describedby="emailInputHelp">
-                </div>
-            </div>
-            <div class="row justify-content-center padding-top-bottom_small">
-                <div class="col-10">
-                    <label for="contactInput">Whats on your mind?</label>
-                    <textarea class="form-control input-red-border" id="contactInput" rows="5"></textarea>
-                </div>
-            </div>
-            <div class="row justify-content-center padding-top-bottom">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
+<!--        <div class="row justify-content-center padding-top-bottom_small">-->
+<!--            <div class="col-10">-->
+<!--                <p class="contact-text">-->
+<!--                    Hey! We’d love to hear from you. If you have someone you specifically want to-->
+<!--                    reach out to, look below for e-board emails! If not, we'd love to hear your-->
+<!--                    general shoutout!-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <form>-->
+<!--            <div class="row justify-content-center padding-top-bottom_small">-->
+<!--                <div class="col-5">-->
+<!--                    <label for="firstNameInput">First name:</label>-->
+<!--                    <input type="text" class="form-control input-black-border" id="firstNameInput" aria-describedby="firstNameHelp">-->
+<!--                </div>-->
+<!--                <div class="col-5">-->
+<!--                    <label for="firstNameInput">Last name:</label>-->
+<!--                    <input type="text" class="form-control input-black-border" id="lastNameInput" aria-describedby="lastNameHelp">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row justify-content-center padding-top-bottom_small">-->
+<!--                <div class="col-10">-->
+<!--                    <label for="emailInput">Email:</label>-->
+<!--                    <input type="email" class="form-control input-black-border" id="emailInput" aria-describedby="emailInputHelp">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row justify-content-center padding-top-bottom_small">-->
+<!--                <div class="col-10">-->
+<!--                    <label for="contactInput">Whats on your mind?</label>-->
+<!--                    <textarea class="form-control input-red-border" id="contactInput" rows="5"></textarea>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row justify-content-center padding-top-bottom">-->
+<!--                <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--            </div>-->
+<!--        </form>-->
+
         <div class="row justify-content-center padding-top-bottom">
             <div class="col-5 text-justify">
                 <h2 class="contact-header text-center">2021 eboard.</h2>
