@@ -1,6 +1,21 @@
-let isMobile = window.matchMedia("only screen and (max-width: 992px)").matches;
+jQuery(document).ready(() => {
+    let isMobile = window.matchMedia("only screen and (max-width: 992px)").matches;
 
-jQuery(".dropdown-content").hide();
+    jQuery(".dropdown-content").hide();
+    jQuery(".wrbb-navbar").removeClass("display-none");
+
+    if (isMobile) {
+        // Close the header nav when the user clicks outside of it
+        jQuery(document).click(function () {
+            jQuery(".wrbb-menu").removeClass("nav-open");
+            jQuery(".wrbb-navbar").removeClass("nav-open");
+        })
+        // Don't close the nav when the user clicks inside of it
+        jQuery(".wrbb-navbar").click(function (e) {
+            e.stopPropagation();
+        })
+    }
+});
 
 jQuery(".nav-item").on({
     mouseenter: function () {
@@ -34,15 +49,3 @@ jQuery(".navbar-toggler").click(function () {
     jQuery(".wrbb-menu").toggleClass("nav-open");
     jQuery(".wrbb-navbar").toggleClass("nav-open");
 });
-
-if (isMobile) {
-    // Close the header nav when the user clicks outside of it
-    jQuery(document).click(function () {
-        jQuery(".wrbb-menu").removeClass("nav-open");
-        jQuery(".wrbb-navbar").removeClass("nav-open");
-    })
-    // Don't close the nav when the user clicks inside of it
-    jQuery(".wrbb-navbar").click(function (e) {
-        e.stopPropagation();
-    })
-}
