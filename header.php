@@ -53,7 +53,7 @@ wp_localize_script('jquery', 'php_vars', $js_data);
     <div class="header">
 
         <!-- ******************* The Navbar Area ******************* -->
-        <div id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite" class="wrbb-navbar">
+        <div id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite" class="wrbb-navbar display-none">
 
             <div class="header-logo">
                 <a href="<?php echo esc_url(home_url('/')); ?>">
