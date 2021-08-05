@@ -44,6 +44,11 @@
 
 .fa-play-circle {
   color: $white;
+  cursor: pointer;
+}
+
+.fa-pause-circle {
+  cursor: pointer;
 }
 
 #player-desc {
@@ -58,6 +63,7 @@
 #volume-slider {
   position: relative;
   top: 4px;
+  cursor: pointer;
 }
 
 /* Mobile Styles */
