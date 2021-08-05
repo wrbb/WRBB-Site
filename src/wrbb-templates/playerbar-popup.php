@@ -108,7 +108,14 @@ $is_radiojar = false;
         const audio = new Audio('http://129.10.161.130:8000/');
 
         let setAudioLevel = (audioLevel) => {
-            if (audioLevel > 1 || audioLevel < 0) {
+            if (
+                // If the stream is "paused" (i.e. muted), don't change the volume when the user
+                // moves the slider
+                (!playing && audioLevel !== 0) ||
+                // Don't accept invalid volume values
+                audioLevel > 1 ||
+                audioLevel < 0
+            ) {
                 return;
             }
             audio.volume = audioLevel;
