@@ -9,7 +9,7 @@
 include 'getClient.php';
 // @var SpinitronApiClient $client
 $result = $client->search( 'shows', [ 'start' => '+0 hour', 'end' => '+1 hour', 'count' => '1' ] );
-$show = $result['items'][0]['title'];
+$show = count($result['items']) == 0 ? "WRBB ROBOT DJ" : $result['items'][0]['title'];
 
 $play_button = '<i class="fa fa-play-circle fa-2x"></i>';
 $pause_button = '<i class="fa fa-pause-circle fa-2x"></i>';
