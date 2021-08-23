@@ -49,3 +49,7 @@ jQuery(".navbar-toggler").click(function () {
     jQuery(".wrbb-menu").toggleClass("nav-open");
     jQuery(".wrbb-navbar").toggleClass("nav-open");
 });
+
+jQuery(".fa-times").click(function () {
+    jQuery(".maintenance-banner").hide();
+});
