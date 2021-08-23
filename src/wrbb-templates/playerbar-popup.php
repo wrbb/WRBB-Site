@@ -7,9 +7,17 @@
  */
 
 include 'getClient.php';
-// @var SpinitronApiClient $client
-$result = $client->search( 'shows', [ 'start' => '+0 hour', 'end' => '+1 hour', 'count' => '1' ] );
-$show = $result['items'][0]['title'];
+// This API request fetches the first show that will end after the current timestamp
+$result = $client->search( 'shows', ['count' => '1'] );
+$show = $result['items'][0];
+
+// Check if the show fetched is on air currently
+$current_time = date(DATE_ISO8601);
+if ($show['start'] < $current_time && $show['end'] > $current_time) {
+    $show_title = $show['title'];
+} else {
+    $show_title = "WRBB ROBOT DJ";
+}
 
 $play_button = '<i class="fa fa-play-circle fa-2x"></i>';
 $pause_button = '<i class="fa fa-pause-circle fa-2x"></i>';
@@ -108,7 +116,14 @@ $is_radiojar = false;
         const audio = new Audio('http://129.10.161.130:8000/');
 
         let setAudioLevel = (audioLevel) => {
-            if (audioLevel > 1 || audioLevel < 0) {
+            if (
+                // If the stream is "paused" (i.e. muted), don't change the volume when the user
+                // moves the slider
+                (!playing && audioLevel !== 0) ||
+                // Don't accept invalid volume values
+                audioLevel > 1 ||
+                audioLevel < 0
+            ) {
                 return;
             }
             audio.volume = audioLevel;
@@ -166,7 +181,7 @@ $is_radiojar = false;
     <p class="current-show">
         <strong>Current Show:</strong>
         <br>
-		<?php echo $show ?>
+		<?php echo $show_title ?>
     </p>
     <div class="player-controls">
         <div class="player-play-pause">
