@@ -7,7 +7,7 @@
  * @package understrap
  */
 
-$show_maintenance_banner = true;
+$show_maintenance_banner = false;
 
 if ($show_maintenance_banner) {
     echo '
