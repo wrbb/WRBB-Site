@@ -18,6 +18,8 @@ $container   = get_theme_mod('understrap_container_type');
 
 <?php if ('podcasts' === get_post_type()) : ?>
 	<?php get_template_part('src/wrbb-templates/single-podcasts'); ?>
+<?php elseif ('post' === get_post_type()) : ?>
+	<?php get_template_part('single'); ?>
 <?php else : ?>
 
 	<?php if (is_front_page() && is_home()) : ?>
