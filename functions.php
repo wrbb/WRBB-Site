@@ -85,6 +85,36 @@ function unique_multidim_array($array, $key) {
     return $temp_array; 
 }
 
+/*
+* Define a constant path to our single template folder
+*/
+define(SINGLE_PATH, TEMPLATEPATH . '/src/wrbb-templates');
+
+/**
+ * Filter the single_template with our custom function
+ */
+add_filter('single_template', 'my_single_template');
+
+/**
+ * Single template function which will choose our template
+ */
+function my_single_template()
+{
+	/**
+	 * Checks for single template by category
+	 * Check by category slug and ID
+	 */
+	foreach ((array)get_the_category() as $cat) :
+
+		if (file_exists(SINGLE_PATH . '/single-cat-' . $cat->slug . '.php'))
+			return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
+
+    elseif (file_exists(SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php'))
+			return SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php';
+
+	endforeach;
+}
+
 /**
  * Used for article thumbnails on the main page
  * Prints HTML with meta information for the current post-date/time and author.
