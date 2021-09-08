@@ -1,0 +1,24 @@
+.comments-title {
+  border-bottom: 3px solid red;
+  margin-bottom: 0.5em;
+}
+
+.comment-list, .children {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comment-metadata {
+  margin-bottom: 1em;
+}
+
+.comment-body {
+  padding-bottom: 1em;
+  border-bottom: 3px solid red;
+  margin-bottom: 1em;
+  font-family: 'Playfair Display', serif;
+}
+
+.comment-body p {
+  font-size: 18px;
+}

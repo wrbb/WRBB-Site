@@ -1,0 +1,145 @@
+/* Site footer */
+
+@import "variables-site";
+@import "mixins-master";
+@import "utilities";
+
+
+#wrapper-footer{
+
+	background-color:#191819;
+
+	#colophon {
+
+		.widget-area,
+		.site-info {
+			margin: calc(2 * #{$size__spacing-unit}) $size__spacing-unit;
+
+			@include media(tablet) {
+				margin: calc(3 * #{$size__spacing-unit}) $size__site-margins;
+			}
+		}
+
+		.widget-column {
+			display: flex;
+			flex-wrap: wrap;
+			.widget {
+				-webkit-hyphens: auto;
+				-moz-hyphens: auto;
+				-ms-hyphens: auto;
+				hyphens: auto;
+				width: 100%;
+				word-wrap: break-word;
+				@include media(desktop) {
+					margin-right: calc(3 * #{$size__spacing-unit});
+					width: calc(50% - (3 * #{$size__spacing-unit}));
+				}
+			}
+		}
+
+		.site-info {
+			color: #fff;
+			font-family: 'Playfair Display', serif;
+			font-weight: normal;
+			-webkit-hyphens: auto;
+			-moz-hyphens: auto;
+			-ms-hyphens: auto;
+			hyphens: auto;
+			word-wrap: break-word;
+			text-align: center;
+
+			.form{
+
+				label{
+					font-size: 24px;
+					text-align: justify;
+				}
+
+				input[type=email]{
+					color: $color__text-light;
+					width: 500px;
+					height: 22px;
+					padding: 12px; /* Some padding */ 
+					box-sizing: content-box; /* Make sure that padding and width stays in place */
+				}
+
+				input[type=submit] {
+					background-color: #D30F0F;
+					color: #fff;
+					font-size: 18px;
+					font-weight: normal;
+					padding: 12px 20px;
+					width: 120px;
+					height: 50px;
+					border: $color__text-light;
+					cursor: pointer;
+				}
+
+				input[type=submit]:hover {
+					text-decoration: none;
+					color: #000;
+				}
+			}
+
+			.social-media{
+				a{
+					display: inline-block;
+					font-size: 42px;
+					color: #D30F0F;
+					margin: 0 calc(#{$size__spacing-unit} / 2);
+				}
+			}
+
+			.logo-articles{
+				text-align: center;
+				a {
+					font-weight: normal;
+					font-size: 20px;
+					padding: 0 calc(#{$size__spacing-unit} / 2);
+				}
+				div {
+					padding: 0;
+				}
+			}
+
+			.logo{
+				width: 150px;
+				height: 75px;
+			}
+
+			a {
+				color: #D30F0F;
+				color: inherit;
+
+				&:hover {
+					text-decoration: none;
+					color: #D30F0F;
+				}
+			}
+
+			.imprint,
+			.privacy-policy-link {
+				margin-right: $size__spacing-unit;
+			}
+
+
+		}
+	}
+}
+
+/* Tablet and Mobile styles */
+@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
+	#wrapper-footer {
+		#colophon {
+			margin-bottom: 80px;
+
+			.site-info {
+				.form {
+					input[type=email] {
+						width: auto;
+					}
+				}
+			}
+		}
+	}
+}

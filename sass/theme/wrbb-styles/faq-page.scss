@@ -1,0 +1,29 @@
+.faq-question {
+  font-family: 'Playfair Display', serif;
+  padding: 10px;
+  margin-bottom: 0;
+  width: fit-content;
+  transition: background 0.5s;
+  cursor: pointer;
+}
+
+.faq-question:hover {
+  text-decoration: underline;
+}
+
+.faq-question.faq-open {
+  background: #de0f0f;
+  color: #ffffff;
+}
+
+.faq-answer {
+  display: none;
+  background: #de0f0f;
+  color: #ffffff;
+  margin-bottom: 0;
+  padding: 10px;
+}
+
+.faq-answer.faq-open {
+  display: inherit;
+}

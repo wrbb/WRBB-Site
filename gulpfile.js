@@ -25,11 +25,6 @@ var autoprefixer = require( 'gulp-autoprefixer' );
 // Configuration file to keep your code DRY
 var cfg = require( './gulpconfig.json' );
 var paths = cfg.paths;
-
-gulp.task( 'watch-scss', ['browser-sync'], function() {
-    gulp.watch( paths.sass + '/**/*.scss', ['scss-for-dev'] );
-});
-
 // Run:
 // gulp sass
 // Compiles SCSS files in CSS
@@ -53,19 +48,11 @@ gulp.task( 'sass', function() {
 // gulp watch
 // Starts watcher. Watcher runs gulp sass task on changes
 gulp.task( 'watch', function() {
-    gulp.watch( paths.sass + '/**/*.scss', ['styles'] );
-    gulp.watch( [paths.dev + '/js/**/*.js', 'js/**/*.js', '!js/theme.js', '!js/theme.min.js'], ['scripts'] );
+    gulp.watch( paths.sass + '/**/*.scss', gulp.series('styles') );
+    gulp.watch( [paths.dev + '/js/**/*.js', 'js/**/*.js', '!js/theme.js', '!js/theme.min.js'], gulp.series('scripts'));
 
     //Inside the watch task.
-    gulp.watch( paths.imgsrc + '/**', ['imagemin-watch'] );
-});
-
-/**
- * Ensures the 'imagemin' task is complete before reloading browsers
- * @verbose
- */
-gulp.task( 'imagemin-watch', ['imagemin'], function( ) {
-  browserSync.reload();
+    gulp.watch( paths.imgsrc + '/**', gulp.series('imagemin-watch') );
 });
 
 // Run:
@@ -76,6 +63,15 @@ gulp.task( 'imagemin', function() {
     .pipe( imagemin() )
     .pipe( gulp.dest( paths.img ) );
 });
+
+/**
+ * Ensures the 'imagemin' task is complete before reloading browsers
+ * @verbose
+ */
+gulp.task( 'imagemin-watch', gulp.series('imagemin', function( ) {
+  browserSync.reload();
+}));
+
 
 // Run:
 // gulp cssnano
@@ -116,9 +112,7 @@ gulp.task( 'cleancss', function() {
     .pipe( rimraf() );
 });
 
-gulp.task( 'styles', function( callback ) {
-    gulpSequence( 'sass', 'minifycss' )( callback );
-} );
+gulp.task( 'styles', gulp.series( 'sass', 'minifycss' ));
 
 // Run:
 // gulp browser-sync
@@ -127,16 +121,14 @@ gulp.task( 'browser-sync', function() {
     browserSync.init( cfg.browserSyncWatchFiles, cfg.browserSyncOptions );
 } );
 
-// Run:
-// gulp watch-bs
-// Starts watcher with browser-sync. Browser-sync reloads page automatically on your browser
-gulp.task( 'watch-bs', ['browser-sync', 'watch', 'scripts'], function() { 
-} );
+gulp.task( 'watch-scss', gulp.series('browser-sync', function() {
+    gulp.watch( paths.sass + '/**/*.scss', ['scss-for-dev'] );
+}));
 
 // Run: 
 // gulp scripts. 
 // Uglifies and concat all JS files into one
-gulp.task( 'scripts', function() {
+gulp.task( 'scripts', async function() {
     var scripts = [
 
         // Start - All BS4 stuff
@@ -217,28 +209,38 @@ gulp.task( 'clean-vendor-assets', function() {
 // Run
 // gulp dist
 // Copies the files to the /dist folder for distribution as simple theme
-gulp.task( 'dist', ['clean-dist'], function() {
-  return gulp.src( ['**/*', '!' + paths.bower, '!' + paths.bower + '/**', '!' + paths.node, '!' + paths.node + '/**', '!' + paths.dev, '!' + paths.dev + '/**', '!' + paths.dist, '!' + paths.dist + '/**', '!' + paths.distprod, '!' + paths.distprod + '/**', '!' + paths.sass, '!' + paths.sass + '/**', '!readme.txt', '!readme.md', '!package.json', '!package-lock.json', '!gulpfile.js', '!gulpconfig.json', '!CHANGELOG.md', '!.travis.yml', '!jshintignore',  '!codesniffer.ruleset.xml',  '*'], { 'buffer': false } )
-  .pipe( replace( '/js/jquery.slim.min.js', '/js' + paths.vendor + '/jquery.slim.min.js', { 'skipBinary': true } ) )
-  .pipe( replace( '/js/popper.min.js', '/js' + paths.vendor + '/popper.min.js', { 'skipBinary': true } ) )
-  .pipe( replace( '/js/skip-link-focus-fix.js', '/js' + paths.vendor + '/skip-link-focus-fix.js', { 'skipBinary': true } ) )
-    .pipe( gulp.dest( paths.dist ) );
-});
-
 // Deleting any file inside the /dist folder
 gulp.task( 'clean-dist', function() {
   return del( [paths.dist + '/**'] );
 });
 
-// Run
-// gulp dist-product
-// Copies the files to the /dist-prod folder for distribution as theme with all assets
-gulp.task( 'dist-product', ['clean-dist-product'], function() {
-  return gulp.src( ['**/*', '!' + paths.bower, '!' + paths.bower + '/**', '!' + paths.node, '!' + paths.node + '/**', '!' + paths.dist, '!' + paths.dist +'/**', '!' + paths.distprod, '!' + paths.distprod + '/**', '*'] )
-    .pipe( gulp.dest( paths.distprod ) );
-} );
+
+gulp.task( 'dist', gulp.series('clean-dist', function() {
+  return gulp.src( ['**/*', '!' + paths.bower, '!' + paths.bower + '/**', '!' + paths.node, '!' + paths.node + '/**', '!' + paths.dev, '!' + paths.dev + '/**', '!' + paths.dist, '!' + paths.dist + '/**', '!' + paths.distprod, '!' + paths.distprod + '/**', '!' + paths.sass, '!' + paths.sass + '/**', '!readme.txt', '!readme.md', '!package.json', '!package-lock.json', '!gulpfile.js', '!gulpconfig.json', '!CHANGELOG.md', '!.travis.yml', '!jshintignore',  '!codesniffer.ruleset.xml',  '*'], { 'buffer': false } )
+  .pipe( replace( '/js/jquery.slim.min.js', '/js' + paths.vendor + '/jquery.slim.min.js', { 'skipBinary': true } ) )
+  .pipe( replace( '/js/popper.min.js', '/js' + paths.vendor + '/popper.min.js', { 'skipBinary': true } ) )
+  .pipe( replace( '/js/skip-link-focus-fix.js', '/js' + paths.vendor + '/skip-link-focus-fix.js', { 'skipBinary': true } ) )
+    .pipe( gulp.dest( paths.dist ) );
+}))
 
 // Deleting any file inside the /dist-product folder
 gulp.task( 'clean-dist-product', function() {
   return del( [paths.distprod + '/**'] );
 } );
+
+
+// Run
+// gulp dist-product
+// Copies the files to the /dist-prod folder for distribution as theme with all assets
+gulp.task( 'dist-product', gulp.series('clean-dist-product', function() {
+  return gulp.src( ['**/*', '!' + paths.bower, '!' + paths.bower + '/**', '!' + paths.node, '!' + paths.node + '/**', '!' + paths.dist, '!' + paths.dist +'/**', '!' + paths.distprod, '!' + paths.distprod + '/**', '*'] )
+    .pipe( gulp.dest( paths.distprod ) );
+} ));
+
+// Run:
+// gulp watch-bs
+// Starts watcher with browser-sync. Browser-sync reloads page automatically on your browser
+gulp.task( 'watch-bs', gulp.series('browser-sync', 'watch', 'scripts', function() { 
+}));
+
+

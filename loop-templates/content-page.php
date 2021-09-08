@@ -10,7 +10,7 @@
 
 	<header class="entry-header">
 
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php the_title( '<h1 class="entry-title"><span class="article-title">', '</span></h1>' ); ?>
 
 	</header><!-- .entry-header -->
 
