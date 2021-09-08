@@ -97,19 +97,6 @@
   }
 }
 
-.maintenance-banner {
-  text-align: center;
-  background-color: #d30f0f;
-  color: white;
-  padding: 10px;
-}
-
-.fa-times {
-  float: right;
-  margin: 5px;
-  cursor: pointer;
-}
-
 /* Mobile styles */
 @media only screen and (max-width: map_get($grid-breakpoints, sm)) {
   .wrbb-menu {

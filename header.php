@@ -7,19 +7,6 @@
  * @package understrap
  */
 
-$show_maintenance_banner = false;
-
-if ($show_maintenance_banner) {
-    echo '
-        <div class="maintenance-banner">
-            <span>
-                The site is currently under maintenance. Please head to 
-		<a href="http://beta.wrbbradio.org">beta.wrbbradio.org</a> for a more stable experience.
-            </span>
-        </div>
-    ';
-}
-
 $container = get_theme_mod('understrap_container_type');
 $template_url = get_bloginfo('template_url');
 $js_data = array('url' => $template_url);
