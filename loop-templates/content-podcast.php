@@ -24,6 +24,19 @@
 
         <?php echo get_post_meta(get_the_ID(), 'podbean-embed-code', true); ?>
 
+        <?php
+        $podcast_legacy_url = get_post_meta(get_the_ID(), 'podcast-url', true);
+        if ($podcast_legacy_url) :
+        ?>
+            <iframe
+                title="WRBB Podcast Mixcloud player"
+                src="<?php echo $podcast_legacy_url ?>"
+                width="100%"
+                style="border: none;"
+                data-name="pb-iframe-player"
+            ></iframe>
+        <?php endif; ?>
+
         <h6>Show Notes</h6>
 
         <?php the_content(); ?>

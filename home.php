@@ -5,20 +5,6 @@
  * @package understrap
  */
 
-$show_maintenance_banner = false;
-
-if ($show_maintenance_banner) {
-    echo '
-        <div class="maintenance-banner">
-            <span>
-                wrbbradio.org is currently down for maintenance. You may use this beta site to 
-                access basic site functions in the meantime.
-            </span>
-            <i class="fas fa-lg fa-times"></i>
-        </div>
-    ';
-}
-
 get_header();
 
 $container   = get_theme_mod( 'understrap_container_type' );

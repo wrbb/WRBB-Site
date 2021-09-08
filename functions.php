@@ -91,30 +91,25 @@ function unique_multidim_array($array, $key) {
 define(SINGLE_PATH, TEMPLATEPATH . '/src/wrbb-templates');
 
 /**
-* Filter the single_template with our custom function
-*/
+ * Filter the single_template with our custom function
+ */
 add_filter('single_template', 'my_single_template');
 
 /**
-* Single template function which will choose our template
-*/
-function my_single_template($single)
-{
-  global $wp_query, $post;
-
-  /**
-  * Checks for single template by category
-  * Check by category slug and ID
-  */
-  foreach ((array)get_the_category() as $cat) :
-
-    if (file_exists(SINGLE_PATH . '/single-cat-' . $cat->slug . '.php'))
-      return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
-
-    elseif (file_exists(SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php'))
-      return SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php';
-
-  endforeach;
+ * Single template function which will choose our template
+ */
+function my_single_template() {
+    /**
+     * Checks for single template by category
+     * Check by category slug and ID
+     */
+    foreach ((array)get_the_category() as $cat) {
+        if ( file_exists( SINGLE_PATH . '/single-cat-' . $cat->slug . '.php' ) ) {
+            return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
+        } elseif ( file_exists( SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php' ) ) {
+            return SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php';
+        }
+    }
 }
 
 /**
@@ -366,45 +361,3 @@ function save_extra_category_fields( $term_id ) {
 	}
 }
 
-//add_action( 'init', 'sanitize_posts');
-//
-///**
-// * On page load, sanitizes all published posts to convert them to the format of this new theme.
-// */
-//function sanitize_posts() {
-//    $junks = array( "[three_fourth]", "[/three_fourth]", "[one_fourth]", "[/one_fourth]", );
-//
-//	$args = array( 'post_type' => 'post', 'post_status' => 'publish');
-//	$posts = get_posts($args);
-//	foreach ( $posts as $post ) {
-//		    $post_arr = $post->to_array();
-//            $post_content = $post_arr["post_content"];
-//
-//            // Remove all appearances of each element of $junks from the post content
-//            foreach ( $junks as $junk ) {
-//                $post_content = str_replace( $junk, "", $post_content );
-//            }
-//
-//            if (strpos($post_content, "<strong>Listen")) {
-//                // Split Spotify tagline and embedded player from rest of post content
-//                $chunks = explode("<strong>Listen", $post_content);
-//                $post_content = $chunks[0];
-//                $spotify_stuff = "<strong>Listen" . $chunks[1];
-//
-//                // Separate tagline and embedded player
-//                $chunks = explode("<iframe", $spotify_stuff);
-//                $tagline = $chunks[0];
-//                $embed = "<iframe" . $chunks[1];
-//
-//                // Trim off any garbage from the end of the embed code
-//                $length = strlen($embed) - (strpos($embed, "</iframe>") + 9);
-//                $embed = substr($embed, 0, -$length);
-//
-//                update_post_meta($post_arr["ID"], "spotify-tagline", $tagline);
-//                update_post_meta($post_arr["ID"], "spotify-embed-code", $embed);
-//            }
-//
-//            $post_arr["post_content"] = $post_content;
-//            wp_update_post( $post_arr );
-//	}
-//}
