@@ -128,7 +128,7 @@
 }
 
 /* Tablet and Mobile styles */
-@media only screen and (max-width: map_get($grid-breakpoints, sm)) {
+@media only screen and (max-width: map_get($grid-breakpoints, md)) {
 	#wrapper-footer {
 		#colophon {
 			margin-bottom: 80px;

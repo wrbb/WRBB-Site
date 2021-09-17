@@ -4,72 +4,31 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
   z-index: 99;
   font-size: 1.2em;
   padding: 8px;
   text-align: center;
-
-  &--popup {
-    height: 100%;
-    width: 100%;
-  }
 }
 
-.current-show {
-  margin: 0;
-}
-
-.player-controls {
-  margin: auto;
-}
-
-.player-play-pause {
-  display: flex;
-  justify-content: center;
-}
-
-.play-button {
-  &--popup {
-    padding: 12px;
-  }
-  &--toast {
-    padding: 0;
-    border-radius: 50%;
-    border-width: 0;
-    background-color: $black;
-  }
-}
-
-.fa-play-circle {
-  color: $white;
-  cursor: pointer;
-}
-
-.fa-pause-circle {
-  cursor: pointer;
-}
-
-#player-desc {
-  padding-bottom: 0;
-  padding-left: 4px;
-}
-
-.player-text {
+.player-header {
   text-align: center;
 }
 
-#volume-slider {
-  position: relative;
-  top: 4px;
+.play-button {
+  display: inline;
+}
+
+.fa-play-circle, .fa-pause-circle {
   cursor: pointer;
 }
 
-/* Mobile Styles */
-@media only screen and (max-width: 720px) {
-  .playerbar--toast {
+#volume-slider {
+  cursor: pointer;
+}
+
+/* Tablet and Mobile Styles */
+@media only screen and (max-width: map_get($grid-breakpoints, md)) {
+  .playerbar {
     width: 100%;
-    display: table;
   }
 }
