@@ -9,7 +9,7 @@ jQuery(document).ready(() => {
         if (
             // If the stream is "paused" (i.e. muted), don't change the volume when the user
             // moves the slider
-            (!playing && audioLevel !== 0) ||
+            !playing ||
             // Don't accept invalid volume values
             audioLevel > 1 ||
             audioLevel < 0
@@ -35,13 +35,14 @@ jQuery(document).ready(() => {
         userHitPlay = true;
 
         playing = true;
-        setAudioLevel(document.getElementById('volume-slider').value / 100);
+        audio.muted = false;
+        setAudioLevel(jQuery('#volume-slider').val() / 100);
         jQuery('.play-button').html(pauseButton);
     };
 
     let pauseAudio = () => {
         playing = false;
-        setAudioLevel(0);
+        audio.muted = true;
         jQuery('.play-button').html(playButton);
     };
 
@@ -58,8 +59,7 @@ jQuery(document).ready(() => {
     });
 
     jQuery('#volume-slider').on('change', () => {
-        let val = jQuery('#volume-slider').val();
-        setAudioLevel(val / 100);
+        setAudioLevel(jQuery('#volume-slider').val() / 100);
     });
 });
 
