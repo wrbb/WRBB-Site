@@ -47,7 +47,12 @@ input[type='range']::-webkit-slider-thumb {
 
 /* Tablet and Mobile Styles */
 @media only screen and (max-width: map_get($grid-breakpoints, md)) {
+
   .playerbar {
     width: 100%;
+  }
+
+  .volume-controls {
+    display: none;
   }
 }
