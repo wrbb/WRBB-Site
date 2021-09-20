@@ -10,12 +10,16 @@
   text-align: center;
 }
 
-.player-header {
+.player-text {
   text-align: center;
+  display: inline;
+  margin-right: 2px;
 }
 
 .play-button {
   display: inline;
+  position: relative;
+  bottom: 2px;
 }
 
 .fa-play-circle, .fa-pause-circle {
@@ -29,6 +33,7 @@ input[type='range'] {
   background-color: #d30f0f;
   position: relative;
   bottom: 5px;
+  border-radius: 2px;
 }
 
 input[type='range']::-webkit-slider-thumb {
