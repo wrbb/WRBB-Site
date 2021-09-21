@@ -20,6 +20,7 @@ jQuery(document).ready(() => {
     };
 
     let playAudio = () => {
+        // Only start the audio when the user hits the play button the first time
         if (!userHitPlay) {
             let promise = audio.play();
             if (promise !== undefined) {

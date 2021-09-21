@@ -26,7 +26,7 @@
   cursor: pointer;
 }
 
-input[type='range'] {
+#volume-slider {
   -webkit-appearance: none;
   cursor: pointer;
   height: 5px;
@@ -36,7 +36,7 @@ input[type='range'] {
   border-radius: 2px;
 }
 
-input[type='range']::-webkit-slider-thumb {
+#volume-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   background-color: $white;
   width: 16px;
