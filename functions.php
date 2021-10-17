@@ -70,19 +70,19 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/inc/editor.php';
 
-function unique_multidim_array($array, $key) { 
-    $temp_array = array(); 
-    $i = 0; 
-    $key_array = array(); 
-    
-    foreach($array as $val) { 
-        if (!in_array($val[$key], $key_array)) { 
-            $key_array[$i] = $val[$key]; 
-            $temp_array[$i] = $val; 
-        } 
-        $i++; 
-    } 
-    return $temp_array; 
+function unique_multidim_array($array, $key) {
+    $temp_array = array();
+    $i = 0;
+    $key_array = array();
+
+    foreach($array as $val) {
+        if (!in_array($val[$key], $key_array)) {
+            $key_array[$i] = $val[$key];
+            $temp_array[$i] = $val;
+        }
+        $i++;
+    }
+    return $temp_array;
 }
 
 /*
@@ -132,13 +132,17 @@ function mp_understrap_posted_on($post_id)
   );
   $posted_on = sprintf(esc_html_x('%s', 'post date', 'understrap'), $time_string);
 	$author_id = get_post_field('post_author', $post_id);
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'understrap' ),
-		'<span class="author vcard"><a class="url fn n" href="' .
-		esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
-		esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
-		'</a></span>'
-	);
+  if ( function_exists( 'coauthors_posts_links' ) ) {
+        $byline = coauthors_posts_links(null, null, null, null, false);
+  } else {
+      $byline = sprintf(
+        esc_html_x( 'yyyyyby %s', 'post author', 'understrap' ),
+        '<span class="author vcard"><a class="url fn n" href="' .
+        esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
+        esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
+        '</a></span>'
+      );
+  }
   echo '<p id="mpa-date"> ' . $posted_on . '</p><p id="mpa-author"> ' . $byline . '</p>'; // WPCS: XSS OK.
 }
 /**
@@ -161,22 +165,32 @@ function understrap_posted_on($post_id = 0) {
   );
   $posted_on = sprintf(esc_html_x( '%s', 'post date', 'understrap' ), $time_string);
   if ($post_id == 0) {
-	  $byline = sprintf(
-		  esc_html_x( 'by %s', 'post author', 'understrap' ),
-		  '<span class="author vcard"><a class="url fn n" href="' .
-		    esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' .
-		    esc_html(get_the_author_meta('first_name') . " " . get_the_author_meta('last_name')) . '</a></span>'
-	  );
+      $author_id = get_post_field('post_author', $post_id);
+      if ( function_exists( 'coauthors_posts_links' ) ) {
+            $byline = coauthors_posts_links(null, null, null, null, false);
+      } else {
+          $byline = sprintf(
+            esc_html_x( 'by %s', 'post author', 'understrap' ),
+            '<span class="author vcard"><a class="url fn n" href="' .
+            esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
+            esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
+            '</a></span>'
+          );
+    }
   } else {
   	// This function is being called outside the loop, so the $author_id must be specified
 	  $author_id = get_post_field('post_author', $post_id);
-	  $byline = sprintf(
-		  esc_html_x( 'by %s', 'post author', 'understrap' ),
-		  '<span class="author vcard"><a class="url fn n" href="' .
-		    esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
-		    esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
-		    '</a></span>'
-	  );
+      if ( function_exists( 'coauthors_posts_links' ) ) {
+            $byline = coauthors_posts_links(null, null, null, null, false);
+      } else {
+          $byline = sprintf(
+            esc_html_x( 'yyyyyby %s', 'post author', 'understrap' ),
+            '<span class="author vcard"><a class="url fn n" href="' .
+            esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
+            esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
+            '</a></span>'
+          );
+    }
   }
 	echo '<p>' . $byline . '<span class="pipe"> | </span>' . $posted_on . '</p>'; // WPCS: XSS OK.
 }
@@ -204,9 +218,9 @@ function podcast_posted_on() {
 /*
 * Creating a function to create our CPT
 */
- 
+
 function custom_post_type() {
- 
+
 // Set UI labels for Custom Post Type
     $labels = array(
         'name'                => _x( 'Podcasts', 'Post Type General Name' ),
@@ -223,21 +237,21 @@ function custom_post_type() {
         'not_found'           => __( 'Not Found' ),
         'not_found_in_trash'  => __( 'Not found in Trash' ),
     );
-     
+
 // Set other options for Custom Post Type
-     
+
     $args = array(
         'label'               => __( 'podcasts' ),
         'description'         => __( 'Podcast info and embed' ),
         'labels'              => $labels,
         // Features this CPT supports in Post Editor
         'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-        // You can associate this CPT with a taxonomy or custom taxonomy. 
+        // You can associate this CPT with a taxonomy or custom taxonomy.
         'taxonomies'          => array( 'genres', 'category' ),
         /* A hierarchical CPT is like Pages and can have
         * Parent and child items. A non-hierarchical CPT
         * is like Posts.
-        */ 
+        */
         'hierarchical'        => false,
         'public'              => true,
         'show_ui'             => true,
@@ -253,10 +267,10 @@ function custom_post_type() {
 
 		'taxonomies'          => array( 'category' ),
     );
-     
+
     // Registering your Custom Post Type
     register_post_type( 'podcasts', $args );
- 
+
 }
 
 add_filter('pre_get_posts', 'query_post_type');
@@ -271,12 +285,12 @@ function query_post_type($query) {
     return $query;
     }
 }
- 
+
 /* Hook into the 'init' action so that the function
-* Containing our post type registration is not 
-* unnecessarily executed. 
+* Containing our post type registration is not
+* unnecessarily executed.
 */
- 
+
 add_action( 'init', 'custom_post_type', 0 );
 
 function podcast_func( $atts ){
@@ -360,4 +374,3 @@ function save_extra_category_fields( $term_id ) {
 		update_option( "category_$t_id", $cat_meta );
 	}
 }
-
