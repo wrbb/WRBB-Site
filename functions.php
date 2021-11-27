@@ -88,7 +88,7 @@ function unique_multidim_array($array, $key) {
 /*
 * Define a constant path to our single template folder
 */
-define(SINGLE_PATH, TEMPLATEPATH . '/src/wrbb-templates');
+define('SINGLE_PATH', TEMPLATEPATH . '/src/wrbb-templates');
 
 /**
  * Filter the single_template with our custom function
@@ -136,7 +136,7 @@ function mp_understrap_posted_on($post_id)
         $byline = coauthors_posts_links(null, null, null, null, false);
   } else {
       $byline = sprintf(
-        esc_html_x( 'yyyyyby %s', 'post author', 'understrap' ),
+        esc_html_x( 'by %s', 'post author', 'understrap' ),
         '<span class="author vcard"><a class="url fn n" href="' .
         esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
         esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
@@ -184,7 +184,7 @@ function understrap_posted_on($post_id = 0) {
             $byline = coauthors_posts_links(null, null, null, null, false);
       } else {
           $byline = sprintf(
-            esc_html_x( 'yyyyyby %s', 'post author', 'understrap' ),
+            esc_html_x( 'by %s', 'post author', 'understrap' ),
             '<span class="author vcard"><a class="url fn n" href="' .
             esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' .
             esc_html(get_the_author_meta('first_name', $author_id) . " " . get_the_author_meta('last_name', $author_id)) .
