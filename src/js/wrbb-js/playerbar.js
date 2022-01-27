@@ -1,7 +1,7 @@
 jQuery(document).ready(() => {
     let playing = false;
     let userHitPlay = false;
-    const audio = new Audio('http://129.10.161.130:8000/listen');
+    const audio = new Audio('https://stream.wrbbradio.org');
     const playButton = '<i class="fas fa-play-circle fa-lg"></i>';
     const pauseButton = '<i class="fas fa-pause-circle fa-lg"></i>';
 
