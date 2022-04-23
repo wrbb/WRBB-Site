@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Podcast Home Page Template
+ * Template Name: Past Podcasts Home Page Template
  *
  * @package understrap
  */
