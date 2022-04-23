@@ -21,7 +21,7 @@ $shows = get_categories(
 
 		<hr class="header-line">
 
-		<h1 class="entry-header"><span class="article-title">WRBB Podcasts</span></h1>
+		<h1 class="entry-header"><span class="article-title">Past Podcasts</span></h1>
 
 		<?php for ($i = 0; $i < count($shows); $i++) :
 			$show_slug = $shows[$i]->slug;
