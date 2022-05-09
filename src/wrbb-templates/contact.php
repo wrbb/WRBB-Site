@@ -58,7 +58,7 @@ $container = get_theme_mod('understrap_container_type');
 
         <div class="row justify-content-center padding-top-bottom">
             <div class="col-5 text-justify">
-                <h2 class="contact-header text-center">2021 eboard.</h2>
+                <h2 class="contact-header text-center">2022 eboard.</h2>
             </div>
         </div>
         <div class="row text-center">
