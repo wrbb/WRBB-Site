@@ -48,7 +48,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",
     "gulp-rimraf": "^0.2.2",
-    "gulp-sass": "4.0.2",
+    "gulp-sass": "6.0.1",
     "gulp-sequence": "1.0.0",
     "gulp-sourcemaps": "2.6.4",
     "gulp-uglify": "^3.0.2",
@@ -57,7 +57,7 @@
     "jquery": "^3.4.1",
     "merge2": "^1.2.4",
     "natives": "^1.1.6",
-    "npm": "^6.11.3",
+    "npm": "^11.7.0",
     "popper.js": "^1.15.0",
     "run-sequence": "^2.2.1",
     "undescores-for-npm": "^1.0.0"
